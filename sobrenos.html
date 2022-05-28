@@ -8,6 +8,9 @@
 	<link href="bootstrap5/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap5/css/meu-style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c0fd8fe684.js"></script>
+     <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
 </head>
 <style type="text/css">
 	* {
@@ -40,18 +43,14 @@
 	}
 
 	/* Create three equal columns that floats next to each other */
-	.grid {
+	#grid {
 		position: absolute;
 	  float: left;
-	  margin: 5% 10% 5% 10%;
+	  margin: 7% 5% 7% 5%;
 	}
 	
 	#conteiner1{
 		border-radius: 25px;
-	}
-
-	p{
-		font-size:25px;
 	}
 
 </style>
@@ -82,9 +81,41 @@
 	<script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	
-
-<div class="grid">
-	  <div class="container p-5 my-5 bg-dark text-white" id="conteiner1">
+<div class="uk-child-width-1-2@s uk-grid-match" uk-grid id="grid">
+    <div>
+        <div class="uk-card uk-card-hover uk-card-body uk-animation-fade" style="font-size: 20px; text-align: center; font-weight: bold;">
+            <h3 class="uk-card-title" style="font-weight: bold;">Integrantes</h3>
+		    <p>Ana Julia<br>
+		      Melissa Nani<br>
+		      Mateus Assis<br>
+		      Eric Papi<br>
+		      Gabriel Rodrigues<br>
+		      Geovana Pederneschi</p>
+        </div>
+    </div>
+    <div>
+    	
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-hover uk-card-body uk-animation-fade">
+            <h3 class="uk-card-title">Objetivos</h3>
+	    <p>Pesquisar e produzir um guia que conecte clientes e restaurantes com opções veganas;<br><br>
+		Coletar dados e apresentar um banco de dados de receitas veganas facilitando o cotidiano dos usuários;<br><br>
+		Reunir informações de interesse do público-alvo;<br><br>
+		Conseguir alto desempenho com  a aplicação, garantido usabilidade, praticiade, responsabilidade e eficiência.
+		</p>
+        </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light uk-animation-fade" style="text-align: center; ">
+            <h3 class="uk-card-title">Síntese</h3>
+	    <p style="font-size: 24px;">Criar e alimentar um site que informe pessoas veganas, vegetarianas ou interessados no assunto, com foco em aplicar uma solução prática e funcional  para atender esse mercado em crescimento, auxiliando a inserção de novos adeptos e a manutenção de veteranos.</p>
+        </div>
+    </div>
+    
+</div>
+<!-- <div class="grid">
+	  <div class="uk-card uk-card-default uk-card-houver uk-card-body" id="conteiner1">
 			<h2>Integrantes</h2>
 		    <p>Ana Julia<br>
 		      Melissa Nani<br>
@@ -94,7 +125,7 @@
 		      Geovana Pederneschi</p>
 		</div>
 
-	<div class="container p-5 my-5 bg-primary text-white" id="conteiner1">
+	<div class="container p-5 my-5 bg-primary text-white" class="g-col-4" id="conteiner1">
 		<h2>Objetivos</h2>
 	    <p>Pesquisar e produzir um guia que conecte clientes e restaurantes com opções veganas;<br><br>
 		Coletar dados e apresentar um banco de dados de receitas veganas facilitando o cotidiano dos usuários;<br><br>
@@ -103,11 +134,11 @@
 		</p>
 	</div>
 
-	<div class="container p-5 my-5 bg-dark text-white" id="conteiner1">
+	<div class="container p-5 my-5 bg-dark text-white" class="g-col-4" id="conteiner1">
 		<h2>Síntese</h2>
 	    <p>Criar e alimentar um site que informe pessoas veganas, vegetarianas ou interessados no assunto, com foco em aplicar uma solução prática e funcional  para atender esse mercado em crescimento, auxiliando a inserção de novos adeptos e a manutenção de veteranos.</p>
 	</div>
-</div>
+</div> -->
 
 
 	
