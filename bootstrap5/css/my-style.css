@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+:root {
+    --main-color: #FFB42C;
+    --secondary-color: #2C77FF;
+    --white-color: #FFFFFF;
+    --disabled-black: #0000008a;
+    --pane-padding: 5px 42px;
+}
+
+.my-menu-item{
+    font-style: normal;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: ease 200ms;
+}
+.my-menu-item:hover{
+    background-color: var(--main-color);
+    color: var(--white-color);
+    transition: ease 200ms;
+}
+.my-menu-item:hover .my-menu-li{
+    color: var(--white-color);
+}
+
+.my-menu-item2:hover{
+    background-color: var(--main-color);
+    color: var(--white-color);
+    transition: ease 200ms;
+
+}
+
+.my-menu-li{
+    font-style: normal;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: ease 200ms;
+}
+.my-menu-li:hover{
+    color: var(--white-color) !important;
+}
+
+.my-title-sm{
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px;
+    margin: 12px 0 0 32px;
+    background-color: var(--main-color);
+}
+
+.my-scroll-med{
+    height: 490px;
+    overflow-y: scroll;
+    border-style: inset;
+    padding: 4px;
+}
+
+.horizontal-scroll{
+    height: fit-content;
+    max-width: 620px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+.my-hidden{
+    display: none;
+}
+
+.my-white{
+    background-color: var(--secondary-color) !important;
+}
+
+.my-medium-block{
+    background-color: var(--secondary-color);
+    height: 2px;
+    margin: 4px 0 4px 0;
+}
+
+.white{
+    color: var(--white-color);
+}
+
+.my-footer{
+    font-size: 16px;
+    color: var(--disabled-black);
+    font-style: italic;
+}
+
+.my-branco{
+    color: var(--white-color) !important;
+}
+
+.my-pointer{
+    cursor: pointer;
+}
+
+.my-zoom-card{
+    transition: 100ms ease;
+}
+.my-zoom-card:hover{
+    transform: scale(1.05);
+    transition: 200ms ease;
+}
+
+.my-fundo-dog{
+    background-image: url("../../images/dogprod.jpg");
+    background-size: cover;
+}
+
+.my-fundo-dog2{
+    background-image: url("../../images/dog2.jpg");
+    background-size: cover;
+}
+
+.my-fundo-cat{
+    background-image: url("../../images/gato-banner.jpg");
+    background-size: cover;
+    background-position-y: -60px;
+}
+
+.my-fundo-bird{
+    background-image: url("../../images/banner-bird.jpg");
+    background-size: cover;
+    background-position: left;
+    background-position-y: -70px;
+}
+
+.my-fundo-main{
+    background-color: var(--main-color) !important;
+}
+
+.my-padding-lados{
+    padding: 0 20px 0 20px;
+}
+
+.item1 { 
+    grid-area: grande; 
+    width: 380px;
+    height: 400px;
+    background-color: violet;
+}
+.item2 { 
+    grid-area: pequeno1; 
+    width: 300px;
+    height: 200px;
+    background-color: wheat;
+}
+.item3 { 
+    grid-area: pequeno2;
+    width: 300px;
+    height: 200px;
+    background-color: yellow;
+ }
+.item4 { 
+    grid-area: footer; 
+    width: 100%;
+    height: 120px;
+    background-color: yellowgreen;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'grande pequeno1'
+    'grande pequeno2'
+    'footer footer';
+  grid-gap: 0px;
+  background-color: var(--main-color);
+  padding: 0px;
+}
+
+/*grid do perfil*/
+.item-perfil{
+    grid-area: perfil; 
+    width: 220px;
+    height: 100%;
+    background-color: var(--main-color);
+}
+
+.item-conteudo{
+    grid-area: conteudo;
+    width: 640px;
+    height: fit-content;
+}
+
+.item-footer{
+    grid-area: footer;
+    width: 640px;
+    height: fit-content;
+    padding-bottom: 16px;
+}
+
+.grid-container-perfil{
+    display: grid;
+    grid-template-areas: 
+        'perfil conteudo'
+        'perfil footer';
+    grid-gap: 0px;
+    padding: 0px;
+}
+
+.my-200-block{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+}
+
+.my-centered {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+.my-big-text{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.my-circulo{
+    background-color: orange; 
+    border-radius: 100px; 
+    width: 100px; 
+    height: 100px; 
+    display: block;
+}
+
+.my-pic-ex{
+    background: url(../../images/dog2.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.my-pic-ex2{
+    background: url(../../images/bowtie-cat.jpg);
+    background-position: center;
+    background-size: cover; 
+}
+
+.my-small-link{
+    color: #2C77FF;
+    font-style: italic;
+    cursor: pointer;
+}
+.my-small-link2{
+    color: #ff682c;
+    font-style: italic;
+    cursor: pointer;
+}
+
+/*REGRAS PARA MONITORES APENAS*/
+@media only screen and (min-width: 900px) {
+    
+    .my-fit-content{
+        width: fit-content;
+    }
+
+
+}
+
+
+
+
+
