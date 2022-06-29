@@ -3,125 +3,22 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano - Cadastro</title>
+	<title>Trivegano - Login</title>
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="../style.css">
+<!--============================================================================-->	
+<!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
 
-	<style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, #005416, #c1d948);
-
-        }
-        .box{
-            color: white;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-top: 3%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(1, 0, 2, 0.7);
-            padding: 15px;
-            border-radius: 15px;
-            width: 50%;
-        }
-        fieldset{
-            border: 3px solid #c1d948;
-        }
-        legend{
-            border: 1px solid #c1d948;
-            padding: 10px;
-            text-align: center;
-            background-color: #c1d948;
-            border-radius: 8px;
-        }
-        .inputBox{
-            position: relative;
-        }
-        .inputUser{
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width: 100%;
-            letter-spacing: 2px;
-        }
-
-        .labelInput{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5s;
-        }
-		
-        .inputUser:focus ~ .labelInput,
-        .inputUser:valid ~ .labelInput{
-            top: -20px;
-            font-size: 12px;
-            color: dodgerblue;
-        }
-
-        #data_nascimento{
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-        #submit{
-            background: #421e00;
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #submit:hover{
-           background: #633209;
-        }
-        
-        @media (max-width: 999px) {
-        	body {
-    			overflow-x: hidden;
-  			}
-  			.box{
-  				width: 500px;
-  				height: 800px;
-  			}	
-  			
-  			legend{
-  				width: 500px;
-  				height: 700px;
-  			}
-  			.inputBox{
-  				width: 200px;
-  				height: 300px;
-  			}
-  			.inputUser{
-  				width: 200px;
-  				height: 300px;
-  			}
-  			.labelInput{
-  				width: 200px;
-  				height: 300px;
-  			}
-  			.inputUser{
-  				width: 200px;
-  				height: 300px;
-  			}
-  			#data_nascimento{
-  				width: 200px;
-  				height: 300px;
-  			}
-
-        }
-
-    </style>
+	
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--=============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
 </head>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+<script src="../bootstrap5/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <body>
 	<header>
 		<div class="logo">
@@ -130,6 +27,7 @@
 		<div class="catalogo">
 			<ul>
 				<li><a href="../index.html">Home</a></li>
+				<li><a href="../faq.html">FAQ</a></li>
 				<li><a href="../menu.html">Menu</a></li>
 				<li><a href="../receitas.html">Receitas</a></li>
 				<li><a href="../guia.html">Guia</a></li>
@@ -145,70 +43,122 @@
 	</header>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
-	<div class="box">
-        <form action="" method="POST">
-            <fieldset>
-                <legend><b>Novo Usuário</b></legend>
-                <br>
-                <div class="inputBox">
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
-                    <label for="nome" class="labelInput">Nome Completo</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="email" id="email" class="inputUser" required>
-                    <label for="email" class="labelInput">Email</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="email" id="email" class="inputUser" required>
-                    <label for="email" class="labelInput">Confirmar Email</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="usuario" id="usuario" class="inputUser" required>
-                    <label for="usuario" class="labelInput">Usuário</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="cpf" id="cpf" class="inputUser" required>
-                    <label for="cpf" class="labelInput">CPF</label>
-                </div>
-                <br><br>
-                <p>Sexo:</p>
-                <input type="radio" id="feminino" name="genero" value="feminino" required>
-                <label for="feminino">Feminino</label>
-                <br>
-                <input type="radio" id="masculino" name="genero" value="masculino" required>
-                <label for="masculino">Masculino</label>
-                <br>
-                <input type="radio" id="outro" name="genero" value="outro" required>
-                <label for="outro">Outro</label>
-                <br><br>
-                <label for="data_nascimento"><b>Data de Nascimento:</b></label>
-                <input type="date" name="data_nascimento" id="data_nascimento" required>
-                <br><br><br>
-                <div class="inputBox">
-                    <input type="text" name="endereco" id="endereco" class="inputUser" required>
-                    <label for="endereco" class="labelInput">Endereço</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="password" name="senha" id="senha" class="inputUser" required>
-                    <label for="senha" class="labelInput">Senha</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="password" name="senha" id="senha" class="inputUser" required>
-                    <label for="senha" class="labelInput">Confirmar Senha</label>
-                </div>
-                
-                <br><br>
-                <input type="submit" name="submit" id="submit">
-                <br><br>
-                <input type="reset" name="reset" id="submit">
-            </fieldset>
-        </form>
-    </div>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-color: #dfc4a6; padding-top: 80px; /* justify-content: right; padding-right: 20px; */">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="min-height: 700px; min-width: 700px;">
+				<form class="login100-form validate-form" name="cadastroUsuario" method="post" action="doCadastroUsuario1.php">
+					<span class="login100-form-title p-b-49">
+						<i class="fa fa-user-circle-o"></i>
+					 </span>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Nome inválido">
+						<span class="label-input100">Nome Completo</span>
+						<input class="input100" type="text" name="nome" placeholder="Digite seu Nome Completo" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "Email inválido">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" name="email" placeholder="Digite seu Email" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "Email Não Correspondem">
+						<span class="label-input100"> Confirmar Email</span>
+						<input class="input100" type="text" name="email1" placeholder="Digite seu Email Novamente" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "Uusário inválido">
+						<span class="label-input100">Uusário</span>
+						<input class="input100" type="text" name="usuario" placeholder="Digite seu Nome de Usuário" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "CPF Inválido">
+						<span class="label-input100">CPF</span>
+						<input class="input100" type="text" name="cpf" placeholder="Digite seu CPF" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "E-mail Institucional ou RA inválido">
+						<span class="label-input100">Número de Telefone</span>
+						<input class="input100" type="text" name="phone" placeholder="Digite seu Número de Telefone" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+                    
+                    <div class="wrap-input100 validate-input m-b-23" data-validaete="Data de Nascimento Inválida">
+                        <span class="label-input100"> Data de Nascimento</span>
+                        <input class="input100" type="date" name="data_nascimento" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Senha inválida.">
+						<span class="label-input100">Senha</span>
+						<input class="input100" type="password" name="senha" placeholder="Digite sua senha" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Senha inválida.">
+						<span class="label-input100">Senha</span>
+						<input class="input100" type="password" name="senha1" placeholder="Digite sua senha" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validaete="CEP Inválido">
+                        <span class="label-input100">CEP</span>
+                        <input type="text" name="endereco" class="input100" placeholder="Digite seu CPF" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    <div class="text-right p-t-8 p-b-31">
+						<a href="#" style="text-decoration: underline;">
+							Não sabe seu CEP?
+						</a>
+					</div>
+
+					
+					
+					
+
+					<div class="contain-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" type="submit" name="submit">
+								Entrar
+							</button>
+						</div>
+					</div>
+
+					<div class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							SIGA-NOS NAS REDES SOCIAIS
+						</span>
+					</div>
+
+					<div class="flex-c-m">
+						<a href="#" class="login100-social-item bg1">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-twitter"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-google"></i>
+						</a>
+					</div>
+
+					<div class="flex-col-c p-t-10">
+
+						<a href="cadastro.html" class="txt2">
+							Cadastre-se
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

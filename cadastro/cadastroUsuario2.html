@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trivegano - Login</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
+<!--============================================================================-->	
+<!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
+
+	
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--=============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+</head>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+<script src="../bootstrap5/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<body>
+	<header>
+		<div class="logo">
+			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+		</div>
+		<div class="catalogo">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../menu.html">Menu</a></li>
+				<li><a href="../receitas.html">Receitas</a></li>
+				<li><a href="../guia.html">Guia</a></li>
+				<li><a href="../sobrenos.html">Sobre nós</a></li>
+				<li><a href="login.html">Login</a></li>
+			</ul>
+		</div>
+		<div class="hamburger">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+		</div>
+	</header>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-color: #dfc4a6; padding-top: 73px; /* justify-content: right; padding-right: 20px; */">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="min-height: 700px; min-width: 700px;">
+				<form class="login100-form validate-form" name="cadastroUsuario" method="post" action="doCadastroUsuario.php">
+					<span class="login100-form-title p-b-49">
+						<i class="fa fa-user-circle-o"></i>
+					 </span>
+
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "Nome inválido">
+						<span class="label-input100">Nome Completo</span>
+						<input class="input100" type="text" name="nome" placeholder="Digite seu Nome Completo" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "Email inválido">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" name="email" placeholder="Digite seu Email" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "Email Não Correspondem">
+						<span class="label-input100"> Confirmar Email</span>
+						<input class="input100" type="text" name="email1" placeholder="Digite seu Email Novamente" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "Uusário inválido">
+						<span class="label-input100">Uusário</span>
+						<input class="input100" type="text" name="usuario" placeholder="Digite seu Nome de Usuário" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "CPF Inválido">
+						<span class="label-input100">CPF</span>
+						<input class="input100" type="text" name="cpf" placeholder="Digite seu CPF" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate = "E-mail Institucional ou RA inválido">
+						<span class="label-input100">Número de Telefone</span>
+						<input class="input100" type="text" name="phone" placeholder="Digite seu Número de Telefone" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
+                    
+                    <div class="wrap-input100 validate-input m-b-23" data-validaete="Data de Nascimento Inválida">
+                        <span class="label-input100"> Data de Nascimento</span>
+                        <input class="input100" type="date" name="data_nascimento" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Senha inválida.">
+						<span class="label-input100">Senha</span>
+						<input class="input100" type="password" name="senha" placeholder="Digite sua senha" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+
+                    <!-- <div class="wrap-input100 validate-input" data-validaete="CEP Inválido">
+                        <span class="label-input100">CEP</span>
+                        <input type="text" name="endereco" class="input100" placeholder="Digite seu CPF" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+                    <div class="text-right p-t-8 p-b-31">
+						<a href="#" style="text-decoration: underline;">
+							Não sabe seu CEP?
+						</a>
+					</div> -->
+
+					
+					
+					
+
+					<div class="contain-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" type="submit" name="submit">
+								Entrar
+							</button>
+						</div>
+					</div>
+
+					<div class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							SIGA-NOS NAS REDES SOCIAIS
+						</span>
+					</div>
+
+					<div class="flex-c-m">
+						<a href="#" class="login100-social-item bg1">
+							<i class="fa fa-facebook"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-twitter"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-google"></i>
+						</a>
+					</div>
+
+					<div class="flex-col-c p-t-10">
+
+						<a href="cadastro.html" class="txt2">
+							Cadastre-se
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

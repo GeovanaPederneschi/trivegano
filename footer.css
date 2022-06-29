@@ -1,0 +1,15 @@
+footer{
+    width: 100%;
+    max-height: 16%;
+    position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #1a2b35;
+  padding-top: 84;
+  }
+  footer .logo img {
+  width: 95px;
+  height: 100%;
+  margin-top: 5px;
+  }

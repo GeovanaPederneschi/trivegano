@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trivegano</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			 <a href="index.html"><img src="trivegano/logo1.png"></a>
+		</div>
+		<div class="catalogo">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="menu.html">Menu</a></li>
+				<li><a href="receitas.html">Receitas</a></li>
+				<li><a href="guia.html">Guia</a></li>
+				<li><a href="sobrenos.html">Sobre nós</a></li>
+				<li><a href="login.html">Login</a></li>
+			</ul>
+		</div>
+	</header>
+	<div class="hamburger">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+	</div>
+	
+	<!-- <p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut. Ut libero enim, blandit eget tortor vitae, cursus ultricies dui. Etiam eu metus consequat, vehicula nibh vitae, euismod magna. Aenean suscipit quam ipsum, quis fermentum nibh rutrum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum urna eu elit porta, condimentum rutrum metus accumsan. Sed lacinia, quam non vehicula vehicula, nisl neque egestas ligula, blandit sodales eros dolor eget dui. Etiam ullamcorper quis metus et porta. Curabitur pulvinar turpis non dolor laoreet, ac condimentum metus efficitur. Nunc vehicula a purus accumsan congue. Etiam semper purus metus, vitae aliquet ante ornare sit amet. Nullam in massa id magna sollicitudin vestibulum.
+	</p> -->
+
+	<!-- carrossel -->
+	<div class="items-wrapper">
+		<div class="items">
+			<div class="carrossel"><img src="carrossel/imagem1.jpg"></div>
+			<div class="carrossel"><img src="carrossel/imagem2.jpg"></div>
+			<div class="carrossel"><img src="carrossel/imagem3.jpg"></div>
+		</div>
+	</div>
+
+	<!-- carrossel2 -->
+	<div class="slider">
+		<div class="slides">
+			<input type="radio" name="radio-btn" id="radio1">
+			<input type="radio" name="radio-btn" id="radio2">
+			<input type="radio" name="radio-btn" id="radio3">
+
+			<div class="slide first">
+				<img src="carrossel/imagem1.jpg" alt="">
+			</div>
+			<div class="slide">
+				<img src="carrossel/imagem2.jpg" alt="">
+			</div>
+			<div class="slide">
+				<img src="carrossel/imagem3.jpg" alt="">
+			</div>
+
+			<div class="navigation-auto">
+				<div class="auto-btn1"></div>
+				<div class="auto-btn2"></div>
+				<div class="auto-btn3"></div>
+			</div>
+		</div>
+
+		<div class="navigation-bar">
+			<label for="radio1" class="manual-btn"></label>
+			<label for="radio2" class="manual-btn"></label>
+			<label for="radio3" class="manual-btn"></label>
+		</div>
+	</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+</body>
+</html>
