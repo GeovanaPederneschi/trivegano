@@ -1,0 +1,18 @@
+CSS da tela login
+
+Background linear:
+-Verde Escuro: #005416
+-Verde Claro: #c1d948
+
+Legenda/Contorno:
+-Verde Claro: #c1d948
+
+Botão:
+-Marrom: #421e00
+
+Botão hover:
+-Marrom claro: #633209
+
+ Você está no(a) [NOME DA LOJA], o melhor lugar para encontrar [CATEGORIA DE PRODUTO]. Você sabia que nós trabalhamos apenas com os fornecedores mais confiáveis do mercado? Pois é! Isso significa que todos os produtos que você encontrar no nosso site certamente serão da mais alta qualidade. Vá em frente!
+
+Aqui no(a) [NOME DA LOJA], nós acreditamos em um serviço de atendimento aos clientes de altíssima qualidade – mas também somos da opinião de que todos os nossos clientes merecem vivenciar uma experiência de compra inesquecível, e é por isso que tentamos proporcionar produtos excelentes a um preço acessível.

@@ -1,0 +1,127 @@
+<!-- carrossel2 -->
+	<div class="items-wrapper">
+		<div class="items">
+			<input type="radio" name="radio-btn" id="radio1" checked>
+			<input type="radio" name="radio-btn" id="radio2">
+			<input type="radio" name="radio-btn" id="radio3">
+
+			<div class="carrossel first">
+				<img src="carrossel/banner_comprarPratos.svg" alt="">
+			</div>
+			<div class="carrossel">
+				<img src="carrossel/banner_cozinheReceitas.svg" alt="">
+			</div>
+			<div class="carrossel">
+				<img src="carrossel/banner_lerGuia.svg" alt="">
+			</div>
+
+			<div class="navigation-auto">
+				<div class="auto-btn1"></div>
+				<div class="auto-btn2"></div>
+				<div class="auto-btn3"></div>
+			</div>
+		</div>
+
+		<div class="navigation-bar">
+			<label for="radio1" class="manual-btn"></label>
+			<label for="radio2" class="manual-btn"></label>
+			<label for="radio3" class="manual-btn"></label>
+		</div>
+	</div>
+
+/* carrossel */
+
+.itens-wrapper {
+  width: 50vw;
+  position: absolute;
+}
+
+.items {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.carrossel {
+  flex: none;
+  width: 100%;
+  height: 500px;
+  scroll-snap-align: start;
+  pointer-events: none;
+  margin-top: 64px;
+  transition: 0.6s;
+}
+
+.carrossel img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.navigation-bar {
+  position: absolute;
+  top: 520px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+
+.manual-btn {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #fff;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.manual-btn:hover {
+  background-color: #fff;
+}
+
+#radio1:checked ~ .first {
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+  margin-left: -103.5%;
+}
+
+#radio3:checked ~ .first {
+  margin-left: -203.5%;
+}
+
+.navigation-auto {
+  position: absolute;
+  top: 520px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+
+.navigation-auto div {
+  width: 10px;
+  height: 10px;
+  border:1px solid #fff;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+} 
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+  background-color: #fff;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+  background-color: #fff;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+  background-color: #fff;
+}

@@ -4,69 +4,215 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano</title>
+	<!-- font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Licorice&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+	<!---------->
+	<!-- UIKIT -->
+	
+	<link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+	<!---------->
 	<link rel="stylesheet" href="style.css">
-	<link href="bootstrap5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap5/css/meu-style.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c0fd8fe684.js"></script>
-     <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
 </head>
 <body>
-	<script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<header>
+	<header style="position: static; align-items: baseline;">
 		<div class="logo">
-			 <a href="index.html"><img src="trivegano/logo1.png" width="146" height="69%"></a>
+			 <a href="index.html"><img src="trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
 			<ul>
-				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="index.html">Home</a></li>
-				<li><a href="menu.html">Home</a></li>
-				<li><a href="receitas.html">Pratos</a></li>
+				<li><a href="faq.html">FAQ</a></li>
+				<li><a href="menu.html">Menu</a></li>
+				<li><a href="receitas.html">Receitas</a></li>
 				<li><a href="guia.html">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="cadastro/login.html">Login</a></li>
 			</ul>
 		</div>
-		<div class="hamburger">
-		  <span></span>
-		  <span></span>
-		  <span></span>
-		</div>
 	</header>
-	
-	
+	<div class="hamburger">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+	</div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 
+	<!-- carrossel2 -->
+	<!-- <div class="items-wrapper">
+		<div class="items">
+			<input type="radio" name="radio-btn" id="radio1" checked>
+			<input type="radio" name="radio-btn" id="radio2">
+			<input type="radio" name="radio-btn" id="radio3">
 
-<!-- Carrosel -->
-<div id="carouselExampleControls" style="position: absolute; float: left; margin-top: 5.4%;" class="carousel slide my-conteiner-short" data-bs-ride="carousel">
+			<div class="carrossel first">
+				<img src="trivegano/banner_comprarPratos.png" alt="">
+			</div>
+			<div class="carrossel">
+				<img src="trivegano/banner_cozinheReceita.png" alt="">
+			</div>
+			<div class="carrossel">
+				<img src="trivegano/banner_chamarGuia.png" alt="">
+			</div>
 
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="trivegano/banner_comprarPratos.svg" class="d-block w-100" alt="...">
+			<div class="navigation-auto">
+				<div class="auto-btn1"></div>
+				<div class="auto-btn2"></div>
+				<div class="auto-btn3"></div>
+			</div>
+		</div>
+
+		<div class="navigation-bar">
+			<label for="radio1" class="manual-btn"></label>
+			<label for="radio2" class="manual-btn"></label>
+			<label for="radio3" class="manual-btn"></label>
+		</div>
+	</div> -->
+
+	<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 4000; ratio: 1280:300" style="padding-top: 0px;">
+
+        <ul class="uk-slideshow-items">
+            <li>
+                <img src="trivegano/banner_comprarPratos.png" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="trivegano/banner_cozinheReceita.png" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="trivegano/banner_chamarGuia.png" alt="" uk-cover>
+            </li>
+        </ul>
+    
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+    
     </div>
-    <div class="carousel-item">
-      <img src="trivegano/banner_cozinheReceitas.svg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="trivegano/banner_lerGuia.svg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="/script.js"></script>
+	<!-- Iconesinhos -->
 
+	<div class="alinhamento" style="height: 400px;">
+		<div class="iconezinhos">
+			<div class="icones">
+				<img src="icones/Azul_Petroleo/cozinha_solido_azul.svg">
+				<img src="icones/Azul_Petroleo/cenoura_solido_azul.svg">
+				<img src="icones/Azul_Petroleo/vaca_solido_azul.svg">
+			</div>
+			<div class="column">
+				<p><b>Lorem ipsum dolor.</b></p><br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
+			</div>
+			<div class="column">
+				<p><b>Lorem ipsum dolor.</b></p><br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
+			</div>
+			<div class="column">
+				<p><b>Lorem ipsum dolor.</b></p><br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- welcome -->
+
+	<div class="welcome">
+		<div class="welcome-img">
+			<img src="carrossel/imagem1.jpg">
+		</div>
+		<div class="welcome-titulo">
+			Lorem ipsum dolor sit amet
+		</div>
+		<div class="welcome-txt">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
+			<br>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
+		</div>
+		<div class="welcome-assinatura">
+			<p>Lorem ipsum dolor sit amet, consectetur.</p>
+		</div>
+		<div class="welcome-txtinho">
+			<p><i>The fantastic team at TriVegano House</i></p>
+		</div>
+	</div>
+
+	<br>
+	<!-- green life -->
+	<div class="green">
+		<div class="green-img" style="padding-right: 30px;">
+			<img src="carrossel/imagem1.jpg">
+		</div>
+		<div class="green-titulo">
+			Lorem ipsum dolor sit amet
+		</div>
+		<div class="green-txt">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
+			<br>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
+			<a href="receitas.html">
+			<button class="green-btn" type="button" onclick="">Read about</button>
+			</a>
+		
+		</div>
+	<br>
+
+	<!-- favorite flavors -->
+	<div>
+
+	</div>
+
+	<br>
+	<!-- expectation -->
+	<div class="expectation">
+		<div class="espectation-img">
+			<img src="carrossel/imagem1.jpg" style="padding-right: 30px;">
+		</div>
+		<div class="expectation-titulo">
+			Lorem ipsum dolor sit amet
+		</div>
+		<div class="exp-icn">
+			<div class="expectation-icn">
+				<li><img src="icones/Azul_Petroleo/hamburger_solido_azul.svg"></li>
+			</div>
+			<div class="expectation-column">
+				<li>
+				<p><b>Lorem ipsum dolor.</b></p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
+				</li>
+			</div>
+		</div>
+		<div class="exp-icn">
+			<div class="expectation-icn">
+				<li><img src="icones/Azul_Petroleo/mobile_solido_azul.svg"></li>
+			</div>
+			<div class="expectation-column">
+				<li>
+				<p><b>Lorem ipsum dolor.</b></p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
+				</li>
+			</div>
+		</div>
+		<div class="exp-icn">
+			<div class="expectation-icn">
+				<li><img src="icones/Azul_Petroleo/entrega_solido_azul.svg"></li>
+			</div>
+			<div class="expectation-column">
+				<li>
+				<p><b>Lorem ipsum dolor.</b></p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
+				</li>
+			</div>
+		</div>
+		<a href="receitas.html">
+			<button class="expectation-btn" type="button" onclick="" style="margin-left: 7px;">Read about</button>
+		</a>
+	</div>
+
+
+
+	<!-- <div class="textoTela1">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut. Ut libero enim, blandit eget tortor vitae, cursus ultricies dui. Etiam eu metus consequat, vehicula nibh vitae, euismod magna. Aenean suscipit quam ipsum, quis fermentum nibh rutrum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum urna eu elit porta, condimentum rutrum metus accumsan. Sed lacinia, quam non vehicula vehicula, nisl neque egestas ligula, blandit sodales eros dolor eget dui. Etiam ullamcorper quis metus et porta. Curabitur pulvinar turpis non dolor laoreet, ac condimentum metus efficitur. Nunc vehicula a purus accumsan congue. Etiam semper purus metus, vitae aliquet ante ornare sit amet. Nullam in massa id magna sollicitudin vestibulum.
+	</div> -->
 </body>
 </html>
-
-<!-- <a href="#">dolor</a> -->

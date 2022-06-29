@@ -4,134 +4,38 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano - Login</title>
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="../style.css">
-    <link href="../bootstrap5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../bootstrap5/css/meu-style.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c0fd8fe684.js"></script>
+<!--============================================================================-->	
+<!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
 
-	<style>
-       body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, #005416, #c1d948);
-
-        }
-        .box{
-            color: white;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(1, 0, 2, 0.7);
-            padding: 15px;
-            border-radius: 15px;
-            width: 50%;
-
-        }
-        legend{
-            border: 1px solid #c1d948;
-            padding: 10px;
-            text-align: center;
-            background-color: #c1d948;
-            border-radius: 8px;
-        }
-        .inputBox{
-            position: relative;
-        }
-        .inputUser{
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width: 100%;
-            letter-spacing: 2px;
-        }
-
-        .labelInput{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5s;
-        }
-        
-        .inputUser:focus ~ .labelInput,
-        .inputUser:valid ~ .labelInput{
-            top: -20px;
-            font-size: 12px;
-            color: dodgerblue;
-        }
-
-        #data_nascimento{
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-        #submit{
-            background: #421e00;
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #submit:hover{
-           background: #633209;
-        }
-        
-        @media (max-width: 999px) {
-            body {
-                overflow-x: hidden;
-            }
-            .box{
-                width: 500px;
-                height: 800px;
-            }   
-            
-            legend{
-                width: 100px;
-               
-            }
-            .inputBox{
-                width: 200px;
-                height: 300px;
-            }
-            .inputUser{
-                width: 200px;
-                height: 300px;
-            }
-            .labelInput{
-                width: 200px;
-                height: 300px;
-            }
-            .inputUser{
-                width: 200px;
-                height: 300px;
-            }
-            #data_nascimento{
-                width: 200px;
-                height: 300px;
-            }
-
-        }
-        #caixa{
-            border: 3px solid #c1d948;
-            padding: 15px;
-            top: 50%;
-            left: 50%;
-        }
-      
-
-    </style>
+	
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--=============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
 </head>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+<style>
+	footer{
+		width: 100%;
+		max-height: 16%;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #1a2b35;
+  padding-bottom: 0;
+	}
+footer .logo img {
+  width: 95px;
+  height: 100%;
+  margin-top: 5px;
+}
+</style>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 <script src="../bootstrap5/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <body>
 	<header>
 		<div class="logo">
@@ -140,6 +44,7 @@
 		<div class="catalogo">
 			<ul>
 				<li><a href="../index.html">Home</a></li>
+				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="../menu.html">Menu</a></li>
 				<li><a href="../receitas.html">Receitas</a></li>
 				<li><a href="../guia.html">Guia</a></li>
@@ -155,40 +60,115 @@
 	</header>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-color: #dfc4a6;">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="height: 700px;">
+				<form class="login100-form validate-form" name="loginUsuario" method="post" action="doLogin.php">
+					<span class="login100-form-title p-b-49">
+						<i class="fa fa-user-circle-o"></i>
+					 </span>
 
-<div class="box">
-    <div id="caixa">
+					<div class="wrap-input100 validate-input m-b-23" data-validate = "E-mail Institucional ou RA inválido">
+						<span class="label-input100">Usuário</span>
+						<input class="input100" type="text" name="usuario" placeholder="Digite seu Usuário" required>
+						<span class="focus-input100" data-symbol="&#xf206;"></span>
+					</div>
 
-        <form name="LoginUsuario" method="POST" action="doLogin.php">
-            
-                <fieldset>
-                    <legend><b>Login</b></legend>
-                    <br>
-                    <br><br>
-                    <div class="inputBox">
-                        <input type="text" name="usuario" id="usuario" class="inputUser" required>
-                        <label for="usuario" class="labelInput">Usuário</label>
-                    </div>
+					<div class="wrap-input100 validate-input" data-validate="Senha inválida.">
+						<span class="label-input100">Senha</span>
+						<input class="input100" type="password" name="senha" placeholder="Digite sua senha" required>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
+					</div>
+					
+					<div class="text-right p-t-8 p-b-31 m-b-23">
+						<a href="#" style="text-decoration: underline;">
+							Esqueceu sua senha?
+						</a>
+					</div>
+					
+					<div class="contain-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" type="submit" name="submit">
+								Entrar
+							</button>
+						</div>
+					</div>
 
-                    <br><br>
-                    <div class="inputBox">
-                        <input type="password" name="senha" id="senha" class="inputUser" required>
-                        <label for="senha" class="labelInput">Senha</label>
-                    </div>
-                    <br><br>
-                    <input type="submit" name="submit" id="submit">
-                    <br><br>
-                    <input type="reset" name="reset" id="submit">
-                    <br> <br>
-                </fieldset>
-                    
-            </form>
-                        <a href="cadastroUsuario.html">
-                            <button id="submit" style="background-color: rgba(160,82,45);">Cadastro</button>
-                        </a>  
-    </div>
-</div>  
+					<div class="txt1 text-center p-t-54 p-b-20">
+						<span>
+							SIGA-NOS NAS REDES SOCIAIS
+						</span>
+					</div>
 
+					<div class="flex-c-m">
+						<a href="#" class="login100-social-item bg1">
+							<i class="fa fa-facebook"></i>
+						</a>
 
+						<a href="#" class="login100-social-item bg2">
+							<i class="fa fa-twitter"></i>
+						</a>
+
+						<a href="#" class="login100-social-item bg3">
+							<i class="fa fa-google"></i>
+						</a>
+					</div>
+
+					<div class="flex-col-c p-t-10">
+
+						<a href="cadastro.html" class="txt2">
+							Cadastre-se
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer>
+	   <div	style="align-items: left; ">
+		   <ul >
+			   <li><a href="../index.html">Home</a></li>
+			   <li><a href="faq.html">FAQ</a></li>
+			   <li><a href="../menu.html">Menu</a></li>
+			   <li><a href="../menu.html">Menu</a></li>
+		   </ul>
+	   </div>
+
+		<div styyle="align-items: center;">	
+	  		 <div class="txt1 text-center p-t-54 p-b-20">
+				<span>
+					SIGA-NOS NAS REDES SOCIAIS
+				</span>
+
+				<div class="flex-c-m">
+				<a href="#" class="login100-social-item bg1">
+					<i class="fa fa-facebook"></i>
+				</a>
+
+				<a href="#" class="login100-social-item bg2">
+					<i class="fa fa-twitter"></i>
+				</a>
+
+				<a href="#" class="login100-social-item bg3">
+					<i class="fa fa-google"></i>
+				</a>
+			</div>
+			</div>
+
+			
+		</div>
+
+	   <div style="align-items: right;">
+		   <ul >
+				<li><a href="../receitas.html">Receitas</a></li>
+				<li><a href="../guia.html">Guia</a></li>
+				<li><a href="../sobrenos.html">Sobre nós</a></li>
+				<li><a href="login.html">Login</a></li>
+		   </ul>
+		   
+	   </div>
+	</footer>
 </body>
 </html>
