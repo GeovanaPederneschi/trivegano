@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano</title>
+
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<!-- font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +20,7 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<header style="position: static; align-items: baseline;">
+	<header>
 		<div class="logo">
 			 <a href="index.html"><img src="trivegano/logo1.png"></a>
 		</div>
@@ -27,7 +29,7 @@
 				<li><a href="index.html">Home</a></li>
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="menu.html">Menu</a></li>
-				<li><a href="receitas.html">Receitas</a></li>
+				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="guia.html">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="cadastro/login.html">Login</a></li>
@@ -72,7 +74,7 @@
 		</div>
 	</div> -->
 
-	<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 4000; ratio: 1280:300" style="padding-top: 0px;">
+	<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="autoplay: true; autoplay-interval: 4000; ratio: 1280:300" style="z-index: 1;">
 
         <ul class="uk-slideshow-items">
             <li>
@@ -101,7 +103,7 @@
 				<img src="icones/Azul_Petroleo/vaca_solido_azul.svg">
 			</div>
 			<div class="column">
-				<p><b>Lorem ipsum dolor.</b></p><br>
+				<p><b>TESTE</b></p><br>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor.</p>
 			</div>
 			<div class="column">
@@ -115,60 +117,111 @@
 		</div>
 	</div>
 
-	<!-- welcome -->
-
-	<div class="welcome">
-		<div class="welcome-img">
-			<img src="carrossel/imagem1.jpg">
+	<div>
+		<!-- welcome -->
+		<hr class="uk-divider-icon" style="margin-left:2%; margin-right: 2%;">
+		<div class="welcome">
+			<div class="welcome-img" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+				<img src="carrossel/imagem1.jpg">
+			</div>
+			<div >
+			<div class="welcome-titulo" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+				Lorem ipsum dolor sit amet
+			</div>
+			<div class="welcome-txt" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
+			
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
+			</div>
+			<div class="welcome-assinatura" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+				<p>Lorem ipsum dolor sit amet, consectetur.</p>
+			</div>
+			<div class="welcome-txtinho" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+				<p><i>The fantastic team at TriVegano House</i></p>
+			</div>
+			</div>
+			
 		</div>
-		<div class="welcome-titulo">
-			Lorem ipsum dolor sit amet
-		</div>
-		<div class="welcome-txt">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
-			<br>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
-		</div>
-		<div class="welcome-assinatura">
-			<p>Lorem ipsum dolor sit amet, consectetur.</p>
-		</div>
-		<div class="welcome-txtinho">
-			<p><i>The fantastic team at TriVegano House</i></p>
-		</div>
+		
 	</div>
+<div uk-slider style="margin-bottom: 3%; margin-left: 3%; margin-right: 3%; width: 94%;" autoplay autoplay-interval="3500">
+<hr class="uk-divider-icon"style="margin-left:-1%; margin-right: -1%;">
+
+		<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+	
+			<ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-height-small">
+				<li>
+					<img src="trivegano/first_promocao.png" width="400" alt="">
+				</li>
+				<li>
+					<img src="trivegano/acima4_promocao.png" width="400" alt="">
+				</li>
+				<li>
+					<img src="trivegano/acima50_promocao.png" width="400" alt="">
+				</li>
+				<li>
+					<img src="trivegano/verao_st_promocao.png" width="400" alt="">
+				</li>
+				<li>
+					<img src="trivegano/molde_imagem_promocao.jpg" width="400" alt="">
+				</li>
+				<li>
+					<img src="trivegano/molde_imagem_promocao.jpg" width="400" alt="">
+				</li>
+				
+			</ul>
+	
+			<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+	
+		</div>
+	
+		<!-- <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul> -->
+	
+	</div>
+	<div class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex" style="background-image: url('trivegano/flower-7252179_1920'); margin-bottom:1%; width: 100%;">
+		<div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">
+			<h1 uk-parallax="opacity: 0,1; y: -100,0; scale: 2,1; end: 50vh + 50%;">Headline</h1>
+			<p uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		</div>
+	</div>  
 
 	<br>
 	<!-- green life -->
 	<div class="green">
-		<div class="green-img" style="padding-right: 30px;">
+		<div class="green-img" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
 			<img src="carrossel/imagem1.jpg">
 		</div>
-		<div class="green-titulo">
+		
+		<div class="green-titulo" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
 			Lorem ipsum dolor sit amet
 		</div>
-		<div class="green-txt">
+		<div class="green-txt" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
 			<br>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut.</p>
-			<a href="receitas.html">
+			<a href="home_receitas.php">
 			<button class="green-btn" type="button" onclick="">Read about</button>
 			</a>
-		
 		</div>
+		
 	<br>
-
-	<!-- favorite flavors -->
-	<div>
-
 	</div>
+
+	<div class="uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200" style="background-image: url('trivegano/plants-6650595_1920'); margin-bottom:1%; width: 100%;">
+		<div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">
+			<h1 >Headline</h1>
+			<p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		</div>
+	</div>  
 
 	<br>
 	<!-- expectation -->
 	<div class="expectation">
 		<div class="espectation-img">
-			<img src="carrossel/imagem1.jpg" style="padding-right: 30px;">
+			<img src="carrossel/imagem1.jpg" >
 		</div>
-		<div class="expectation-titulo">
+		<div class="expectation-titulo" >
 			Lorem ipsum dolor sit amet
 		</div>
 		<div class="exp-icn">
@@ -204,8 +257,8 @@
 				</li>
 			</div>
 		</div>
-		<a href="receitas.html">
-			<button class="expectation-btn" type="button" onclick="" style="margin-left: 7px;">Read about</button>
+		<a href="home_receitas.php">
+			<button class="expectation-btn" type="button" onclick="">Read about</button>
 		</a>
 	</div>
 
@@ -214,5 +267,51 @@
 	<!-- <div class="textoTela1">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut. Ut libero enim, blandit eget tortor vitae, cursus ultricies dui. Etiam eu metus consequat, vehicula nibh vitae, euismod magna. Aenean suscipit quam ipsum, quis fermentum nibh rutrum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum urna eu elit porta, condimentum rutrum metus accumsan. Sed lacinia, quam non vehicula vehicula, nisl neque egestas ligula, blandit sodales eros dolor eget dui. Etiam ullamcorper quis metus et porta. Curabitur pulvinar turpis non dolor laoreet, ac condimentum metus efficitur. Nunc vehicula a purus accumsan congue. Etiam semper purus metus, vitae aliquet ante ornare sit amet. Nullam in massa id magna sollicitudin vestibulum.
 	</div> -->
+	
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+
+			<!-- 25% -->
+			<div class="footer-col">
+				<h4>Quem Somos</h4>
+				<ul>
+					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+				</ul>
+			</div>
+
+			<!-- 25% -->
+			<div class="footer-col">
+				<h4>Procure Ajuda</h4>
+				<ul>
+					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="fale.html">Fale Conosco</a></li>
+				</ul>
+			</div>
+
+			<!-- 25% -->
+			<div class="footer-col">
+				<h4>Encontre</h4>
+				<ul>
+					<li><a href="home_receitas.php">Receitas</a></li>
+					<li><a href="menu.html">Menu</a></li>
+					<li><a href="guia.html">Guia</a></li>
+				</ul>
+			</div>
+
+			<!-- 25% -->
+			<div class="footer-col">
+				<h4>Nossas Redes</h4>
+				<div class="social-links">
+					<a href="#"><i class="fab fa-facebook-f"></i></a>
+					<a href="#"><i class="fab fa-twitter"></i></a>
+					<a href="#"><i class="fab fa-instagram"></i></a>
+					<a href="#"><i class="fab fa-whatsapp"></i></a>
+				</div>
+
+		</div>
+	</div>
+</footer>
 </body>
+
 </html>

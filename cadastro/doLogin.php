@@ -16,7 +16,7 @@ header('Location: ../menu.html');
 }
 else
 {	
-	$resultado=mysqli_query($con,"select * from tb_cliente where nome_cliente='$loginx' and senha_cliente='$senhax'");
+	$resultado=mysqli_query($con,"select * from tb_cliente where usuario_cliente='$loginx' and senha_cliente='$senhax'");
 	if($r=mysqli_fetch_array($resultado)){
 		$_SESSION['codusuario']=$r[0];
 		header('Location:../menu.html');
