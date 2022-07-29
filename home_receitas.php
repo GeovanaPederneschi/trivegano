@@ -223,6 +223,7 @@
                                 echo"<li>"; 
                                 echo"<div class='uk-inline uk-animation-toggle'>";
                                 echo"       <img src='$registro[1]'>";
+                                echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
                                 echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
                                 echo"           <p>$row2[1]</p>";
                                 echo"       </div>";

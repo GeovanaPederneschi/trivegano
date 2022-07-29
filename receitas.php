@@ -168,18 +168,17 @@
                         $titulo = mysqli_query($con,"select * from tb_receitas 
                             where id_receitas='$registro[2]';");
                             if($row2 = mysqli_fetch_array($titulo)){
-                            echo"<li data-type=$row[0] data-type=$row2[7]>";
+                            echo"<li data-type=$row[0] data-dieta=$row2[7]>";
                             echo "<form name=fox action=receita_detalhe.php  method=POST >";
                             echo"<button type=subbmit name=bot2  style='border: none;'";  
                             echo" <li>"; 
                            
-                            echo"      <div class='uk-inline' >";
+                            echo"      <div class='uk-inline' id=bt >";
                            
                             echo"      <img src='$registro[1]'>";
-                            echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
+                            echo "      <input name=codx id=codx  type=hidden value=$row2[0]>";
                             echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
                             echo"           <p>$row2[1]</p>"; 
-                            //echo"       <input type=subbmit name=bot2>";
                             echo"       </div>";
                             echo"       </div>";
                            echo"</li>";
@@ -217,7 +216,7 @@
 
 
 
-<footer class="footer">
+<footer class="footer" style="bottom: 0;">
 	<div class="container">
 		<div class="row">
 

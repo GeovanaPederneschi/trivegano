@@ -68,16 +68,20 @@
     </div>
 </nav>
 
+
+
     <?php
   
     //SESSION_START();
     include "cadastro/conexao.php";
     /* puxar o cod da receita e salvar em var */
     $codx=$_POST['codx'];
+
+	//echo $codx;
     /* salvar essa var em array de session de usu campo correspondente a CODX */
     // $_SESSION['CODX']=$codx;
     /* selecionar na tab de produtos o produto correspondente ao cod */
-    $comando= "select * from tb_receita where id_receita=$codx";
+    $comando= "select * from tb_receitas where id_receitas=$codx";
     $resulta = mysqli_query($con,$comando);
     /* $comando= "select * from tb_imagem_receitas;";
                 $resulta = mysqli_query($con,$comando); */
@@ -93,29 +97,42 @@
         if($row = mysqli_fetch_array($categoria)){
             //$row1 = $row['descricao_categoria'];
                     
-            $titulo = mysqli_query($con,"select * from tb_imagem_receita 
+            $titulo = mysqli_query($con,"select * from tb_imagem_receitas 
                 where tb_receitas_id_receitas='$codx';");
                 if($row2 = mysqli_fetch_array($titulo)){
            
-                echo "<div class='uk-child-width-1-2@m uk-grid-small uk-grid-match' uk-grid>   ";
+                echo "<div class='uk-child-width-1-2@m uk-grid-small ' uk-grid 
+				style='margin-left:3%; margin-right:3%;margin-bottom:2%;'>   ";
                 echo"    <div>";
-                echo"       <div class ='uk-card uk-card-default'>";
-                echo"       <img src=$registro[1]>";
+                echo"       <div class ='uk-width-2xlarge'>";
+                echo"       <img  widht=825 height=550 src=$row2[1]>";
                 echo"       </div>";
                 echo"    </div>";
-                echo"    <div>";
+                echo"    <div class=''>";
                 echo"        <div>";
-                echo"            <h1>$row2[1]</h1>";
+                echo"            <h1>$registro[1]</h1>";
                 echo"        </div>";
-                echo"       <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. $row Fugit dolor eum quas, dolores totam alias natus quod nobis ipsa veritatis optio qui excepturi fuga consectetur tenetur quaerat cupiditate suscipit ab.
-                        </div>";
+                echo"   	 <div class=''>";
+				echo"			    <span class='uk-label uk-text-center uk-label-danger'>";
+                echo"            		$row[0]";
+				echo"				</span>";
+				echo"			    <span class='uk-label uk-text-center uk-label-warning'>";
+                echo"            		$registro[7]";
+				echo"				</span>";
+                echo"     	 </div>";
                 echo"    </div>";
-                echo" </div>";
+				echo"  </div>";
+				echo" <div class='' style=margin-left:4%;margin-bottom:2%;font-size:20px;margin-right:4%;>";
+				echo"			Ingredientes: <br><br>".
+								nl2br($registro[8]);
+					
+				echo"			<br><br> Modo de Preparo:<br><br>".
+								nl2br($registro[2]);
+				echo"</div>";
             }
         }
-    }
-
+    } 
+    
     
     
     $close = mysqli_close($con);

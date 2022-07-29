@@ -8,7 +8,7 @@
   body, html{
   
     width: 100%;
-    /* height: 100%; */
+    height: auto;
     background: #dfc4a6;
     z-index: 1;
     /*background-image: linear-gradient(to right, #005416, #c1d948);*/
@@ -637,6 +637,8 @@ ul{
 	background-color: #121e25;
     padding: 70px 0;
     margin-bottom: 0;
+    position: relative;
+    bottom: 0;
 }
 .footer-col{
    width: 25%;
@@ -714,6 +716,9 @@ ul{
 }
 }
 
+#bt{
+  cursor: pointer;
+}
 
 .uk-card{
   cursor: pointer;
