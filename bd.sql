@@ -90,8 +90,9 @@ CREATE TABLE `tb_categoria` (
   `id_categoria` int unsigned NOT NULL AUTO_INCREMENT,
   `descricao_categoria` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `ramo_categoria` varchar(45) NOT NULL,
+  `imagem` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +101,7 @@ CREATE TABLE `tb_categoria` (
 
 LOCK TABLES `tb_categoria` WRITE;
 /*!40000 ALTER TABLE `tb_categoria` DISABLE KEYS */;
-INSERT INTO `tb_categoria` VALUES (1,'doce','receita'),(2,'salgado','receita'),(3,'principal','produto'),(4,'entrada','produto'),(5,'bebida','produto'),(6,'sobremesa','produto'),(7,'bebida','receita'),(8,'hamburguer','produto');
+INSERT INTO `tb_categoria` VALUES (1,'doce','receita',NULL),(2,'salgado','receita',NULL),(3,'pizza','produto','pizza.jfif'),(4,'almoco','produto','refeicao.jfif'),(5,'bebida','produto','bebida.jfif'),(6,'sobremesa','produto','sobremesa.jfif'),(7,'bebida','receita',NULL),(8,'burguer','produto','burguer.jfif'),(9,'entrada','produto','entrada.jpg');
 /*!40000 ALTER TABLE `tb_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,6 +188,7 @@ CREATE TABLE `tb_fornecedor` (
   `site_fornecedor` varchar(45) DEFAULT NULL,
   `nome_fantasia_fornecedor` varchar(60) NOT NULL,
   `status_fornecedor` varchar(45) NOT NULL,
+  `logo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_fornecedor`),
   UNIQUE KEY `nome_fantasia_fornecedor_UNIQUE` (`nome_fantasia_fornecedor`),
   UNIQUE KEY `cnpj_fornecedor_UNIQUE` (`cnpj_fornecedor`),
@@ -201,7 +203,7 @@ CREATE TABLE `tb_fornecedor` (
 
 LOCK TABLES `tb_fornecedor` WRITE;
 /*!40000 ALTER TABLE `tb_fornecedor` DISABLE KEYS */;
-INSERT INTO `tb_fornecedor` VALUES (1,'Flávia e Thomas Alimentação Ltda','Céu','99594199000190','qualidade@flaviaethomasalimentacaoltda.com.br','1926769605','starship.html','Starship Restaurante','ativo'),(50,'Laís e Camila Restaurante Ltda',NULL,'57594556000170','financeiro@laisecamilarestauranteltda.com.br','1138248221','www.laisecamilafinanceiraltda.com.br','Restaurante Savvy','ativo'),(55,'Alice e Augusto Pães e Doces ME',NULL,'17587120000130','estoque@aliceeaugustopaesedocesme.com.br','123456788','www.aliceeaugustopaesedocesme.com.br','Flare Restaurante','ativo'),(61,'alelo',NULL,'123456789098765675','tccnavegano2@gmail.com','123456788',NULL,'Pronto','avaliando'),(62,'alelo',NULL,'123456789098765671','tccnavegano4@gmail.com','123456788',NULL,'Feito','avaliando'),(63,'LTDA',NULL,'098909890989098909','restaurante@gmail.com','977908921',NULL,'Cantinho Nordestino','avaliando'),(64,'LTDA',NULL,'098909890989098905','restaurante1@gmail.com','977908921',NULL,'Cantinho Brasileiro','avaliando'),(65,'LTDA',NULL,'098765432123456784','liberal@gmail.com','11989003819',NULL,'Bar Liberal','avaliando'),(66,'LTDA',NULL,'098765432123456787','liberalismo@gmail.com','11989003819',NULL,'Bar da Tijuca','avaliando');
+INSERT INTO `tb_fornecedor` VALUES (1,'Flávia e Thomas Alimentação Ltda','Céu','99594199000190','qualidade@flaviaethomasalimentacaoltda.com.br','1926769605','starship.html','Starship Restaurante','ativo','logo5.jfif'),(50,'Laís e Camila Restaurante Ltda',NULL,'57594556000170','financeiro@laisecamilarestauranteltda.com.br','1138248221','www.laisecamilafinanceiraltda.com.br','Restaurante Savvy','ativo','logo5.jfif'),(55,'Alice e Augusto Pães e Doces ME',NULL,'17587120000130','estoque@aliceeaugustopaesedocesme.com.br','123456788','www.aliceeaugustopaesedocesme.com.br','Flare Restaurante','ativo','logo5.jfif'),(61,'alelo',NULL,'123456789098765675','tccnavegano2@gmail.com','123456788',NULL,'Pronto','avaliando','logo5.jfif'),(62,'alelo',NULL,'123456789098765671','tccnavegano4@gmail.com','123456788',NULL,'Feito','avaliando','logo5.jfif'),(63,'LTDA',NULL,'098909890989098909','restaurante@gmail.com','977908921',NULL,'Cantinho Nordestino','avaliando','logo5.jfif'),(64,'LTDA',NULL,'098909890989098905','restaurante1@gmail.com','977908921',NULL,'Cantinho Brasileiro','avaliando','logo5.jfif'),(65,'LTDA',NULL,'098765432123456784','liberal@gmail.com','11989003819',NULL,'Bar Liberal','avaliando','logo5.jfif'),(66,'LTDA',NULL,'098765432123456787','liberalismo@gmail.com','11989003819',NULL,'Bar da Tijuca','avaliando','logo5.jfif');
 /*!40000 ALTER TABLE `tb_fornecedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +309,7 @@ CREATE TABLE `tb_imagem_produto` (
   PRIMARY KEY (`id_imagem_produto`,`tb_produto_id_produto`,`tb_produto_tb_categoria_id_categoria`,`tb_produto_tb_adm_fornecedor_id_adm_fornecedor`,`tb_produto_tb_adm_fornecedor_tb_fornecedor_id_fornecedor`),
   KEY `fk_tb_imagem_produto_tb_produto1_idx` (`tb_produto_id_produto`,`tb_produto_tb_categoria_id_categoria`,`tb_produto_tb_adm_fornecedor_id_adm_fornecedor`,`tb_produto_tb_adm_fornecedor_tb_fornecedor_id_fornecedor`),
   CONSTRAINT `fk_tb_imagem_produto_tb_produto1` FOREIGN KEY (`tb_produto_id_produto`, `tb_produto_tb_categoria_id_categoria`, `tb_produto_tb_adm_fornecedor_id_adm_fornecedor`, `tb_produto_tb_adm_fornecedor_tb_fornecedor_id_fornecedor`) REFERENCES `tb_produto` (`id_produto`, `tb_categoria_id_categoria`, `tb_adm_fornecedor_id_adm_fornecedor`, `tb_adm_fornecedor_tb_fornecedor_id_fornecedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +318,7 @@ CREATE TABLE `tb_imagem_produto` (
 
 LOCK TABLES `tb_imagem_produto` WRITE;
 /*!40000 ALTER TABLE `tb_imagem_produto` DISABLE KEYS */;
+INSERT INTO `tb_imagem_produto` VALUES (1,'prato.jfif',1,8,1,1),(2,'prato.jfif',2,8,1,1),(3,'prato.jfif',3,8,1,1),(4,'prato.jfif',4,8,1,1),(5,'prato.jfif',5,5,1,1),(6,'prato.jfif',6,5,1,1),(7,'prato1.jfif',1,8,1,1);
 /*!40000 ALTER TABLE `tb_imagem_produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -562,4 +565,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-07-28 23:49:21
+-- Dump completed on 2022-07-31 19:47:19
