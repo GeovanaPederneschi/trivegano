@@ -28,7 +28,7 @@
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="faq.html">FAQ</a></li>
-				<li><a href="menu.html">Menu</a></li>
+				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="guia.html">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
@@ -164,7 +164,7 @@
 				<h4>Encontre</h4>
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
-					<li><a href="menu.html">Menu</a></li>
+					<li><a href="menu.php">Menu</a></li>
 					<li><a href="guia.html">Guia</a></li>
 				</ul>
 			</div>

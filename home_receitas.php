@@ -28,7 +28,7 @@
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="faq.html">FAQ</a></li>
-				<li><a href="menu.html">Menu</a></li>
+				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="guia.html">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
@@ -71,7 +71,34 @@
 <nav class="uk-navbar-container uk-margin" style="margin-left:15%; margin-right:15%;" uk-navbar>
     <div class="uk-navbar-left">
 
-        <a class="uk-navbar-item uk-logo" href="#"><span uk-icon="bag"></span></a>
+        <a class="uk-navbar-item uk-logo" href="#">
+            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span></button>
+
+            <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
+            <div class="uk-offcanvas-bar">
+
+            <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+            <ul class="uk-nav uk-nav-default">
+                <li class="uk-active"><a href="#">Active</a></li>
+                <li class="uk-parent">
+                    <a href="#">Parent</a>
+                    <ul class="uk-nav-sub">
+                        <li><a href="#">Sub item</a></li>
+                        <li><a href="#">Sub item</a></li>
+                    </ul>
+                </li>
+                <li class="uk-nav-header">Header</li>
+                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                <li class="uk-nav-divider"></li>
+                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+            </ul>
+
+
+            </div>
+            </div>
+        </a>
 
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="#">Home</a></li>
@@ -98,7 +125,7 @@
 
 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider style="margin-left: 4%; margin-right:4%; margin-bottom:4%;" autoplay autoplay-interval="3500">
     <h1 class="uk-heading-line uk-text-center"><span>Adiconados Recentemente</span></h1>
-    <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
+    <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@m uk-child-width-1-3@m uk-grid">
             <?php
                 include "cadastro/conexao.php";
                 mysqli_query($con,"SET NAMES 'utf8'");  
@@ -308,7 +335,7 @@
 
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
 
-        <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-height-small">
+        <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-height-small uk-grid-small">
             <li>
                 <img src="trivegano/first_promocao.png" width="400" alt="">
             </li>
@@ -347,7 +374,7 @@
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="../sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -355,8 +382,8 @@
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="../faq.html">FAQ</a></li>
-					<li><a href="../fale.html">Fale Conosco</a></li>
+					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>
 
@@ -364,9 +391,9 @@
 			<div class="footer-col">
 				<h4>Encontre</h4>
 				<ul>
-					<li><a href="../home_receitas.php">Receitas</a></li>
-					<li><a href="../menu.html">Menu</a></li>
-					<li><a href="../guia.html">Guia</a></li>
+					<li><a href="home_receitas.php">Receitas</a></li>
+					<li><a href="menu.php">Menu</a></li>
+					<li><a href="guia.html">Guia</a></li>
 				</ul>
 			</div>
 
