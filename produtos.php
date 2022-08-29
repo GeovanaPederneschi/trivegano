@@ -91,8 +91,8 @@
         <div>
             <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
             <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form class="uk-search uk-search-navbar uk-width-1-1">
-                    <input class="uk-search-input" type="search" placeholder="Search" autofocus>
+                <form class="uk-search uk-search-navbar uk-width-1-1" action="produtos.php" method="POST">
+                    <input class="uk-search-input" type="search" placeholder="Search" name="search" autofocus>
                 </form>
             </div>
         </div>
@@ -102,45 +102,58 @@
 
 <!-- <img class="ui medium circular image" src="trivegano/background-7171509_1920.jpg"> -->
 
-<div class="" uk-grid>
+<div  uk-grid>
     <div class="uk-width-1-4@m">
         <div class="ui vertical menu" style="margin-left: 2%; width:100%; font-size:large; margin-bottom: 2%;">
+        <form method="POST">
         <div class="item">
             <div class="header">Dieta</div>
             <div class="menu">
             <a class="item">
-                <div class="ui disabled checkbox">
-                    <input type="checkbox" disabled="disabled">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="vegan" name="dieta">
                     <label>Vegana</label>
                 </div>
             </a>
             <a class="item">
                 <div class="ui toggle checkbox">
-                    <input type="checkbox" disabled="public">
+                    <input type="checkbox" value="ovolact">
                     <label>Ovolactovegetariana</label>
                 </div>
             </a>
             </div>
         </div>
         <div class="item">
-            <div class="header">Prato</div>
+            <div class="header">Categoria</div>
             <div class="menu">
             <a class="item">
-                <div class="ui disabled checkbox">
-                    <input type="checkbox" disabled="disabled">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="5" name="categoria">
                     <label>Refeição</label>
                 </div>
             </a>
             <a class="item">
-                <div class="ui disabled checkbox">
-                    <input type="checkbox" disabled="disabled">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="3" name="categoria">
                     <label>Pizza</label>
                 </div>
             </a>
             <a class="item active">
-                <div class="ui disabled checkbox">
-                    <input type="checkbox" disabled="disabled">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="5" name="categoria">
                     <label>Bebida</label>
+                </div>
+            </a>
+            <a class="item active">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="6" name="categoria">
+                    <label>Sobremesa</label>
+                </div>
+            </a>
+            <a class="item active">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="8" name="categoria">
+                    <label>Burguer</label>
                 </div>
             </a>
             </div>
@@ -173,9 +186,15 @@
             <a class="item">FAQs</a>
             </div>
         </div>
+        <div uk-grid style="width: 100%; margin-left:6%; margin-bottom:1%;">
+        <input type="submit" value="Filtrar" class="ui green button" style="width:42.5%;">
+        <input type="submit" value="Limpar" class="ui brown button" style="width:42.5%;">
         </div>
+        </div>
+    </form>
     </div>
 
+    
     <div class="uk-width-3-4@m" style="margin-top: 1%;">
         <div class="ui link cards uk-grid-row-large uk-grid-column-small  
         uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m" uk grid>
@@ -184,19 +203,29 @@
             mysqli_query($con,"SET NAMES 'utf8'");  
             mysqli_query($con,'SET character_set_connection=utf8');  
             mysqli_query($con,'SET character_set_client=utf8');  
-            mysqli_query($con,'SET character_set_results=utf8'); 
+            mysqli_query($con,'SET character_set_results=utf8');
+
+           
+
             
             if(!empty($_POST['cat'])){
                 $categoria=$_POST['cat'];
                 $resulta = mysqli_query($con,"select * from tb_produto 
                 where tb_categoria_id_categoria='$categoria';");    
             }
+             elseif(!empty($_POST['categoria'])){ 
+                $cat=$_POST['categoria'];
+                $resulta = mysqli_query($con,"select * from tb_produto 
+                where tb_categoria_id_categoria='$cat';");
+            }
+            elseif(!empty($_POST['search'])){
+                $resulta = mysqli_query($con,"SELECT * from tb_produto where 
+                locate('$_POST[search]',`nome_produto`)>0 order by `nome_produto` asc;");
+            }
             else{
             $comando= "select * from tb_produto;";
             $resulta = mysqli_query($con,$comando);
             }
-           
-
             while ($registro = mysqli_fetch_array($resulta))
             {
                 

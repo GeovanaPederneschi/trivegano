@@ -91,8 +91,8 @@
         <div>
             <a class="uk-navbar-toggle" uk-search-icon href="#"></a>
             <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-                <form class="uk-search uk-search-navbar uk-width-1-1">
-                    <input class="uk-search-input" type="search" placeholder="Search" autofocus>
+                <form class="uk-search uk-search-navbar uk-width-1-1" action="produtos.php" method="POST">
+                    <input class="uk-search-input" type="search" placeholder="Search" name="search" autofocus>
                 </form>
             </div>
         </div>
