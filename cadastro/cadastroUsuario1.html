@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trivegano - Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+
+	<!-- <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            /* background-image: linear-gradient(to right, #005416, #c1d948); */
+
+        }
+        .box{
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 3%;
+            transform: translate(-50%,-50%);
+            background-color: rgba(1, 0, 2, 0.7);
+            padding: 15px;
+            border-radius: 15px;
+            width: 50%;
+        }
+        fieldset{
+            border: 3px solid #c1d948;
+        }
+        legend{
+            border: 1px solid #c1d948;
+            padding: 10px;
+            text-align: center;
+            background-color: #c1d948;
+            border-radius: 8px;
+        }
+        .inputBox{
+            position: relative;
+        }
+        .inputUser{
+            background: none;
+            border: none;
+            border-bottom: 1px solid white;
+            outline: none;
+            color: white;
+            font-size: 15px;
+            width: 100%;
+            letter-spacing: 2px;
+        }
+
+        .labelInput{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            pointer-events: none;
+            transition: .5s;
+        }
+		
+        .inputUser:focus ~ .labelInput,
+        .inputUser:valid ~ .labelInput{
+            top: -20px;
+            font-size: 12px;
+            color: dodgerblue;
+        }
+
+        #data_nascimento{
+            border: none;
+            padding: 8px;
+            border-radius: 10px;
+            outline: none;
+            font-size: 15px;
+        }
+        #submit{
+            background: #421e00;
+            width: 100%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        #submit:hover{
+           background: #633209;
+        }
+        
+        @media (max-width: 999px) {
+        	body {
+    			overflow-x: hidden;
+  			}
+  			.box{
+  				width: 500px;
+  				height: 800px;
+  			}	
+  			
+  			legend{
+  				width: 500px;
+  				height: 700px;
+  			}
+  			.inputBox{
+  				width: 200px;
+  				height: 300px;
+  			}
+  			.inputUser{
+  				width: 200px;
+  				height: 300px;
+  			}
+  			.labelInput{
+  				width: 200px;
+  				height: 300px;
+  			}
+  			.inputUser{
+  				width: 200px;
+  				height: 300px;
+  			}
+  			#data_nascimento{
+  				width: 200px;
+  				height: 300px;
+  			}
+
+        }
+
+    </style> -->
+</head>
+<body>
+	<header>
+		<div class="logo">
+			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+		</div>
+		<div class="catalogo">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="../menu.html">Menu</a></li>
+				<li><a href="../home_receitas.php">Receitas</a></li>
+				<li><a href="../guia.html">Guia</a></li>
+				<li><a href="../sobrenos.html">Sobre nós</a></li>
+				<li><a href="login.html">Login</a></li>
+			</ul>
+		</div>
+		<div class="hamburger">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+		</div>
+	</header>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+	
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-1-55 p-r-55 p-t-55 p-b-54" style="min-height: 800px;">
+        <form class="login100-form validate-form" action="doCadastro.php" method="POST" name="cadastroUsuario">
+                
+            <span class="login100-form-title validade-form" style="font-size: 30px;">Novo Usuário</span>
+
+                <div class="wrap-input100 validate-input m-b-23" date-validate="Nome do Usuário Incompleto">
+                    <span class="label-input100">Nome Completo</span>
+                    <input class="input100" stype="text" name="nome" placeholder="Digite Nome Completo" required>
+                </div>
+                
+                <div class="wrap-input100 validate-input" data-validaete="Email Inválido">
+                    <span class="label-input100" >Email</span>
+                    <input type="text" name="email" class="input100" required>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validaete="Emails Não Correspondem">
+                    <span class="label-input100" >Confimar Email</span>
+                    <input type="text" name="email1" class="input100" required>
+                </div>
+
+                <div class="wrap-input100 validate-input" date-validate="Digite Usuário">
+                    <span class="label-input100">Usuário</span>
+                    <input type="text" name="usuario" class="input100" required>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validaete="CPF Inválido">
+                    <span class="label-input1000">CPF</span>
+                    <input type="text" name="cpf" class="input100" required>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validaete="Data de Nascimento Inválida">
+                    <span class="label-input100"> Data de Nascimento</span>
+                    <input class="input100" type="date" name="data_nascimento" required>
+                </div>
+                
+                <div class="wrap-input100 validate-input" data-validaete="CEP Inválido">
+                    <span class="label-input100">CEP</span>
+                    <input type="text" name="endereco" class="input100" required>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validaete="Senha Inválida">
+                    <span class="label-input100">Senha</span>
+                    <input type="password" name="senha" class="input100" required>
+                </div>
+                <br><br>
+                <div class="wrap-input100 validate-input" data-validaete="Senhas Não Correspondem">
+                    <span class="label-input100">Confirmar Senha</span>
+                    <input type="password" name="senha1" class="input100" required>
+                </div>
+                
+                
+                <div class="contain-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgtn">
+                             <button class="login100-form-btn" type="submit" name="submit">
+                                Entrar
+                            </button>
+                        </div>
+                       
+                    </div>
+                     
+                </div>
+               
+
+                <input type="reset" name="reset" id="submit">
+        </form>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -59,21 +59,62 @@
 
             <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-            <ul class="uk-nav uk-nav-default">
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li class="uk-parent">
-                    <a href="#">Parent</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="#">Sub item</a></li>
-                        <li><a href="#">Sub item</a></li>
-                    </ul>
-                </li>
-                <li class="uk-nav-header">Header</li>
-                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-                <li class="uk-nav-divider"></li>
-                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-            </ul>
+            <?php
+            
+            include "cadastro/conexao.php";
+            session_start();
+
+            function carrinho($cod){
+            
+                if(isset($cod)){
+                        if(empty($_SESSION['idcarrinho'])){
+                            $_SESSION['idcarrinho'] = array($cod);
+                            $_SESSION['carr_quant_prod']=1;
+                            $_SESSION['pedido']='true';
+                        }
+                        elseif(!empty($_SESSION['idcarrinho'])){
+                            $carrinho=$_SESSION['idcarrinho'];
+                            // foreach($carrinho as $idproduto){
+                                if(!in_array($cod, $carrinho)){
+                                    $_SESSION['carr_quant_prod']++;
+                                    // $_SESSION['idcarrinho'] = array($_SESSION['carr_quant_prod'] => $cod);
+                                    array_push($carrinho,$cod);
+                                    $_SESSION['idcarrinho']=$carrinho;
+                                    
+                                }
+                                
+                            // }
+                        }
+                }
+            }
+
+            if(array_key_exists('compra', $_POST)) {
+                carrinho($_POST['compra']);
+
+            }
+
+			if(!empty($_SESSION['pedido'])){
+                $_SESSION['valorcompra']=0;
+                $carrinho=$_SESSION['idcarrinho'];
+                for($i=0;$i<count($carrinho);$i++){
+                    $comando="SELECT * FROM `tb_produto` WHERE `id_produto` = '$carrinho[$i]';";
+                    $resultado= mysqli_query($con,$comando); 
+                    if($produto= mysqli_fetch_array($resultado)){
+                        echo"$produto[1] <br>";
+                        echo"$produto[4] <br>";
+                        echo"$carrinho[$i] <br>";
+                        echo"$_SESSION[carr_quant_prod] <br><br>";
+                        $_SESSION['valorcompra']+= $produto[4];
+                        
+                    }
+                }
+                echo"VALOR:<br>".$_SESSION['valorcompra'];
+            }
+            else{
+                echo"Não há produtos no carrinho";
+            }
+
+            ?>
 
 
             </div>

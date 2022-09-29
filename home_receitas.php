@@ -132,14 +132,14 @@
                 mysqli_query($con,'SET character_set_connection=utf8');  
                 mysqli_query($con,'SET character_set_client=utf8');  
                 mysqli_query($con,'SET character_set_results=utf8'); 
-                $comando= "select * from tb_imagem_receitas;";
-                $resulta = mysqli_query($con,$comando);
+                
+                $titulo = mysqli_query($con,"select * from tb_receitas 
+                                            where id_receitas order by data_receita desc;");
 
-
-                while ($registro = mysqli_fetch_array($resulta))
+                while ($row2 = mysqli_fetch_array($titulo))
                 {
                         $comando="select descricao_categoria from tb_categoria 
-                        where id_categoria='$registro[4]';";
+                        where id_categoria='$row2[4]';";
                         $categoria = mysqli_query($con,$comando);
 
                         /* while ($row = $categoria->fetch_assoc()) {
@@ -147,14 +147,16 @@
                         } */
                     if($row = mysqli_fetch_array($categoria)){
                         //$row1 = $row['descricao_categoria'];
+
+                        $comando= "select * from tb_imagem_receitas where tb_receitas_id_receitas = $row2[0];";
+                        $resulta = mysqli_query($con,$comando);
                                 
-                        $titulo = mysqli_query($con,"select * from tb_receitas 
-                            where id_receitas='$registro[2]';");
-                            if($row2 = mysqli_fetch_array($titulo)){
+                        
+                            if($registro = mysqli_fetch_array($resulta)){
                             
                             /* echo"<li>";
                             echo"<div class='uk-inline uk-animation-toggle'>";
-                            echo"       <img src='$registro[1]'>";
+                            echo"       <img style='height: 440px; min-wight: 660px;' src='$registro[1]'>";
                             echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
                             echo"           <p>$row2[1]</p>";
                             echo"       </div>";
@@ -165,7 +167,7 @@
                             echo"<button type=subbmit name=bot2  style='border: none;'"; 
                             echo"<li>"; 
                             echo"<div class='uk-inline uk-animation-toggle'>";
-                            echo"       <img src='$registro[1]'>";
+                            echo"       <img style='height: 440px; min-wight: 660px;' src='$registro[1]'>";
                             echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
                             echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
                             echo"           <p>$row2[1]</p>";
@@ -249,7 +251,7 @@
                                 echo"<button type=subbmit name=bot2  style='border: none;'"; 
                                 echo"<li>"; 
                                 echo"<div class='uk-inline uk-animation-toggle'>";
-                                echo"       <img src='$registro[1]'>";
+                                echo"       <img style='height: 440px; min-wight: 660px;' src='$registro[1]'>";
                                 echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
                                 echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
                                 echo"           <p>$row2[1]</p>";

@@ -175,7 +175,7 @@
                            
                             echo"      <div class='uk-inline' id=bt >";
                            
-                            echo"      <img src='$registro[1]'>";
+                            echo"      <img style='height: 440px; min-wight: 660px;' src='$registro[1]'>";
                             echo "      <input name=codx id=codx  type=hidden value=$row2[0]>";
                             echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
                             echo"           <p>$row2[1]</p>"; 
