@@ -82,6 +82,7 @@ function validaUsuario($usuario)
 }
 
 
+
 function validaCpf($cpf) : bool
 {
 	include('conexao.php');

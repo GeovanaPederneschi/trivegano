@@ -1,0 +1,173 @@
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    margin-left: 7%;
+  }
+  
+  .btn {
+    min-width: 300px;
+    min-height: 60px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    color: #313133;
+    background: #4FD1C5;
+  background: linear-gradient(90deg, rgba(205,133,63,1) 0%, rgba(160,82,45,1) 100%);
+    border: none;
+    border-radius: 1000px;
+    box-shadow: 12px 12px 24px rgba(160,82,45,1);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+    margin-top: 2%;
+    }
+  
+  .btn::before{
+  content: '';
+    border-radius: 1000px;
+    min-width: calc(300px + 12px);
+    min-height: calc(60px + 12px);
+    border: 6px solid #A0522D;
+    box-shadow: 0 0 60px rgba(160,82,45,1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+  }
+  
+  .btn:hover, .btn:focus {
+    color: #313133;
+    transform: translateY(-6px);
+  }
+  
+  .btn:hover::before, btn:focus::before {
+    opacity: 1;
+  }
+  
+  .btn::after {
+    content: '';
+    width: 30px; height: 30px;
+    border-radius: 100%;
+    border: 6px solid #A0522D;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+  }
+  
+  btn:hover::after, btn:focus::after {
+    animation: none;
+    display: none;
+  }
+  
+  @keyframes ring {
+    0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      width: 300px;
+      height: 300px;
+      opacity: 0;
+    }
+  }
+  .botao {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+  .botao:hover, .botao:focus {
+    color: #fff;
+    outline: 0;
+    
+  }
+  .third {
+    border-color: #e0a212;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #e0a212 inset, 0 0 0 0 #e0a212;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+  }
+  .third:hover {
+    box-shadow: 0 0 10px 0 #e0a212 inset, 0 0 10px 4px #e0a212;
+  }
+  .footer{
+      margin-top: 1.5%;
+  }
+  .uk-offcanvas-bar {
+      cursor: auto;
+  }
+  .uk-card{
+      cursor: auto;
+  }
+  #prod{
+      padding:5%;
+  }
+
+/* BOTÃO CARRINHO ADICIONAR */
+.clr{clear: both;}
+.fl{float: right;}
+.unit input{
+    border:1px solid #CCC;
+    border-left:0;
+    border-right:0;
+    background: #FFF;
+    height: 22px;
+    width: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #BC2C3D;
+}
+.unit button{
+    border:1px solid #CCC;
+    background: #FFF;
+    height: 22px;
+    width: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+}
+.unit button.plus{
+    border-radius :0 4px 4px 0;
+    color: #BC2C3D;
+}
+.unit button.minus{
+    border-radius :4px 0 0 4px;
+    color: #999999;
+}

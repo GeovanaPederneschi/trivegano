@@ -18,7 +18,8 @@
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../frontend/css/style.css">
+    <link rel="stylesheet" href="style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
@@ -31,9 +32,9 @@
     padding-left: 20px;
     margin:0;
     }
-    .footer{
+    /* .footer{
         margin-top:80%;
-    }
+    } */
     #avatar{
       margin:center;
     }
@@ -56,7 +57,9 @@
                 if($r = mysqli_fetch_array($resultado)){
                 
                     echo"
-                        <div class='ui tiny image'>
+                    <form method='POST' action='back2Usuario.php'>
+                    <button id='btn-clientes' type='submit' class='btn item'>
+                         <div class='ui tiny image'>
                         <img src='../trivegano/usuarios/$r[6]'>
                         </div>
                         <br><br>
@@ -67,6 +70,9 @@
                             <p></p>
                         </div>
                         </div>
+                    </button>
+                    </form>
+                       
                     ";
 
                 }
@@ -74,107 +80,84 @@
                 
             </div>
             <br><br>
-            <div class="uk-text-large"> 
-                <form method="POST">
-                <a class="item">
-                    <button class="item" type="button" name="option" value="produtos">Produtos</button>
-                </a>
-
-                <a class="item">
-                    Pedidos
-                </a>
-                <a class="item">
-                    Clientes
-                </a>
-                <a class="item">
-                    Vendas
-                </a>
-                <a class="item">
-                    Promoções
-                </a>
-                <a class="item">
-                    Suporte
-                </a>
-                </form>
-            </div>
+            <div class="uk-text-large">
+                      <button id="btn-clientes" class="btn item active">
+                            Produtos
+                      </button>
+                      <form method="POST" action="back2Pedidos.php">
+                        <button id="btn-clientes" type="submit" class="btn item">
+                            Pedidos
+                      </button>
+                      </form>
+                      <form method="POST"  action="back2Vendas.php">
+                        <button id="btn-clientes" type="submit" class="btn item">
+                            Vendas
+                      </button>
+                      </form>
+                      <form method="POST" action="back2Clientes.php">
+                        <button id="btn-clientes" type="submit" class="btn item">
+                            Clientes
+                      </button>
+                      </form>
+                      <form method="POST" action="back2Suporte.php">
+                        <button id="btn-clientes" type="submit" class="btn item">
+                            Suporte
+                      </button>
+                      </form>
+                      <form method="POST" action="back2Promocoes.php">
+                        <button id="btn-clientes" type="submit" class="btn item">
+                            Promoções
+                      </button>
+                      </form>
+                    </div>
     </div>
 </div>
-<div claSS="uk-width-5-4@m">
-    <div id="conteudo">
-    <?php
-            include "../cadastro/conexao.php";
-            mysqli_query($con,"SET NAMES 'utf8'");  
-            mysqli_query($con,'SET character_set_connection=utf8');  
-            mysqli_query($con,'SET character_set_client=utf8');  
-            mysqli_query($con,'SET character_set_results=utf8');
-
-           
-
-            
-            if(!empty($_POST['option']) && $_POST['option']=='produtos'){
-                $resulta = mysqli_query($con,"select * from tb_produto 
-                where tb_adm_fornecedor_tb_fornecedor_id_fornecedor='$_SESSION[codfornecedor]';");
-
-                while($registro = mysqli_fetch_array($resulta))
-                {
-                    echo"PRODUTOS";
-                }
-            }
-            /* else{
-            $comando= "select * from tb_produto;";
-            $resulta = mysqli_query($con,$comando);
-            }
-            while ($registro = mysqli_fetch_array($resulta))
-            {
-                
-                    $comando="select descricao_categoria from tb_categoria 
-                    where id_categoria='$registro[6]';";
-                    $categoria = mysqli_query($con,$comando);
-
-                   
-                if($row = mysqli_fetch_array($categoria)){
-                    //$row1 = $row['descricao_categoria']; data-type=$row[0] data-dieta=$row2[7]
-                            
-                    $titulo = mysqli_query($con,"select * from tb_imagem_produto 
-                    where tb_produto_id_produto='$registro[0]';");
-                        if($row2 = mysqli_fetch_array($titulo)){
-                        echo "<form name=fox action=produto_detalhe.php  method=POST >";
-                        echo"<button type=subbmit name=bot2  style='border: none;margin-bottom:3%;'";  
-                        echo"
-                        <div class='card' style=''>
-                        <div class='image'>
-                        <img src='trivegano/produtos/$row2[1]'>
-                        <input name=codx id=codx  type=hidden value=$row2[0]>
-                        </div>
-                        <div class='content'>
-                        <div class='header'>$registro[1]</div>
-                        <div class='right floated' >
-                            <a class='ui orange label'>$row[0]</a>
-                        </div>
-                        <div class='description'>
-                            teste
-                        </div>
-                        </div>
-                        <div class='extra content'>
-                        <span class='right floated'>
-                             $registro[4]
-                        </span>
-                        </div>
+<div class="uk-width-4-5@m">
+    <div class="uk-margin-medium-top" id="conteudo">
                         
-                        ";
-                        echo"</button>";
-                        echo"</form>";
-                        
-                        } 
+<ul style="font-size: 60px; text-decoration-color:black;" class="uk-subnav uk-subnav-pill uk-flex-center"  uk-switcher="animation: uk-animation-fade">
+  <li><a href="#">VISUALIZAR</a></li>
+  <li><a href="#">INSERIR</a></li>
+  <li><a href="#">DESEMPENHO</a></li>
+</ul>
+
+<ul class="uk-switcher uk-margin">
+    <li>
+
+      <!-- VISUALIZAR RECEITAS -->
+      <?php
+      mysqli_query($con,"SET NAMES 'utf8'");  
+      mysqli_query($con,'SET character_set_connection=utf8');  
+      mysqli_query($con,'SET character_set_client=utf8');  
+      mysqli_query($con,'SET character_set_results=utf8'); 
+        include('visualizar_produtos.php')
+      ?>
+
+    </li>
+
+    <li>
+      <!-- INSERIR RECEITA -->
+      <?php
+        //include('inserir_receita.php')
+      ?>
+    </li>
+
+
+    <li>
+   <!--  <div class="outercube cube">
+            <div class="innerCube cube">
+              <div class="innerCube2 cube"></div>
+            </div>
+    </div> -->
+        <?php
+        //include('desempenho_receita.php')
+        ?>
+    </li>
+</ul>
 
                     
-                } 
-            } */
-            echo"</div>";
-            $close = mysqli_close($con);
-            ?>
-    </div>
-</div>
+            </div>
+        </div>
 </div>
 
 

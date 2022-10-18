@@ -56,6 +56,13 @@ validaSenha($senha,$conf_senha) &&validaUsuario($usuario) && validaCpf($cpf))
             }
 
             $fechar=mysqli_close($con);
+            
+            if(!empty($_SESSION['pedido'])){
+                header('Location:../finalizar_compra.php');
+            }
+            else{
+                header('Location:login.html');
+            }
     
 }
 else{

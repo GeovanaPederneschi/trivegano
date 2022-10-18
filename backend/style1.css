@@ -1,0 +1,1724 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif;}
+.fl{float: left;}
+.fr{float: right;}
+.clr{clear: both;}
+header,footer,section{clear: both;}
+:focus{outline: 0;}
+body.fixed{position: fixed; width: 100%;}
+.bottom{
+    position: fixed !important;
+    bottom: 0;
+    width: 100%;
+    z-index: 9;
+}
+h3{
+    color: #000;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+h3 a{
+    text-decoration: none;
+    color: #BC2C3D;
+    text-transform: uppercase;
+    float: right;
+    position: relative;
+    top: 4px;
+    font-size: 14px;
+}
+h4{
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+h3.space{
+    padding: 0 20px;
+}
+.blank{height: 50px;}
+.blankShort{height: 30px;}
+.splash{background:url('../images/Splash.jpg') center no-repeat; width: 100%; height: 100%; position: fixed; top: 0; left: 0;}
+.splash-logo{position: absolute; top: 50%; left: 50%; margin-left: -114.5px; margin-top: -33.5px;}
+
+.onboarding{text-align: center; padding: 0 5%;}
+.onboarding li{
+    list-style: none;
+}
+.onboarding .swiper-pagination{
+    position: static !important;
+}
+.onboarding .swiper-pagination .swiper-pagination-bullet{
+    font-size: 0; 
+    width: 16px;
+    height: 8px;
+    background: #D9E1E4;
+    border:0;
+    border-radius: 4px;
+    opacity: 1 !important;
+}
+.onboarding .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    width: 39px;
+    background: #BC2C3D;
+}
+.onboarding .heading{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 40px;
+    color: #2C2627;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.onboarding .caption{
+    font-size: 16px;
+    line-height: 26px;
+    color: #7A7A7A;
+    padding: 0 3%;
+    margin-bottom: 10px;
+}
+.onboarding .image{padding: 0;}
+.onboarding .img{width: 100%; height: auto;}
+.onboarding .bottomskip{padding-top: 20px;}
+.onboarding .bottomskip a{text-decoration: none; color: #BFBFBF; font-size: 14px;}
+.onboarding .bottomskip a img{position: relative; top: 1px;}
+
+
+
+
+.ifield{
+    position: relative; 
+    margin-bottom: 20px;
+    z-index: 1;
+}
+.ifield.NP{padding:0;}
+.ifield.NM{margin: 0;}
+.ifield.MR{margin: 0 20px 20px 20px;}
+.ifield.PD{padding: 0 20px;}
+.ifield.bottom{width: 100% !important;}
+.ifield.bottomMR{bottom: 70px;}
+.ifield.bottomPOP{top: 25px; padding:0 60px}
+.ifield.signupBTN{
+    margin: -25px 13% 0;
+}
+.ifield img{
+    position: absolute;
+    top:20px;
+    left:0
+}
+.ifield label{
+    line-height: 56px;
+    font-size: 14px;
+    color: #ABA5A5;
+    position: absolute;
+    top:0;
+    padding-left: 30px;
+}
+.ifield.active label{
+   top:-25px;
+}
+.input{
+    height: 56px;
+    border: 0;
+    font-size: 15px;
+    color: #2C2627;
+    border-bottom: 1px solid #D4D3D3;
+    width: 100%;
+    padding-left: 30px;
+    position: relative;
+    background: none;
+}
+.btn3{
+    width: 100%;
+    background: #BC2C3D;
+    border-radius: 4px;
+    border:0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFF;
+    text-transform: uppercase;
+}
+.btn3 span{
+    display: inline-block; 
+    position: relative;
+    line-height: 50px;
+}
+.btn3 span.space{
+    padding-left:50px;
+}
+.btn3 span img{
+    position: absolute;
+    top:0;
+    left:0
+}
+.btn3.fb{
+    background:#494FB6;
+}
+.btn3.gm{
+    background:#FFF;
+    color: #BC2C3D;
+}
+.btn3.TL{
+    text-align: left;
+    padding: 0 20px;
+}
+.btn3.TL span{
+    width: 100%;
+}
+.btn3.TL span span{
+    width: auto;
+    float: right;
+}
+.btn3.TL span img{
+    left: auto;
+    right: 0;
+}
+.signupstag {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2C2627;
+    margin: 20px 0;
+    line-height: 20px;
+    position: relative;
+}
+.signupstag a {
+    color: #BC2C3D;
+    text-decoration: none;
+}
+.welcome-head{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    color: #2C2627;
+    padding : 0 10% 0;
+    position: relative;
+}
+.welcome-head.noPad{
+    padding: 0 20px 0;
+}
+.welcome-head span.welcome-head-head{
+    margin-bottom: 10px;
+    display: block;
+}
+.welcome-head.in{
+    padding : 20% 0 10%;
+}
+.welcome-head.white{
+    color: #FFF;
+}
+.welcome-head span.caption{
+    display: block;
+    font-size: 14px;
+    color: #818181;
+    line-height: 20px;
+    font-weight: 500;
+}
+.welcome-head.white span{
+    color: #FFF;
+}
+.logoaccess{
+    text-align: center;
+    position: relative;
+}
+.signupbottomstag {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2C2627;
+    padding: 0 10%;
+    line-height: 20px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.signupbottomstag.leftAlign{
+    text-align: left;
+    padding-left: 50px;
+}
+.signupbottomstag a {
+    color: #BC2C3D;
+    text-decoration: none;
+}
+.signupbottomstag input[type=checkbox]{
+    display: none;
+}
+.signupbottomstag label{
+    width: 20px; 
+    height: 20px; 
+    border:0; 
+    background:url(../images/tick-blank.svg) no-repeat; 
+    display: inline-block; 
+    border:0; 
+    position: absolute; 
+    left:20px;
+}
+.signupbottomstag input[type=checkbox]:checked + label{
+    background:url(../images/tick-fill.svg) no-repeat; 
+}
+.hide-password {
+    display: none
+  }
+.password-showhide{
+    position: absolute;
+    top:-15px;
+    right:15%
+}  
+.forgot{
+    margin-bottom: 30px;
+    padding: 0 20px;
+    margin-top: -10px;
+}
+.forgot a{
+    font-size: 12px;
+    text-decoration: none;
+    color: #BC2C3D;
+}
+.accessscreen {
+    position: relative;
+}
+.clipart{
+    position: fixed; 
+    top:0; 
+    right:0
+}
+.accessscreen .mapbase{
+    position: fixed; 
+    top:0; 
+    right:0;
+    width: 100%;
+    height: 100%;
+}
+.base{
+    position: absolute; 
+    top:0; 
+    right:0; 
+    width: 100%; 
+    height: auto;
+}
+.pizza{
+    position: fixed; 
+    bottom:0; 
+    left:0; 
+}
+.signupscroll{
+    padding-bottom: 40%;
+}
+.cover{
+    background: #FFF;
+    position: relative;
+    margin: 0 20px;
+    padding: 8% 0;
+    border-radius:10px;
+    -webkit-box-shadow: 0 0 5px #ccc;
+        box-shadow: 0 0 5px #ccc;
+        z-index: 1;
+}
+.verifyIMG{
+    text-align: center;
+}
+.otpfields{
+    text-align: center;
+}
+.otpfields input[type=text]{
+    background: #F9F9F9;
+    border: 1px solid #E7E7E7;
+    width: 60px;
+    height: 60px;
+    border-radius:30px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0 3px;
+}
+.otpfields input[type=text].filled{
+    background: #000;
+    border: 1px solid #E7E7E7;
+    color: #FFF;
+}
+.locationfinderIMG{
+    text-align: center;
+    padding: 7% 0 7%;
+    position: relative;
+}
+.mapbase{
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    top:0; 
+    right:0
+}
+.locationblock{
+    background: #2C2627;
+    border-radius: 10px;
+    position: relative;
+    color: #FFF;
+    margin: 0 20px;
+    font-size: 12px;
+    padding: 5% 5% 5% 15%;
+    line-height: 19px;
+}
+.locationblock span{
+    font-weight: 600;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.locationblock img{
+    position: absolute;
+    top:20px;
+    left: 20px;
+}
+.forgotIMG{
+    padding: 1% 0 1%;
+}
+.forgotIMG img{
+    width: 100%;
+    height: auto;
+}
+.head{
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #FFF;
+    padding: 20px 0 20px;
+    z-index: 9;
+}
+.head.still{
+    position: relative;
+}
+.head.still .notification{
+    right: 0;
+}
+.head.left{
+    text-align: left;
+    padding-left: 20%;
+}
+.head.transparent{
+    background: none;
+}
+.head .text{
+    font-weight: 600;
+    font-size: 14px;
+}
+.head .text.white{
+    color: #FFF;
+}
+.head .back{
+    position: absolute;
+    left: 20px;
+    top: 26px;
+}
+.head .search{
+    position: absolute;
+    right: 70px;
+    top: 26px;
+}
+.head .notification{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+}
+.head .share{
+    position: absolute;
+    right: 20px;
+    top: 27px;
+}
+.head .notification .digit{
+    position: absolute;
+    top:-6px;
+    right:-6px;
+    background: #BC2C3D;
+    color: #FFF;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 16px;
+}
+.head .notification .digit.white{
+    background: #FFF;
+    color: #BC2C3D;
+}
+.head .location{
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFF;
+    padding-left: 20px;
+    position: relative;
+}
+.head .location img{
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
+.head .location span{
+    font-weight: 700;
+}
+
+.bottomtab{
+    background: #FFF;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 15px 0 15px;
+    -webkit-box-shadow: 0 0 20px #f1c8cd;
+        box-shadow: 0 0 20px #f1c8cd;
+        border-radius: 20px 20px 0  0;
+        z-index: 9;
+}
+.bottomtab a{
+    font-size: 10px;
+    text-decoration: none;
+    color: #2C2627;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+}
+.bottomtab a img.normal{
+    display: inline-block;
+}
+.bottomtab a img.active{
+    display: none;
+}
+.bottomtab a.active img.active{
+    display: inline-block;
+}
+.bottomtab a.active img.normal{
+    display: none;
+}
+.bottomtab a span{
+    display: block;
+    margin-top: 5px;
+}
+.bottomtab a.active{
+    color: #BC2C3D;
+}
+.spacescroll{
+    padding: 25px 0 90px;
+}
+.spacescroll.landing{
+    padding: 190px 0 90px;
+}
+.spacescroll.trackingOrder{
+    padding: 70px 0 0;
+}
+.cart{
+    padding: 0 20px;
+}
+.cart .total{
+    font-weight: 700;
+    font-size: 30px;
+    padding: 25px 0;
+    border-top:1px solid #E7E7E7;
+    border-bottom:1px solid #E7E7E7;
+}
+.cart .applyCoupon a{
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #2C2627;
+    padding: 25px 0;
+    border-top:1px solid #E7E7E7;
+    border-bottom:1px solid #E7E7E7;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    padding-left: 45px;
+}
+.cart .applyCoupon a .circle{
+    position: absolute;
+    left: 0;
+    top:18px
+}
+.cart .applyCoupon a .rightArrow{
+    position: absolute;
+    right: 0;
+    top:25px
+}
+.cart .summary{
+    font-size: 14px;
+    line-height: 28px;
+    padding:20px 0;
+}
+.cart .summary .Green{
+    color: #2F9F59;
+}
+.cart .summary span{
+    font-weight:600;
+}
+.deliveryAddress{
+    padding: 20px 0 20px 45px;
+    font-size: 14px;
+    position: relative;
+}
+.deliveryAddress.MR{
+    margin: 0 20px;
+}
+.deliveryAddress span{
+    font-weight: 600;
+    display: block;
+}
+.deliveryAddress a{
+    text-decoration: none;
+    color: #BC2C3D;
+    font-weight: 600;
+}
+.deliveryAddress .cartLocation{
+    position: absolute;
+    left: 0;
+    top:22px
+}
+.cartlisting{
+    padding: 15px 0;
+}
+.cartlisting li{
+    list-style: none;
+    padding:12px 0 8px 75px;
+    position: relative;
+    min-height: 76px;
+}
+.cartlisting li .bin{
+    position: absolute;
+    top: 23px;
+    right: -60px;
+    display: none;
+}
+.cartlisting li.active{
+    -webkit-box-shadow: 0 0 10px #f3bec4;
+        box-shadow: 0 0 10px #f3bec4;
+        left: -18%;
+        border-radius:0 7px 7px 0;
+        padding-right: 10px;
+}
+.cartlisting li.active .bin{
+    display: block;
+}
+.cartlisting .dishimage{
+    width: 60px;
+    height: 60px;
+    border-radius:7px;
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+.cartlisting .ten{
+    font-weight: 600;
+    color: #999;
+    font-size: 14px;
+}
+.cartlisting .dishname{
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+.unit input{
+    border:1px solid #CCC;
+    border-left:0;
+    border-right:0;
+    background: #FFF;
+    height: 22px;
+    width: 30px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: #BC2C3D;
+}
+.unit button{
+    border:1px solid #CCC;
+    background: #FFF;
+    height: 22px;
+    width: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 16px;
+}
+.unit button.plus{
+    border-radius :0 4px 4px 0;
+    color: #BC2C3D;
+}
+.unit button.minus{
+    border-radius :4px 0 0 4px;
+    color: #999999;
+}
+.cartlisting .cost{
+    font-weight: 600;
+    text-align: right;
+    padding-top: 24px;
+}
+.cartlisting .cost img{
+    position: absolute;
+    top: 20px;
+    right:0
+}
+.cartlisting li.active .cost img{
+    right: 10px;
+}
+.mylocation{
+    background: #FFF;
+    padding-top: 20px;
+    border-radius: 20px 20px 0 0;
+    transition: bottom 0.5s;
+}
+.mylocation .myLocationHeading{
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom:1px solid #E7E7E7;
+    padding: 15px 0;
+    margin: 0 20px;
+}
+.myLocationCenter{
+    text-align: center;
+    position: relative;
+    margin: 0 20px;
+    padding:30% 0;
+}
+.myLocationCenter span{
+    background: #2C2627;
+    color: #FFF;
+    display: block;
+    line-height: 40px;
+    border-radius:20px;
+    margin-top: 5px;
+}
+.myLocationRadio{
+    margin: 0 20px;
+    padding-bottom: 15px;
+}
+.myLocationRadio input[type=radio]{
+    display: none;
+}
+.myLocationRadio label{
+    display: inline-block;
+    line-height: 40px;
+    border:1px solid #2C2627;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 0 15px 0 35px;
+    margin-right: 5px;
+}
+.myLocationRadio label.home{
+    background: url(../images/RadioHome.svg) 10px no-repeat;
+}
+.myLocationRadio label.other{
+    background: url(../images/RadioOther.svg) 10px no-repeat;
+}
+.myLocationRadio label.office{
+    background: url(../images/RadioOffice.svg) 10px no-repeat;
+}
+.myLocationRadio input[type=radio]:checked + label.home{
+    background: url(../images/WRadioHome.svg) 10px no-repeat #000;
+    color: #FFF;
+}
+.myLocationRadio input[type=radio]:checked + label.office{
+    background: url(../images/WRadioOffice.svg) 10px no-repeat #000;
+    color: #FFF;
+}
+.myLocationRadio input[type=radio]:checked + label.other{
+    background: url(../images/WRadioOther.svg) 10px no-repeat #000;
+    color: #FFF;
+}
+.myLocationEAddress{
+    margin: 0 20px;
+    font-size: 12px;
+    line-height: 20px;
+}
+.myLocationSAddress{
+    margin: 0 20px;
+    font-size: 12px;
+    border:1px solid #E7E7E7;
+    border-radius:5px;
+    padding:10px;
+    line-height: 18px;
+    margin-top: 10px;
+}
+.myLocationSAddress input{
+    border:0; 
+    width: 100%;
+    font-weight: 600;
+}
+.myLocationSAddress span{
+    display: block;
+    font-weight: 600;
+}
+.paymentMethod{
+    margin: 0 20px;
+}
+.paymentMethod .paymentMethodHeading{
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 0;
+}
+.paymentMethod .paymentMethodsList li{
+    list-style: none;
+    border-bottom:1px solid #E7E7E7;
+    font-size: 12px;
+    line-height: 50px;
+    font-weight: 600;
+    position: relative;
+    padding-left: 50px;
+}
+.paymentMethod .paymentMethodsList li img{
+    position: absolute;
+    top:0;
+    left:0
+}
+.savedCards li {
+    list-style: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom:1px solid #E7E7E7;
+    padding:15px 0 15px 50px;
+    position: relative;
+}
+.savedCards li img{
+    position: absolute;
+    left: 0;
+    top : 20px;
+}
+.savedCards li span{
+    font-weight: 500;
+    display: block;
+    color: #999;
+}
+.CD{
+    padding: 20px 0;
+}
+.addNewCard{
+    margin-bottom: 10px;
+}
+.addNewCard a{
+    text-decoration: none;
+    color: #BC2C3D;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.sumPro{
+    font-size: 12px;
+    font-weight: 600;
+    border-bottom:1px solid #E7E7E7;
+    position: relative;
+    padding-left: 15%;
+}
+.sumPro img{
+    position: absolute;
+    left: 0;
+    top:0
+}
+.sumPro span{
+    font-weight: 500;
+    display: block;
+    color: #999;
+    margin-top: 5px;
+}
+.sumPro div{
+    margin-bottom: 15px;
+}
+.cCard{
+    position: relative;
+    margin: 0 20px;
+    color: #FFF;
+}
+.cCard img{
+    width: 100%;
+    height: auto;
+}
+.cCard #cname_display{
+    font-size: 14px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 15%;
+    left: 22px;
+    font-weight: 600;
+}
+.cCard #cnum_display{
+    font-size: 22px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 38%;
+    left: 22px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+.cCard #cval_display{
+    font-size: 12px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 25%;
+    right: 18px;
+    font-weight: 600;
+}
+.dishslider{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.dishslider .swiper-pagination{
+    bottom: 140px !important;
+}
+.dishslider img{
+    width: 100%;
+    height: auto;
+}
+.dishslider .swiper-pagination .swiper-pagination-bullet{
+    font-size: 0; 
+    width: 16px;
+    height: 16px;
+    background: rgba(255,255,255,0.7);
+    opacity: 1 !important;
+    border:0;
+    border-radius: 8px;
+    border:2px solid transparent;
+}
+.dishslider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #BC2C3D;
+    border:2px solid #FFF;
+}
+.dishwork{
+    margin-top: 45%;
+    background: #FFF;
+    position: relative;
+    width: 100%;
+    border-radius:25px 25px 0 0;
+    padding: 8% 20px 100px 20px;
+    z-index: 9;
+}
+.dishwork .dishname{
+    font-size: 20px;
+    font-weight: 700;
+    padding-right: 70px;
+    position: relative;
+}
+.dishwork .cost{
+    font-size: 14px;
+    color: #BC2C3D;
+    top: 5px;
+    right:0;
+    position: absolute;
+}
+.dishwork .dishRest{
+    font-size: 12px;
+    color: #999;
+    line-height: 26px;
+    position: relative;
+    padding-left: 15px;
+}
+.dishwork .dishRest .dishLocation{
+    position: absolute;
+    left:0;
+    top: 6px;
+}
+.dishwork .dishRest .dishShare{
+    position: absolute;
+    right:-14px;
+    top: -12px;
+}
+.dishwork .dishContent{
+    font-size: 14px;
+    font-weight: 500;
+    color: #999;
+    line-height: 24px;
+}
+.dishwork .dishContent span{
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #000;
+    font-size: 18px;
+    border-bottom:1px solid #000;
+    padding-right: 20px;
+    line-height: 40px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.dishwork .bycage {
+    font-size: 12px;
+    font-weight: 600;
+    padding:20px 0;
+}
+.dishwork .bycage div{
+    position: relative;
+    padding-left: 45px;
+    padding-top: 4px;
+    width: 33.3%;
+}
+.dishwork .bycage div img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.dishwork .bycage span{
+    color: #999;
+    display: block;
+}
+.freeDelivery{
+    display: inline-block;
+    background: #BC2C3D;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 26px;
+    padding: 0 10px;
+    border-radius:13px
+}
+.BHeart{
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: url(../images/favourite.svg) no-repeat;
+}
+.BHeart.DishPage{
+    position: absolute;
+    right:20px;
+    bottom:150px;
+    z-index: 1;
+}
+.BHeart.OutletPage{
+    position: absolute;
+    right:20px;
+    top:20px;
+}
+.BHeart.active{
+    background: url(../images/favourite-fill.svg) no-repeat;
+}
+.RecSlider{
+    margin: 0 10px 0 10px;
+}
+.RecSlider.MR{
+    margin: 0 20px 0 10px;
+}
+.RecSlider.MRN{
+    margin: 0 0 0 -10px;
+}
+.RecSlider li{
+    padding:10px;
+    list-style: none;
+}
+.RecSlider li a{
+    text-decoration: none;
+}
+.RecSlider li a .name{
+    color: initial;
+}
+.RecSlider li a .rating{
+    color: initial;
+}
+.RecSlider .image{
+    position: relative;
+}
+.RecSlider .image img{
+    width: 100%;
+    border-radius: 6px;
+    height: auto;
+}
+.RecSlider .RecWish{
+    position: absolute;
+    top:15px;
+    right: 15px;
+}
+.RecSlider .name{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 0 5px;
+}
+.RecSlider .quantity{
+    font-size: 12px;
+    font-weight: 500;
+    color: #999;
+}
+.RecSlider .rating{
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    padding:5px 0 8px 20px;
+}
+.RecSlider .rating span.cost{
+    float: right;
+    color: #BC2C3D;
+}
+.RecSlider .rating img{
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+.RecSlider .rating span{
+    color: #999;
+}
+.popularheading{
+    font-size: 20px;
+    font-weight: 600;
+    padding:10px 20px;
+}
+.PopularFood li{
+    width: 50%;
+}
+.landingHead{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    background: #BC2C3D;
+    z-index: 9;
+}
+.landingHead:before{
+    content: "";
+    width: 100%;
+    height: 25px;
+    background: #FFF;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.landingHead .heading{
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFF;
+    margin-bottom: 20px;
+}
+
+.landingHead .search{
+    position: relative;
+}
+.landingHead .search img.filterICN{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.landingHead .search input{
+    height: 50px;
+    border:1px solid #DEDEDE;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0 50px;
+    background: url(../images/search.svg) center left 15px no-repeat #FFF;
+}
+.icSlider{
+    margin: 0 20px 20px 10px;
+    overflow: hidden;
+}
+.icSlider li{
+    padding:20px 10px;
+    list-style: none;
+}
+.icSlider li span{
+    font-size: 10px;
+    text-align: center;
+    display: inline-block;
+    width: 60px;
+    position: relative;
+    top: 4px;
+}
+.icSlider .image{
+    text-align: center;
+    width: 100%;
+    height: auto;
+    border-radius:5px;
+    -webkit-box-shadow: 0 0 15px #f1c8cd;
+        box-shadow: 0 0 15px #f1c8cd;
+}
+.icSlider .image img{
+    width: 100%;
+    height: auto;
+    border-radius:5px;
+    display: inline-block;
+}
+
+.exRadio input[type=radio]{
+    display: none;
+}
+.exRadio label{
+    border-bottom:1px solid #999;
+    display: inline-block;
+    width: 100%;
+    color: #000;
+    padding: 20px 0;
+    position: relative;
+}
+.exRadio label:before{
+    width: 27px;
+    height: 27px;
+    content: "";
+    background: url(../images/Oval.svg) no-repeat;
+    position: absolute;
+    right: 0;
+}
+.exRadio label a{
+    color: #999;
+}
+.exRadio input[type=radio]:checked + label:before{
+    background: url(../images/OvalR.svg) no-repeat;
+}
+
+
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.6);
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+.overlay .pod{
+    padding:10% 20px;
+}
+.overlay .outer{
+    width: 100%;
+    height: auto;
+    background: #FFF;
+    border-radius:10px;
+}
+.overlay .popupImg{
+    text-align: center;
+}
+.overlay .popupLink{
+    text-align: center;
+    padding-top: 30px;
+
+}
+.overlay .popupLink a{
+    text-decoration: none;
+    color: #BC2C3D;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.filterPallet{
+    background: #FFF;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-radius: 15px 15px 0 0;
+    z-index: 9999;
+    padding:20px;
+    transition: bottom 0.5s;
+}
+
+
+
+
+.fltRadio{
+    margin-bottom: 20px;
+}
+.fltRadio input[type=radio]{
+    display: none;
+}
+.fltRadio label{
+    border-bottom:1px solid #DEDEDE;
+    display: inline-block;
+    width: 100%;
+    color: #000;
+    padding: 14px 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+    position: relative;
+}
+.fltRadio label:before{
+    width: 27px;
+    height: 27px;
+    content: "";
+    position: absolute;
+    right: 0;
+}
+.fltRadio input[type=radio]:checked + label:before{
+    background: url(../images/tick.svg) no-repeat;
+}
+
+
+.filterHead{
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    position: relative;
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.filterHead:before{
+    content: "";
+    width: 90px;
+    height: 6px;
+    border-radius: 3px;
+    background: #CCC;
+    position: absolute;
+    left: 50%;
+    margin-left: -45px;
+    top: -5px;
+}
+.filterHead button.done{
+    position: absolute;
+    top: 28px;
+    right: 0;
+    border:0;
+    background: transparent;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #BC2C3D;
+}
+.filterHead button.reset{
+    position: absolute;
+    top: 28px;
+    left: 0;
+    border:0;
+    background: transparent;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999;
+}
+.fltCheckbox{
+    margin-bottom: 20px;
+}
+.fltCheckbox input[type=checkbox]{
+    display: none;
+}
+.fltCheckbox label{
+    border:1px solid #DEDEDE;
+    display: inline-block;
+    color: #000;
+    padding: 7px 15px;
+    border-radius:20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+    position: relative;
+    margin-right:5px;
+    margin-bottom: 10px;
+}
+.fltCheckbox label:before{
+    width: 27px;
+    height: 27px;
+    content: "";
+    position: absolute;
+    right: 0;
+}
+.fltCheckbox input[type=checkbox]:checked + label{
+    background:#BC2C3D;
+    border: 1px solid #BC2C3D;
+    color: #FFF;
+}
+.Srange{margin-left: 5px; margin-top: 30px;}
+.filterscreen{
+    bottom: -110%;
+}
+.restWork{
+    margin-top: 30%;
+    padding:8% 20px 0 20px;
+}
+.restWork .dishname{
+    padding-left: 75px;
+    position: relative;
+}
+.restWork .dishname img{
+    position: absolute;
+    left: 0;
+    top: -9px;
+}
+.restWork .dishRest{
+    margin-left: 75px;
+}
+.restWork .dishRest .dishShare{
+    top: -50px;
+}
+.adS{
+    position: relative;
+    font-size: 12px;
+    font-weight: 600;
+}
+.adS span{
+    display: block;
+    color: #DEDEDE;
+    margin-top: 5px;
+}
+.restWork .adding button{
+    font-weight: 600;
+    font-size: 12px;
+    background: #FFF;
+    border:1px solid #DEDEDE;
+    line-height: 32px;
+    padding:0 20px;
+    border-radius:3px;
+    margin-top: 5px;
+}
+.safety{
+    background: #fbeff0;
+    margin: 0 -20px;
+    padding:20px;
+    margin-bottom: 20px;
+    position: relative;
+
+}
+.safety p{
+    font-size: 12px;
+    font-weight: 400;
+    color: #999;
+    line-height: 19px;
+}
+.safety .title{
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-right: 100px;
+    line-height: 20px;
+    color: #BC2C3D;
+    position: relative;
+    padding-left: 50px;
+    padding-top: 2px;
+    margin-bottom: 10px;
+}
+.safety .title img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.safety a{
+    font-weight: 600;
+    font-size: 12px;
+    background: #BC2C3D;
+    line-height: 32px;
+    padding:0 20px;
+    border-radius:6px;
+    margin-top: 5px;
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+.sAddress{
+    padding:0 20px;
+}
+.sAddress li{
+    list-style: none;
+    border-bottom: 1px solid #CCC;
+    padding: 15px 0 15px 40px;
+    position: relative;
+}
+.sAddress li:last-child{
+    border-bottom: 0;
+}
+.sAddress li img{
+    position: absolute;
+    top: 16px;
+    left: 0;
+}
+.sAddress p{
+    font-size: 14px;
+    color: #999;
+    line-height: 22px;
+}
+.sAddress span{
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.sAddress .links{
+    padding-top: 20px;
+}
+.sAddress a{
+    font-size: 14px;
+    font-weight: 600;
+    color: #BC2C3D;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.sAddress a.dlt{
+    margin-left: 20px;
+}
+.oBreif{
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+}
+.oBreif span.caption{
+    display: block;
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+}
+.oBreif span.status{
+    display: block;
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.oBreif span.status.done{color: #2F9F59;}
+.oBreif span.status.pending{color: orange;}
+.oBreif span.status.failed{color: #BC2C3D;}
+.oBreif span.status.cost{color: #BC2C3D;}
+.centerLinker{
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+.centerLinker a{
+    text-transform: uppercase;
+    text-decoration: none;
+    color:#BC2C3D ;
+    font-weight: 600;
+}
+
+
+.olist li{
+    list-style: none;
+    padding: 10px 0 0;
+}
+.olist .dishS{
+    position: relative;
+    padding-left: 55px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #666;
+    line-height: 50px;
+}
+.olist .dishS img{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+.olist .oListBottom{
+    border-top: 1px solid #ccc;
+    margin-top: 15px;
+}
+.olist .oListBottom a{
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 50px;
+    padding-left: 30px;
+    position: relative;
+}
+.olist .oListBottom a img{
+    position: absolute;
+    left: 0;
+    top: 15px;
+}
+.olist .oListBottom a.red{
+    color:#BC2C3D ;
+}
+.olist .oListBottom a.green{
+    color:#2F9F59 ;
+}
+.orderStatus{
+    padding: 0 20px;
+    position: relative;
+}
+.orderStatus  .steps{
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 70px;
+    padding-left: 60px;
+    position: relative;
+}
+.orderStatus  .steps img{
+    position: absolute;
+    left: 19px;
+    top: 9px;
+}
+.orderStatus  .steps img.active{
+    display: none;
+}
+.orderStatus  .steps.active img.normal{
+    display: none;
+}
+.orderStatus  .steps.active img.active{
+    display: block;
+}
+
+.orderStatus  .steps.pr:before{
+    width:1px;
+    height: 70px;
+    border-right: 3px dashed #CCC;
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: 40px;
+}
+.orderStatus  .steps.pr.active:before{
+    border-right: 3px dashed #BC2C3D;
+}
+.orderStatus  .steps.NM{
+    margin-bottom: 0;
+}
+.orderStatus  .steps span{
+    display: block;
+    color: #000;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.delP{
+    /* position: fixed;
+    bottom: 0;
+    left: 0; */
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+.delP .delPin{
+    background: #BC2C3D;
+    border-radius:5px;
+} 
+.delP .pdetail{
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    position: relative;
+    border-top:1px solid #FF8795;
+    padding:30px 0 30px 100px;
+}
+.delP .pdetail img.call{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border-radius: 5px;
+}
+.delP .pdetail img.person{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border-radius: 5px;
+}
+.delP .pdetail span{
+    display: block;
+    color: #FF8795;
+}
+.delP .calls{
+    width: 45%;
+    color: #FFF;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    padding:20px 0 20px 55px;
+    position: relative;
+}
+.delP .calls img{
+    position: absolute;
+    left: 20px;
+}
+
+.delP .calls span{
+    display: block;
+    color: #FF8795;
+    font-weight: 500;
+}
+.trackOImg{
+    text-align: center;
+    position: relative;
+    padding: 50px 0;
+}
+.myprofile{
+    padding: 0 10%;
+}
+.plk{
+    margin-bottom: 20px;
+}
+.plk a{
+    display: inline-block;
+    width: 100%;
+    font-size: 12px;
+    color: #999;
+    text-decoration: none;
+    line-height: 40px;
+    background: url(../images/bck.svg) center right no-repeat;
+    padding-left: 30px;
+    position: relative;
+}
+.plk a.NB{
+    background: none;
+}
+.plk a img{
+    position: absolute;
+    left: 0;
+    top: 11px;
+}
+.plk a input[type=checkbox]{
+    display: none;
+}
+.plk a label{
+    width: 45px;
+    height: 25px;
+    display: inline-block;
+    background: url(../images/ON-OFF.svg) no-repeat;
+    float: right;
+    position: relative;
+    top: 5px;
+}
+.plk a input[type=checkbox]:checked + label{
+    background: url(../images/ON-OFF-2.svg) no-repeat;
+}
+.prDetail{
+    color: #FFF;
+    position: relative;
+    text-align: center;
+}
+.prDetail .name{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.prDetail .ep{
+    font-size: 14px;
+    font-weight: 500;
+    /* margin-bottom: 5px; */
+}
+.prDetail .ad{
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom:25px;
+}
+.prDetail .image{width: 90px; margin:30px auto 10px; position: relative;}
+.prDetail .image img{width: 90px; height: auto; border-radius: 45px;}
+.prDetail .edit{
+    font-size: 10px;
+    color:#BC2C3D ;
+    border: 1px solid #BC2C3D;
+    border-radius:2px;
+    background:#FFF;
+    border:0;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 0 10px;
+    position: absolute;
+    top: 10px;
+    right:-20px;
+    letter-spacing: 1px;
+}
+
+
+
+.locfinder{bottom: -110%;}

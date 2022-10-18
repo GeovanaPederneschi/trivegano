@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano - Login</title>
 	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../frontend/css/style.css">
 <!--============================================================================-->	
 <!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
 
@@ -13,25 +13,39 @@
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 <!--=============================================================================================-->
+
+<!-- UIKIT -->
+	
+<link rel="stylesheet" href="../css/uikit.min.css" />
+<script src="../js/uikit.min.js"></script>
+<script src="../js/uikit-icons.min.js"></script>
+<!---------->
+
+<script src="..\js\jquery-3.5.1.min.js"></script>
+ <script src="..\js\jquery-viacep.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+
+
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 </head>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../script.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../frontend/js/script.js"></script>
 <script src="../bootstrap5/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../../index.html"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
 			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="../faq.html">FAQ</a></li>
-				<li><a href="../menu.php">Menu</a></li>
-				<li><a href="../home_receitas.php">Receitas</a></li>
-				<li><a href="../guia.html">Guia</a></li>
-				<li><a href="../sobrenos.html">Sobre nós</a></li>
+				<li><a href="../../index.html">Home</a></li>
+				<li><a href="../frontend/faq.html">FAQ</a></li>
+				<li><a href="../frontend/menu.php">Menu</a></li>
+				<li><a href="../frontend/home_receitas.php">Receitas</a></li>
+				<li><a href="../frontend/guia.html">Guia</a></li>
+				<li><a href="../frontend/sobrenos.html">Sobre nós</a></li>
 				<li><a href="login.html">Login</a></li>
 			</ul>
 		</div>
@@ -47,7 +61,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-color: #dfc4a6; padding-top: 80px; /* justify-content: right; padding-right: 20px; */">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="min-height: 700px; min-width: 700px;">
-				<form class="login100-form validate-form" name="cadastroUsuario" method="post" action="doCadastroUsuario1.php">
+				<form class="login100-form validate-form" name="cadastroUsuario" data-viacep method="get" action=".">
 					<span class="login100-form-title p-b-49">
 						<i class="fa fa-user-circle-o"></i>
 					 </span>
@@ -106,22 +120,107 @@
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
-                    <div class="wrap-input100 validate-input" data-validaete="CEP Inválido">
+					<h4 style="font-size: 25px;" class=" ui dividing header uk-text-center ">Endereço</h4>
+
+					<div class="wrap-input100 validate-input" data-validate="CEP Inválido">
                         <span class="label-input100">CEP</span>
-                        <input type="text" name="endereco" class="input100" placeholder="Digite seu CPF" required>
-                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        <input type="text" name="cep" class="input100" placeholder="Digite seu CEP" data-viacep-cep required>
+                        <span class="focus-input100" data-symbol="&#x2631;"></span>
                     </div>
-                    <div class="text-right p-t-8 p-b-31">
+                    <div class="text-right p-t-8">
+						<a target="_blank" href="https://buscacepinter.correios.com.br/app/endereco/index.php" style="text-decoration: underline;">
+							Não sabe o CEP?
+						</a>
+					</div>
+					
+					<div style="margin-left: 0;" uk-grid>
+						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+							<span class="label-input100">Logradouro</span>
+							<input class="input100" type="text" name="rua" placeholder="Digite o logradouro" data-viacep-endereco required>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
+						</div>
+	
+
+						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+							<span class="label-input100">Bairro</span>
+							<input class="input100" type="text" name="bairro" placeholder="Digite o logradouro" data-viacep-bairro required>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
+						</div>
+						
+					</div>
+					<hr style="margin-top: 0; margin-bottom: 23px;" >
+
+					<div style="margin-left: 0;" uk-grid>
+						<div class="wrap-input100-grid validate-input" data-validate = "Cidade inválida">
+							<span class="label-input100">Cidade</span>
+							<input class="input100" type="text" name="cidade" placeholder="Digite a cidade" data-viacep-cidade required>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
+						</div>
+
+						<div style='margin-left: 0;' class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+							<span class='label-input100' for="estado">Estado</span>
+							<select id="estado" name="estado" class="input100" data-viacep-estado style='border:none; padding: 0 7px 0 15px;' aria-placeholder="Selecione" data-viacep-estado>
+								
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
+						</div>
+						
+					</div>
+					<hr style="margin-top: 0; margin-bottom: 23px;" >
+					
+					<div style="margin-left: 0;" uk-grid>
+						<div style='margin-left: 2%;' class="wrap-input100-grid validate-input" data-validate = "Numero inválido">
+							<span class="label-input100">Numero</span>
+							<input class="input100" type="text" name="numero" placeholder="Digite o numero"  required>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
+						</div>
+						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+							<span class="label-input100">Completo</span>
+							<input class="input100" type="text" name="complemento" placeholder="Digite o logradouro" >
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
+						</div>
+						
+					</div>
+					<hr style="margin-top: 0; margin-bottom: 23px;" >
+
+                   <!--  <div class="text-right p-t-8 p-b-31">
 						<a href="#" style="text-decoration: underline;">
 							Não sabe seu CEP?
 						</a>
-					</div>
+					</div> -->
 
 					
 					
 					
 
-					<div class="contain-login100-form-btn">
+					<div style='margin-top: 5%;' class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn" type="submit" name="submit">
@@ -168,7 +267,7 @@
 				<div class="footer-col">
 					<h4>Quem Somos</h4>
 					<ul>
-						<li><a href="../sobrenos.html">Visite Nossa Página</a></li>
+						<li><a href="../frontend/sobrenos.html">Visite Nossa Página</a></li>
 					</ul>
 				</div>
 
@@ -176,8 +275,8 @@
 				<div class="footer-col">
 					<h4>Procure Ajuda</h4>
 					<ul>
-						<li><a href="../faq.html">FAQ</a></li>
-						<li><a href="../fale.html">Fale Conosco</a></li>
+						<li><a href="../frontend/faq.html">FAQ</a></li>
+						<li><a href="../frontend/fale.html">Fale Conosco</a></li>
 					</ul>
 				</div>
 
@@ -185,9 +284,9 @@
 				<div class="footer-col">
 					<h4>Encontre</h4>
 					<ul>
-						<li><a href="../home_receitas.php">Receitas</a></li>
-						<li><a href="../menu.php">Menu</a></li>
-						<li><a href="../guia.html">Guia</a></li>
+						<li><a href="../frontend/home_receitas.php">Receitas</a></li>
+						<li><a href="../frontend/menu.php">Menu</a></li>
+						<li><a href="../frontend/guia.html">Guia</a></li>
 					</ul>
 				</div>
 

@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 session_start();
 include "conexao.php";
 
@@ -19,7 +20,7 @@ else
 	$resultado=mysqli_query($con,"select * from tb_cliente where usuario_cliente='$loginx' and senha_cliente='$senhax'");
 	if($r=mysqli_fetch_array($resultado)){
 		$_SESSION['codusuario']=$r[0];
-		header('Location:../menu.php');
+		header('Location:../frontend/menu.php');
 	}
 	else{
 		$resultado=mysqli_query($con,"select * from tb_adm_fornecedor where login_adm_fornecedor='$loginx' and senha_adm_fornecedor='$senhax'");
@@ -30,7 +31,7 @@ else
 		}
 		else{
 			echo "<script> alert('login ou senha invalida');</script>";
-		//header('Location:login.html');
+		header('Location:login.html');
 		}
 		
 	}

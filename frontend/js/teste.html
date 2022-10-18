@@ -1,0 +1,23 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+var usuario = {
+    'nome': 'João',
+    'profissao': 'Engenheiro',
+    'cidade': 'São Paulo'
+    }
+
+var dados = JSON.stringify(usuario);
+
+$.ajax({
+    url: 'http://localhost/www/Oficial/frontend/js/teste.php',
+    dataType:'json',
+    method: 'POST',
+    data: {data: usuario},
+    success: function(result){
+        console.log(result)
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+    // Retorno caso algum erro ocorra
+    }
+});
+</script>
