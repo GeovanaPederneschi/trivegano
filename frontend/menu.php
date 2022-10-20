@@ -64,6 +64,8 @@ include('../backend/session_start.php');
 <script  src="js/script.js"></script>
 
 
+
+
 <div id='message' class="ui icon orange large message" uk-sticky="start: 200; animation: uk-animation-slide-top; offset: 1;" >
   <i class="close icon"></i>
   <div class="content">
@@ -73,6 +75,7 @@ include('../backend/session_start.php');
     <p>Para melhorar sua experiência faça o login na sua conta ou ative a sua localização atual</p>
   </div>
 </div>
+
 
 <div id="modal-center2" class="uk-flex-top" uk-modal>
     <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
@@ -119,7 +122,7 @@ include('../backend/session_start.php');
             </div>
             <div class="locationblock">
                 <img src="../icones/images/location-marker.svg" alt="">
-                <span>Sua Localização</span>
+               <?php echo" <span> $_SESSION[endereco] </span>";?>
                 
             </div>
             <div class="ifield PD bottom" style=" margin-right:3%">
@@ -417,8 +420,7 @@ include('../backend/session_start.php');
     <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
 
 </div>
-
-<?php include('geolocation.php')?>
+<?php include('geolocation.php');?>
 
 <footer class="footer">
 	<div class="container">

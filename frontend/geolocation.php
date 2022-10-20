@@ -4,21 +4,31 @@
    <?php
     
     //echo"<script>console.log($_POSt)</script>";
-    $_SESSION['coords'] = json_decode($_POST['data'],true);
+    // if(array_key_exists('data',$_POST)){
+    //     $_SESSION['coords'] = json_decode($_POST['data'],true);
+    // }
+    
+    // $array = filter_input(INPUT_POST, 'array', FILTER_SANITIZE_SPECIAL_CHARS);
+    // $array = explode(',', $array);
+    //$_SESSION['coords'] = $array;
 
-    var_dump($_SESSION);
+    echo $_SESSION['endereco'];
+
+    var_dump($_COOKIE);
 
     if(isset($_SESSION['codusuario'])){
        echo"<script>console.log('logado');</script>";
        echo"<script>$('#message').css('display','none');</script>";
        ?>
-       <script>$('.uk-light .uk-slider-items #enter')
+       <script>
+        $('.uk-light .uk-slider-items #enter')
         .on('click', function(){this.form.submit();})
      </script>
        <?php
     }
     else{
-        if(isset($_SESSION['latitude']) && isset($_SESSION['longitude'])){
+        if(isset($_COOKIE['latitude'])&&isset($_COOKIE['longitude']))
+        {
         ?>
             <script>
             $('.uk-light .uk-slider-items #enter').on('click', function(){
@@ -39,7 +49,5 @@
             </script>";
         }
     }
-    
-
-   
   ?> 
+<!-- <script src="get_directions.php"></script> -->
