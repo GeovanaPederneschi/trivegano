@@ -6,7 +6,8 @@ include('../backend/session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    
+    <link rel="stylesheet" href="../cadastro/style.css">
     <link rel="stylesheet" href="../backend/style1.css">
 	
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
@@ -23,9 +24,7 @@ include('../backend/session_start.php');
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleCarrinho.css">
 
-
-    
-
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
 </head>
 <body>
@@ -95,7 +94,7 @@ include('../backend/session_start.php');
                 
             </div>
             <div class="signupstag">
-                <a href="javascript:void(0)" class="setMan">SET MANNUALLY</a>
+                <a href="javascript:void(0)" uk-toggle="target: #modal-center5" class="setMan">CONFIGURE MANUALMENTE</a>
             </div>
         </div>
 
@@ -104,7 +103,7 @@ include('../backend/session_start.php');
 
 
 
-<div id="modal-center4" class="uk-flex-top" uk-modal>
+<div id="modal-center4" class="uk-flex-top" uk-modal="esc-close:false;bg-close:false;">
     <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
 
         <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -112,25 +111,155 @@ include('../backend/session_start.php');
         <div class="grid-3">
             <div class="welcome-head">
                 <div class="header">
-                <span class="welcome-head-head">Awesome!</span>
-                <span class="caption">We just found your location, click confirm button to continue!</span>
+                <span class="welcome-head-head">Incrível!</span>
+                <span class="caption">Nós acabamos de achar sua localização, clique no botão de confimar para continuar!</span>
                 </div>  
             </div> 
                 
             <div class="locationfinderIMG">
                 <img src="../icones/images/locationfinderconfirm.svg" alt="">
             </div>
-            <div class="locationblock">
+            <div class="locationblock" id="mostrar-local">
                 <img src="../icones/images/location-marker.svg" alt="">
-               <?php echo" <span> $_SESSION[endereco] </span>";?>
+               
                 
             </div>
             <div class="ifield PD bottom" style=" margin-right:3%">
-            <form method='GET'action='geolocation.php'>
-                <button style='width:90%;' type="submit" class="btn3"><span>Confirm</span></button>
+            <form>
+                <button style='width:90%;' onClick="submit();" class="btn3"><span>Confirmar</span></button>
             <form>
             </div>
+            <div class="signupstag">
+                <a href="javascript:void(0)" uk-toggle="target: #modal-center5" class="setMan">CONFIGURE MANUALMENTE</a>
             </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="modal-center5" class="uk-flex-top" uk-modal="esc-close:false;bg-close:false;">
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <!-- <button class="uk-modal-close-default" type="button" uk-close></button> -->
+
+        <div class="grid-3">
+        <form action="">
+        </form>
+            <div class="spacescroll">
+                <img src="../icones/images/accessBase.svg" alt="" class="base">
+                <img src="../icones/images/clipart.svg" alt="" class="clipart">
+                <img src="../icones/images/pizza-png-15.png" class="pizza" alt="">
+
+            <div class="welcome-head white">
+            <span class="welcome-head-head">Endereço</span>
+            <span class="caption">Adicione um endereço</span>
+            </div> 
+            <div class="blank"></div>
+            <div class="cover" style="padding: 5%;" >
+
+                    <!-- <div class="text-right p-t-8">
+						<a target="_blank" href="https://buscacepinter.correios.com.br/app/endereco/index.php" style="text-decoration: underline;">
+							Não sabe o CEP?
+						</a>
+					</div> -->
+                <div>
+                    
+                </div>
+					
+					<div style="margin-left: 0;" uk-grid>
+						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+							<span class="label-input100">Logradouro</span>
+							<input class="input101" type="text" name="rua" id="rua" placeholder="Digite o logradouro" data-viacep-endereco required>
+							<span class="focus-input101" data-symbol="&#x2631;"></span>
+						</div>
+	
+
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
+							<span class="label-input100">Bairro</span>
+							<input class="input101" type="text" name="bairro" id='bairro' placeholder="Digite o bairro" data-viacep-bairro required>
+							<span class="focus-input101" data-symbol="&#x2631;"></span>
+						</div>
+						
+					</div>
+					
+
+					<div style="margin-left: 0;" uk-grid>
+						<div class="wrap-input100-grid validate-input" data-validate = "Cidade inválida">
+							<span class="label-input100">Cidade</span>
+							<input class="input101" type="text" name="cidade" id="cidade" placeholder="Digite a cidade" data-viacep-cidade required>
+							<span class="focus-input101" data-symbol="&#x2631;"></span>
+						</div>
+
+						<div style="margin-left:18%;" class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+							<span class='label-input100' for="estado">Estado</span>
+							<select id="uf" name="uf" class="input101" data-viacep-estado style='border:none; padding: 0 7px 0 15px;' aria-placeholder="Selecione" data-viacep-estado>
+								<option value="">Selecione</option>
+								<option value="AC">Acre</option>
+								<option value="AL">Alagoas</option>
+								<option value="AP">Amapá</option>
+								<option value="AM">Amazonas</option>
+								<option value="BA">Bahia</option>
+								<option value="CE">Ceará</option>
+								<option value="DF">Distrito Federal</option>
+								<option value="ES">Espírito Santo</option>
+								<option value="GO">Goiás</option>
+								<option value="MA">Maranhão</option>
+								<option value="MT">Mato Grosso</option>
+								<option value="MS">Mato Grosso do Sul</option>
+								<option value="MG">Minas Gerais</option>
+								<option value="PA">Pará</option>
+								<option value="PB">Paraíba</option>
+								<option value="PR">Paraná</option>
+								<option value="PE">Pernambuco</option>
+								<option value="PI">Piauí</option>
+								<option value="RJ">Rio de Janeiro</option>
+								<option value="RN">Rio Grande do Norte</option>
+								<option value="RS">Rio Grande do Sul</option>
+								<option value="RO">Rondônia</option>
+								<option value="RR">Roraima</option>
+								<option value="SC">Santa Catarina</option>
+								<option value="SP">São Paulo</option>
+								<option value="SE">Sergipe</option>
+								<option value="TO">Tocantins</option>
+							</select>
+							<span class="focus-input101" data-symbol="&#x2631;"></span>
+						</div>
+						
+					</div>
+					
+					
+					<div style="margin-left: 0;" uk-grid>
+						<div style='margin-left: 2%;' class="wrap-input100-grid validate-input" data-validate = "Numero inválido">
+							<span class="label-input100">Numero</span>
+							<input class="input101" type="text" name="numero" placeholder="Digite o numero"  required>
+							<span class="focus-input101" data-symbol="&#x2631;"></span>
+						</div>
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
+							<span class="label-input100">Complemento</span>
+							<input class="input101" type="text" name="complemento" placeholder="Digite o logradouro" >
+							<span class="focus-input101" data-symbol="&#x2631;"></span>
+						</div>
+						
+					</div>
+					<!-- <hr style="margin-top: 0; margin-bottom: 23px;" > -->
+                    <div class="wrap-input100 validate-input" data-validate="CEP Inválido" style="margin-bottom: 2%; margin-top:2%;">
+                        <span class="label-input100">CEP</span>
+                        <input type="text" name="cep" id="cep" class="input100" placeholder="Digite seu CEP" data-viacep-cep required>
+                        <span class="focus-input100" data-symbol="&#x2631;"></span>
+                    </div>
+            </div> 
+
+
+            <div class="ifield signupBTN">
+            <button class="btn3" id="gotolanding"><span>Adicionar</span></button>
+            </div>
+            <div class="signupstag">
+                Não sabe o endereço <a class='a_modal' href="#modal-center4" uk-toggle>Localização Atual</a>
+            </div>
+            </div>
+        </form>
+            
         </div>
 
     </div>
@@ -161,7 +290,7 @@ include('../backend/session_start.php');
             }
             else{
                 echo"Não há produtos no carrinho";
-                //var_dump($_SESSION);
+                var_dump($_COOKIE);
             }
 
             ?>
@@ -217,8 +346,8 @@ include('../backend/session_start.php');
                             
                                 echo "<form name=enter action=produtos.php  method=POST >";
                                 echo"<button type=button id='enter' name=bot2 style='border: none;'"; 
-                                echo"<li class='ui medium circular image' >"; 
-                                echo"<div class=' ui medium circular image uk-animation-toggle' id=bt >";
+                                echo"<li class='ui medium circular image uk-transition-toggle ' >"; 
+                                echo"<div class='uk-transition-scale-up uk-transition-opaque ui medium circular image' id=bt >";
                                 echo"       <img src='../trivegano/filtro/$registro[3]'>";
                                 echo "  <input name='cat' id=codx  type=hidden value=$registro[0]>";
                                /*   echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom '>";
@@ -356,7 +485,7 @@ include('../backend/session_start.php');
                             echo "<form name=fox action=receita_detalhe.php  method=POST >";
                             echo"<button type=subbmit name=bot2  style='border: none;'"; 
                             echo"<li class= 'ui medium circular image'>"; 
-                            echo"<div class='uk-animation-toggle ui medium circular image'>";
+                            echo"<div class='uk-animation-toggle ui medium circular image'style='cursor:pointer;'> ";
                             echo"       <img src='../trivegano/receitas/$registro[1]' >";
                             echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
                             echo"</div>";
@@ -379,49 +508,83 @@ include('../backend/session_start.php');
 
 </div>
 
-<!-- GUIAS MAIS VISTOS -->
+        <!-- ROLAGEM COM GUIAS RECENTES -->
 
-<div class="uk-slider-container-offset "   style="margin-left:3%; margin-right:3%; margin-bottom:4%;" uk-slider autoplay="autoplay-interval:4000;">
-    <h1 class="uk-heading-line uk-text-center"><span>Guias Mais Vistos</span></h1>
-    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+        <div class="uk-slider-container-offset"   style="margin-left:3%; margin-right:3%; margin-bottom:1%;" uk-slider autoplay="autoplay-interval:4000;">
+            <h1 class="uk-heading-line uk-text-center"><span>Adicionados Recentementes</span></h1>
+            <div class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1">
 
-        <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
-            <li>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top uk-height-medium">
-                        <img class="uk-height-medium" src="../trivegano/broccoli-pieces-on-green-surface.jpg"  width="1000" height="600" alt="">
-                    </div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title">Headline</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top uk-height-medium">
-                        <img class="uk-height-medium" src="../trivegano/broccoli-pieces-on-green-surface.jpg"  width="1000" height="600" alt="">
-                    </div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title">Headline</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                    </div>
-                </div>
-            </li>
-            
-            
-            
+            <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+                    <?php
+                        include "../cadastro/conexao.php";
+                        mysqli_query($con,"SET NAMES 'utf8'");  
+                        mysqli_query($con,'SET character_set_connection=utf8');  
+                        mysqli_query($con,'SET character_set_client=utf8');  
+                        mysqli_query($con,'SET character_set_results=utf8'); 
+                        
+                        $titulo = mysqli_query($con,"select * from tb_guia 
+                                                    where id_guia order by data_guia desc;");
 
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+                        while ($row2 = mysqli_fetch_array($titulo))
+                        {
+                                $comando="select descricao_categoria from tb_categoria 
+                                where id_categoria='$row2[7]';";
+                                $categoria = mysqli_query($con,$comando);
 
-    </div>
+                            
+                            if($row = mysqli_fetch_array($categoria)){
 
-    <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+                                $comando= "select * from tb_imagem_guia where tb_guia_id_guia = $row2[0];";
+                                $resulta = mysqli_query($con,$comando);
+                                        
+                                
+                                    if($registro = mysqli_fetch_array($resulta)){
+                                    
+                                    
+                                    echo "<form name=fox action=guia_detalhe.php  method=POST >";
+                                    echo"<button type=subbmit name=bot2  style='border: none;'"; 
+                                    echo"
 
-</div>
+                                    <li class='uk-transition-toggle '>
+                                    <div class='uk-card uk-card-default uk-transition-scale-up uk-transition-opaque' style='cursor:pointer;'>
+                                    <input name='codx' id=codx  type=hidden value=$row2[0]>
+                                        <div class='uk-card-media-top uk-height-medium '>
+                                            <img class='uk-height-medium ' src='../trivegano/guia/$registro[1]'  width='1000' height='600' alt=''>
+                                        </div>
+                                        <div class='uk-card-body'>
+                                            <h3 class='uk-card-title'>$row2[5]</h3>
+                                            <p>$row2[8]</p>
+                                        </div>
+                                    </div>
+                                    </li>
+
+                                    ";
+                                    echo"</button>";
+                                    echo"</form>";
+                                    } 
+                                    
+                                    
+                                    
+                                
+                                }
+                                
+
+                        } 
+                        $close = mysqli_close($con);
+                    ?>
+            </ul>
+
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+            </div>
+
+            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
+
+        </div>
+        
 <?php include('geolocation.php');?>
-
+<script src="../js/viacep.js"></script>
 <footer class="footer">
 	<div class="container">
 		<div class="row">

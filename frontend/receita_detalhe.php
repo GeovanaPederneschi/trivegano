@@ -30,7 +30,7 @@
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
-				<li><a href="guia.html">Guia</a></li>
+				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="../cadastro/login.html">Login</a></li>
 			</ul>
@@ -121,8 +121,8 @@
 				echo"				</span>";
                 echo"     	 </div>";
                 echo"    </div>";
-				echo"  </div>";
-				echo" <div class='' style=margin-left:4%;margin-bottom:2%;font-size:20px;margin-right:4%;>";
+				echo" </div>";
+				echo" <div style=margin-left:4%;margin-bottom:2%;font-size:20px;margin-right:4%;>";
 				echo"			Ingredientes: <br><br>".
 								nl2br($registro[8]);
 					
@@ -165,7 +165,7 @@
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

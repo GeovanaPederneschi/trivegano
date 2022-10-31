@@ -1,21 +1,8 @@
-
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
 
 
    <?php
-    
-    //echo"<script>console.log($_POSt)</script>";
-    // if(array_key_exists('data',$_POST)){
-    //     $_SESSION['coords'] = json_decode($_POST['data'],true);
-    // }
-    
-    // $array = filter_input(INPUT_POST, 'array', FILTER_SANITIZE_SPECIAL_CHARS);
-    // $array = explode(',', $array);
-    //$_SESSION['coords'] = $array;
-
-    echo $_SESSION['endereco'];
-
-    var_dump($_COOKIE);
-
+  
     if(isset($_SESSION['codusuario'])){
        echo"<script>console.log('logado');</script>";
        echo"<script>$('#message').css('display','none');</script>";
@@ -40,14 +27,20 @@
         }
         else{
             echo"
-            <script src='js/geolocation.js'></script>
+              <script src='js/geolocation.js'></script>";
+             
+            ?>
             <script>
-            $('.uk-light .uk-slider-items #enter').on('click', function(){
-                UIkit.modal('#modal-center2').show()
-                getLocation();
+            $('.uk-light .uk-slider-items  #enter').on('click', function(){
+                UIkit.modal('#modal-center2').show();
+                 getLocation();
             })
-            </script>";
+            /* $('#modal-center5 .grid-3 .signupstag .a_modal').on('click', function(){
+                UIkit.modal('#modal-center2').show();
+                 getLocation();
+            }) */
+            </script><?php
+            
         }
     }
   ?> 
-<!-- <script src="get_directions.php"></script> -->

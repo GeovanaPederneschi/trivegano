@@ -25,7 +25,7 @@
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
-				<li><a href="guia.html">Guia</a></li>
+				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="../cadastro/login.html">Login</a></li>
 			</ul>
@@ -171,9 +171,9 @@
                             echo"<li data-type=$row[0] data-dieta=$row2[7]>";
                             echo "<form name=fox action=receita_detalhe.php  method=POST >";
                             echo"<button type=subbmit name=bot2  style='border: none;'";  
-                            echo" <li>"; 
+                            echo" <li class='uk-transition-toggle'>"; 
                            
-                            echo"      <div class='uk-inline' id=bt >";
+                            echo"      <div class='uk-inline uk-transition-scale-up uk-transition-opaque' id=bt >";
                            
                             echo"      <img style='height: 440px; min-wight: 660px;' src='../trivegano/receitas/$registro[1]'>";
                             echo "      <input name=codx id=codx  type=hidden value=$row2[0]>";
@@ -243,7 +243,7 @@
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

@@ -38,7 +38,7 @@ include('../backend/session_start.php');
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
-				<li><a href="guia.html">Guia</a></li>
+				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="../cadastro/login.html">Login</a></li>
 				
@@ -137,41 +137,74 @@ include('../backend/session_start.php');
             <div class="menu">
             <a class="item">
                 <div class="ui toggle checkbox">
-                    <input type="checkbox" value="4" name="categoria">
+                    <input type="checkbox" value="4" name="categoria[]">
                     <label>Refeição</label>
                 </div>
             </a>
             <a class="item">
                 <div class="ui toggle checkbox">
-                    <input type="checkbox" value="3" name="categoria">
+                    <input type="checkbox" value="3" name="categoria[]">
                     <label>Pizza</label>
                 </div>
             </a>
-            <a class="item active">
+            <a class="item">
                 <div class="ui toggle checkbox">
-                    <input type="checkbox" value="5" name="categoria">
+                    <input type="checkbox" value="5" name="categoria[]">
                     <label>Bebida</label>
                 </div>
             </a>
-            <a class="item active">
+            <a class="item">
                 <div class="ui toggle checkbox">
-                    <input type="checkbox" value="6" name="categoria">
+                    <input type="checkbox" value="6" name="categoria[]">
                     <label>Sobremesa</label>
                 </div>
             </a>
-            <a class="item active">
+            <a class="item">
                 <div class="ui toggle checkbox">
-                    <input type="checkbox" value="8" name="categoria">
+                    <input type="checkbox" value="8" name="categoria[]">
                     <label>Burguer</label>
                 </div>
             </a>
             </div>
+        </div>        
+        <div class="item">
+            <div class="header">Ordenar por</div>
+            <div class="menu">
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="radio" value="preco" name="ordenar">
+                    <label>Preço</label>
+                </div>
+            </a>
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="radio" value="avaliacao" name="ordenar">
+                    <label>Avaliação</label>
+                </div>
+            </a>
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="radio" value="taxa" name="ordenar">
+                    <label>Taxa de Entrega</label>
+                </div>
+            </a>
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="radio" value="distancia" name="ordenar">
+                    <label>Distância</label>
+                </div>
+            </a>
+            </div>
         </div>
         <div class="item">
-            <div class="header">Promoção</div>
+            <div class="header">Métodos de Pagamento</div>
             <div class="menu">
-            <a class="item">Com desconto</a>
-            <a class="item">Com ofertas</a>
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="5" name="metodo">
+                    <label>Vale Refeição</label>
+                </div>
+            </a>
             </div>
         </div>
         <div class="item">
@@ -182,20 +215,24 @@ include('../backend/session_start.php');
             </div>
         </div>
         <div class="item">
-            <div class="header">Support</div>
+            <div class="header">Aproveite</div>
             <div class="menu">
-            <a class="item">E-mail Support</a>
-            <a class="item">FAQs</a>
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="6" name="categoria">
+                    <label>Promoção</label>
+                </div>
+            </a>
+            <a class="item">
+                <div class="ui toggle checkbox">
+                    <input type="checkbox" value="8" name="categoria">
+                    <label>Oferta</label>
+                </div>
+            </a>
             </div>
         </div>
-        <div class="item">
-            <div class="header">Support</div>
-            <div class="menu">
-            <a class="item">E-mail Support</a>
-            <a class="item">FAQs</a>
-            </div>
-        </div>
-        <div uk-grid style="width: 100%; margin-left:6%; margin-bottom:1%;">
+
+        <div uk-grid style="width: 100%; margin-left:6%; margin-bottom:2%;">
         <input type="submit" value="Filtrar" class="ui green button" style="width:42.5%;">
         <input type="submit" value="Limpar" class="ui brown button" style="width:42.5%;">
         </div>
@@ -215,7 +252,7 @@ include('../backend/session_start.php');
             mysqli_query($con,'SET character_set_client=utf8');  
             mysqli_query($con,'SET character_set_results=utf8');
 
-           $i=0;
+           $r=0;
 
             
             if(!empty($_POST['cat'])){
@@ -225,8 +262,32 @@ include('../backend/session_start.php');
             }
              elseif(!empty($_POST['categoria'])){ 
                 $cat=$_POST['categoria'];
-                $resulta = mysqli_query($con,"select * from tb_produto 
-                where tb_categoria_id_categoria='$cat';");
+                $c=count($cat);
+               //var_dump($cat);
+                if($c>1){
+                    for($i=1;$i<=$c-1;$i++){
+                        if($i==1){
+                            $and='';
+                        }
+                        $and = $and ." or `tb_categoria_id_categoria`=".$i;
+                        $and=str_replace($i, $cat[$i], $and);
+                        
+                        echo"<br>";
+                        //echo$cat[$i];
+                        //echo$c;
+                    }
+                    $comando ="SELECT * FROM `tb_produto` WHERE `tb_categoria_id_categoria` = $cat[0] $and;";
+                    $resulta=mysqli_query($con,$comando);
+                    //echo $comando;
+                    
+                }
+                else{
+                    $first = $cat[0];
+                    $resulta = mysqli_query($con,"select * from tb_produto 
+                    where tb_categoria_id_categoria='$first';");
+                }
+                
+               
             }
             elseif(!empty($_POST['search'])){
                 $resulta = mysqli_query($con,"SELECT * from tb_produto where 
@@ -238,15 +299,15 @@ include('../backend/session_start.php');
             }
             while ($registro = mysqli_fetch_array($resulta) )
             {
-                $i++;
+                $r++;
                     $comando="select descricao_categoria from tb_categoria 
                     where id_categoria='$registro[6]';";
                     $categoria = mysqli_query($con,$comando);
 
-              if($i<13){
+               if($r<13){
                 if($row = mysqli_fetch_array($categoria)){
                         //$row1 = $row['descricao_categoria']; data-type=$row[0] data-dieta=$row2[7]
-                                
+                              
                         $titulo = mysqli_query($con,"select * from tb_imagem_produto 
                         where tb_produto_id_produto='$registro[0]';");
                             if($row2 = mysqli_fetch_array($titulo)){
@@ -281,7 +342,7 @@ include('../backend/session_start.php');
 
                         
                     }
-              }     
+              }      
                     
             } 
             echo"</div>";
@@ -333,7 +394,7 @@ include('../backend/session_start.php');
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

@@ -43,7 +43,7 @@ include('../backend/session_start.php');
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
-				<li><a href="guia.html">Guia</a></li>
+				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="../cadastro/login.html">Login</a></li>
 			</ul>
@@ -88,6 +88,7 @@ include('../backend/session_start.php');
             }
             else{
                 echo"Não há produtos no carrinho";
+               
                 
             }
 
@@ -282,7 +283,7 @@ include('../backend/session_start.php');
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

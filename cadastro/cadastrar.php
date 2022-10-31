@@ -8,7 +8,7 @@ $cpf = mysql_real_escape_string($conexao, trim($_POST['cpf']));
 $telefone = mysql_real_escape_string($conexao, trim($_POST['tel']));
 $senha = mysql_real_escape_string($conexao, trim(md5($_POST['senha'])));
 
-$sql = "select count(*) as total from usuario where usuario = '$usuario'"
+$sql = "select count(*) as total from usuario where usuario = '$usuario'";
 $result = mysql_query($conexao, $sql);
 $row = mysqli_fetch($result);
 

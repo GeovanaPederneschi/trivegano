@@ -193,7 +193,7 @@
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

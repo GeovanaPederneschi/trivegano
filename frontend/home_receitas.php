@@ -30,7 +30,7 @@
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
-				<li><a href="guia.html">Guia</a></li>
+				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.html">Sobre nós</a></li>
 				<li><a href="../cadastro/login.html">Login</a></li>
 			</ul>
@@ -154,19 +154,11 @@
                         
                             if($registro = mysqli_fetch_array($resulta)){
                             
-                            /* echo"<li>";
-                            echo"<div class='uk-inline uk-animation-toggle'>";
-                            echo"       <img style='height: 440px; min-wight: 660px;' src='$registro[1]'>";
-                            echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
-                            echo"           <p>$row2[1]</p>";
-                            echo"       </div>";
-                            echo"</div>";
-                            echo"</li>"; */
                             
                             echo "<form name=fox action=receita_detalhe.php  method=POST >";
                             echo"<button type=subbmit name=bot2  style='border: none;'"; 
-                            echo"<li>"; 
-                            echo"<div class='uk-inline uk-animation-toggle'>";
+                            echo"<li class='uk-transition-toggle'>"; 
+                            echo"<div class='uk-inline uk-transition-scale-up uk-transition-opaque'>";
                             echo"       <img style='height: 440px; min-wight: 660px;' src='../trivegano/receitas/$registro[1]'>";
                             echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
                             echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
@@ -249,8 +241,8 @@
                             
                                 echo "<form name=fox action=receita_detalhe.php  method=POST >";
                                 echo"<button type=subbmit name=bot2  style='border: none;'"; 
-                                echo"<li>"; 
-                                echo"<div class='uk-inline uk-animation-toggle'>";
+                                echo"<li class='uk-transition-toggle'>"; 
+                                echo"<div class='uk-inline uk-transition-scale-up uk-transition-opaque'>";
                                 echo"       <img style='height: 440px; min-wight: 660px;' src='../trivegano/receitas/$registro[1]'>";
                                 echo "      <input name='codx' id=codx  type=hidden value=$row2[0]>";
                                 echo"       <div class='uk-overlay uk-overlay-primary uk-position-bottom'>";
@@ -295,29 +287,66 @@
     <h1 class="uk-heading-line uk-text-center"><span>Guias Mais Vistos</span></h1>
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
 
-        <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
-            <li>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top uk-height-medium">
-                        <img class="uk-height-medium" src="../trivegano/broccoli-pieces-on-green-surface.jpg"  width="1000" height="600" alt="">
-                    </div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title">Headline</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="uk-card uk-card-default">
-                    <div class="uk-card-media-top uk-height-medium">
-                        <img class="uk-height-medium" src="../trivegano/broccoli-pieces-on-green-surface.jpg"  width="1000" height="600" alt="">
-                    </div>
-                    <div class="uk-card-body">
-                        <h3 class="uk-card-title">Headline</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                    </div>
-                </div>
-            </li>
+    <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+            <?php
+                include "../cadastro/conexao.php";
+                mysqli_query($con,"SET NAMES 'utf8'");  
+                mysqli_query($con,'SET character_set_connection=utf8');  
+                mysqli_query($con,'SET character_set_client=utf8');  
+                mysqli_query($con,'SET character_set_results=utf8'); 
+                
+                $titulo = mysqli_query($con,"select * from tb_guia 
+                                            where id_guia order by data_guia desc;");
+
+                while ($row2 = mysqli_fetch_array($titulo))
+                {
+                        $comando="select descricao_categoria from tb_categoria 
+                        where id_categoria='$row2[7]';";
+                        $categoria = mysqli_query($con,$comando);
+
+                     
+                    if($row = mysqli_fetch_array($categoria)){
+
+                        $comando= "select * from tb_imagem_guia where tb_guia_id_guia = $row2[0];";
+                        $resulta = mysqli_query($con,$comando);
+                                
+                        
+                            if($registro = mysqli_fetch_array($resulta)){
+                            
+                            
+                            echo "<form name=fox action=guia_detalhe.php  method=POST >";
+                            echo"<button type=subbmit name=bot2  style='border: none;'"; 
+                            echo"
+
+                            <li class='uk-transition-toggle '>
+                            <div class='uk-card uk-card-default uk-transition-scale-up uk-transition-opaque'>
+                            <input name='codx' id=codx  type=hidden value=$row2[0]>
+                                <div class='uk-card-media-top uk-height-medium '>
+                                    <img class='uk-height-medium ' src='../trivegano/guia/$registro[1]'  width='1000' height='600' alt=''>
+                                </div>
+                                <div class='uk-card-body'>
+                                    <h3 class='uk-card-title'>$row2[5]</h3>
+                                    <p>$row2[8]</p>
+                                </div>
+                            </div>
+                            </li>
+
+                            ";
+                            echo"</button>";
+                            echo"</form>";
+                            } 
+                            
+                            
+                            
+                        
+                        }
+                        
+
+                } 
+                $close = mysqli_close($con);
+            ?>
+    </ul>
+
             
             
             
@@ -395,7 +424,7 @@
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

@@ -1,8 +1,10 @@
+
 <?php
 
-getAddress();
+echo"<script>
+            console.log('ENTROUUUU');</script>";
 
-
+            getAddress();
 
 function getAddress(){
 
@@ -14,11 +16,14 @@ function getAddress(){
             if(!empty($outputAddress->erro_message)){
                 return $outputAddress->erro_message;
             }
-            
-            $_COOKIE['endereco']= $outputAddress->results[0]->formatted_address;
+            echo"<script>
+            console.log('get');</script>";
+            //$_COOKIE['endereco']= $outputAddress->results[0]->formatted_address;
+            setcookie('endereco',$outputAddress->results[0]->formatted_address);
+            $_SESSION['endereco']=$_COOKIE['endereco'];
             //echo $outputAddress->results[0]->formatted_address;
-            var_dump($_SESSION);
-             echo" <span> $_SESSION[endereco] </span>";
+            //var_dump($_SESSION);
+            //  echo" <span> $_SESSION[endereco] </span>";
              echo'console.log("AEEEE")';
     }
 

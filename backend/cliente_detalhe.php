@@ -193,7 +193,7 @@ include_once('session_start.php');
 				<ul>
 					<li><a href="../frontend/home_receitas.php">Receitas</a></li>
 					<li><a href="../frontend/menu.php">Menu</a></li>
-					<li><a href="../frontend/guia.html">Guia</a></li>
+					<li><a href="../frontend/home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

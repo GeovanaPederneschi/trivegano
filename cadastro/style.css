@@ -35,7 +35,7 @@
       margin: 0px; 
       padding: 0px; 
       box-sizing: border-box;
-      z-index: 1;
+      /* z-index: 1; */
   }
   
   body, html {
@@ -87,6 +87,7 @@
   
   
   /*---------------------------------------------*/
+ 
   input {
       outline: none;
       border: none;
@@ -245,6 +246,18 @@
     background: transparent;
     padding: 0 7px 0 43px;
   }
+  .input101 {
+    font-family: Poppins-Medium;
+    font-size: 16px;
+    color: #333333;
+    line-height: 1.2;
+  
+    display: block;
+    width: 100%;
+    height: 55px;
+    background: transparent;
+    padding: 0 0;
+  }
   option{
     padding:0;
   }
@@ -322,6 +335,69 @@
   }
   
   .has-val.input100 + .focus-input100::after {
+    color: #32CD32;
+  }
+  
+  .focus-input101 {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  .focus-input101::after {
+    content: attr(data-symbol);
+    font-family: Material-Design-Iconic-Font;
+    color: #000000;
+    font-size: 17px;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: calc(100% - 20px);
+    bottom: 0;
+    left: 0;
+    padding-left: 13px;
+    padding-top: 3px;
+  }
+  
+  .focus-input101::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #000000;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  
+  .input101:focus + .focus-input101::before {
+    width: 100%;
+  }
+  
+  .has-val.input101 + .focus-input101::before {
+    width: 100%;
+  }
+  
+  .input101:focus + .focus-input101::after {
+    color: #32CD32;
+  }
+  
+  .has-val.input101 + .focus-input101::after {
     color: #32CD32;
   }
   

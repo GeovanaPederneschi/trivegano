@@ -1,6 +1,5 @@
+
 <?php
-
-
 
 function carrinho($cod){
     
@@ -111,7 +110,7 @@ function mostrarCarrinho($con){
                                             <form method=POST>
                                             <button name='minus[$produto[0]]' class='fl minus'>-</button>
                                             <input type='text'  value='$quantidade_cod[$name]' class='fl'>
-                                            <button name='plus[$produto[0]]' class='fl plus'>+</button>
+                                            <button name='plus[$produto[0]]' type='' id='plus' class='fl plus'>+</button>
                                             </form>
                                             <div class='clr'></div>
                                         </div>
@@ -164,9 +163,23 @@ function mostrarCarrinho($con){
     }
     else{echo"</div>";
             echo"<br>";
-        echo"Não há produtos no carriho";
+        //echo"Não há produtos no carriho";
         
         //var_dump($_SESSION['idcarrinho']);
+        ?>
+
+
+        <div class="grid-6">
+        <div class="forgotIMG">
+            <img src="../icones/images/cartEmpty.svg" alt="">
+        </div>
+        <div class="welcome-head">
+            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
+            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
+        </div>  
+        <div class="blank"></div>
+       </div>
+            <?php
        
     }
    

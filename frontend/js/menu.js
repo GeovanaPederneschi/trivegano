@@ -1,9 +1,7 @@
 
 
-/* $('plus').sumit(function(e){
+$('.offcanvas-flip .ukcanvas-bar #plus').sumit(function(e){
     e.preventDefault();
 
-    function plus(){
-        
-    }
-}) */
+    
+})

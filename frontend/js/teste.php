@@ -1,7 +1,12 @@
-<?php
-  $usuario = $_POST['data'];
 
-  $dados = json_decode($usuario, true);
+    <script>
+    $('.offcanvas-flip .ukcanvas-bar #plus').sumit(function(e){
+    e.preventDefault();
 
-  var_dump($dados);
-?>
+    </script>
+    <?php 
+        
+    ?>
+    <script>
+    });
+    </script>
