@@ -20,6 +20,8 @@ include('../backend/session_start.php');
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
+    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
@@ -27,6 +29,14 @@ include('../backend/session_start.php');
     
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleCarrinho.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="../css/semantic/semantic.min.js"></script>
 
   
 </head>
@@ -87,7 +97,20 @@ include('../backend/session_start.php');
                mostrarCarrinho($con);
             }
             else{
-                echo"Não há produtos no carrinho";
+               ?>
+
+
+        <div class="grid-6">
+        <div class="forgotIMG">
+            <img src="../icones/images/cartEmpty.svg" alt="">
+        </div>
+        <div class="welcome-head">
+            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
+            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
+        </div>  
+        <div class="blank"></div>
+       </div>
+            <?php
                
                 
             }
@@ -99,6 +122,17 @@ include('../backend/session_start.php');
         </a>
 
        <!final do botão do carrinho-->
+       <script>
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').on('click', function(){
+                //console.log('AEEE');
+                $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar').submit();
+                var cod = $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar #cod').val();
+                Cookies.set('editar_cod', cod)
+            });
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod .unit form #plus').on('click',function(){
+
+            });
+        </script>
 
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="menu.php">Home</a></li>

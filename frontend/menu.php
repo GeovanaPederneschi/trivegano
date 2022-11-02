@@ -25,6 +25,7 @@ include('../backend/session_start.php');
     <link rel="stylesheet" href="css/styleCarrinho.css">
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
 </head>
 <body>
@@ -232,12 +233,12 @@ include('../backend/session_start.php');
 					<div style="margin-left: 0;" uk-grid>
 						<div style='margin-left: 2%;' class="wrap-input100-grid validate-input" data-validate = "Numero inválido">
 							<span class="label-input100">Numero</span>
-							<input class="input101" type="text" name="numero" placeholder="Digite o numero"  required>
+							<input class="input101" type="text" name="numero" id="numero" placeholder="Digite o numero"  required>
 							<span class="focus-input101" data-symbol="&#x2631;"></span>
 						</div>
 						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class="label-input100">Complemento</span>
-							<input class="input101" type="text" name="complemento" placeholder="Digite o logradouro" >
+							<input class="input101" type="text" name="complemento" id="complemento" placeholder="Digite o logradouro" >
 							<span class="focus-input101" data-symbol="&#x2631;"></span>
 						</div>
 						
@@ -259,8 +260,81 @@ include('../backend/session_start.php');
             </div>
             </div>
         </form>
+
+        <script>
+        </script>
+        
             
         </div>
+
+    </div>
+</div>
+
+<div id="modal-center6" class="uk-flex-top" uk-modal="esc-close:false;bg-close:false;">
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <div class="grid-3" style="padding-bottom: 0;">
+            <div class="head">
+                <a href="profile.html"><img src="../icones/images/back-black.svg" class="back" alt=""></a>
+                <div class="text">
+                    Configurar Endereço
+                </div>
+            </div>
+            
+           <div class="spacescroll">
+               <div class="blankShort"></div>
+                <h3 class="space">Salvar Localização</h3>
+                <div class="sAddress">
+                    <ul>
+                        <?php
+                            include('../cadastro/conexao.php');
+                            $query = mysqli_query($con, "SELECT * FROM tb_endereco_cliente WHERE tb_cliente_id_cliente = '$_SESSION[codusuario]';");
+                            while($endereco = mysqli_fetch_array($query)){
+
+                                if($endereco[9] == 'casa'){
+                                    echo"
+                                    <li class='address-item'>
+                                        <div style='display:none;'>$endereco[1]</div>
+                                        <img src='../icones/images/MAhome.svg' alt=''>
+                                        <span>Casa</span>
+                                        <p>$endereco[2], $endereco[7] $endereco[6] - $endereco[4], $endereco[3] - $endereco[5], $endereco[1]</p>   
+                                    </li>
+                                    ";
+                                }
+                                elseif($endereco[9] == 'office'){
+                                    echo"
+                                    <li class='address-item'>
+                                        <div style='display:none;'>$endereco[1]</div>
+                                        <img src='../icones/images/MAoffice.svg' alt=''>
+                                        <span >Trabalho</span>
+                                        <p>$endereco[2], $endereco[7], $endereco[6] - $endereco[4], $endereco[3] - $endereco[5], $endereco[1]</p>
+                                    </li>
+                                    ";
+                                }
+                            }
+                        ?>
+                        
+                        
+                    </ul>
+                </div>
+                <!-- <div class="blank"></div>
+                <div class="ifield MR">
+                    <button class="btn3" id="mylocation"><span>ADD NEW ADDRESS</span></button>
+                </div> -->
+           </div>
+        </div>
+
+        <script>
+
+            $('#modal-center6 .grid-3 .spacescroll .sAddress .address-item').on('click',function(){
+                $(this).toggleClass('uk-section uk-section-secondary uk-light');
+                Cookies.set('endereco', $(this).children().last().text());
+                Cookies.set('cep', $(this).children().first().text());
+                location.reload(true);
+            })
+        </script>
 
     </div>
 </div>
@@ -289,7 +363,20 @@ include('../backend/session_start.php');
                mostrarCarrinho($con);
             }
             else{
-                echo"Não há produtos no carrinho";
+               ?>
+
+
+        <div class="grid-6">
+        <div class="forgotIMG">
+            <img src="../icones/images/cartEmpty.svg" alt="">
+        </div>
+        <div class="welcome-head">
+            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
+            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
+        </div>  
+        <div class="blank"></div>
+       </div>
+            <?php
                 var_dump($_COOKIE);
             }
 
@@ -299,6 +386,13 @@ include('../backend/session_start.php');
             </div>
             </div>
         </a>
+
+        <script>
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').on('click', function(){
+                //console.log('AEEE');
+                //$('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list').css('display','none');
+            })
+        </script>
 
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="#">Home</a></li>

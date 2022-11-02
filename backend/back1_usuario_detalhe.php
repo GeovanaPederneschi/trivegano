@@ -71,7 +71,7 @@ include_once('session_start.php');
             console.log(ferrou);
             </script>
             ";
-             visualizarUsuario($cod,'tb_adm_fornecedor','id_adm_fornecedor','6','3');
+             visualizarUsuario($cod,"tb_usuario_adm","id_usuario_adm",'5','4');
            
             
             
@@ -120,14 +120,14 @@ include_once('session_start.php');
                 <?php
                 //require "cadastro/doLogin.php";
                 include "../cadastro/conexao.php";
-                $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
+                $resultado=mysqli_query($con,"select * from tb_usuario_adm where id_usuario_adm='$_SESSION[codusuario]';");
                 if($r = mysqli_fetch_array($resultado)){
                 
                     echo"
                     <form method='POST' action='back2Usuario.php'>
                     <button id='btn-clientes' type='submit' class='btn item'>
                          <div class='ui tiny image'>
-                        <img src='../trivegano/usuarios/$r[6]'>
+                        <img src='../trivegano/usuarios/$r[5]'>
                         </div>
                         <br><br>
                         <div class='content'>
@@ -148,32 +148,27 @@ include_once('session_start.php');
             </div>
             <br><br>
             <div class="uk-text-large">
-                     <form method="POST" action="back2.php">
+                      <form method="POST" action="back1.php">
                       <button id="btn-clientes" type ="submit" class="btn item">
-                            Produtos
+                            Receitas
                       </button>
                       </form>
-                      <form method="POST" action="back2Pedidos.php">
+                      <form method="POST"  action="back1Guia.php">
                         <button id="btn-clientes" type="submit" class="btn item">
-                            Pedidos
+                            Guia
                       </button>
                       </form>
-                      <form method="POST"  action="back2Vendas.php">
-                        <button id="btn-clientes" type="submit" class="btn item">
-                            Vendas
-                      </button>
-                      </form>
-                      <form method="POST" action="back2Clientes.php">
+                      <form method="POST" action="back1Clientes.php">
                         <button id="btn-clientes" type="submit" class="btn item">
                             Clientes
                       </button>
                       </form>
-                      <form method="POST" action="back2Suporte.php">
+                      <form method="POST" action="back1Validacoes.php">
                         <button id="btn-clientes" type="submit" class="btn item">
-                            Suporte
+                            Validações
                       </button>
                       </form>
-                      <form method="POST" action="back2Promocoes.php">
+                      <form method="POST" action="back1Promocoes.php">
                         <button id="btn-clientes" type="submit" class="btn item">
                             Promoções
                       </button>
@@ -196,17 +191,17 @@ include_once('session_start.php');
         <img src="images/clipart.svg" alt="" class="clipart">
         <div class="prDetail">
         <?php
-        $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
+        $resultado=mysqli_query($con,"select * from tb_usuario_adm where id_usuario_adm='$_SESSION[codusuario]';");
         if($r = mysqli_fetch_array($resultado)){
-            echo"<div class='image'><img src='../trivegano/usuarios/$r[6]' alt=''>
+            echo"<div class='image'><img src='../trivegano/usuarios/$r[5]' alt=''>
             <button class='edit filterICN'>Edit</button></div>
             <div class='name'>".ucfirst($r[1])."</div>
-            <div class='ep'>$r[3]</div>";
-            $comando="SELECT `nome_fantasia_fornecedor`FROM `tb_fornecedor` WHERE `id_fornecedor`='$r[5]';";
+            <div class='ep'>$r[4]</div>";
+            /* $comando="SELECT `nome_fantasia_fornecedor`FROM `tb_fornecedor` WHERE `id_fornecedor`='$r[5]';";
             $query=mysqli_query($con,$comando);
             if($fornecedor=mysqli_fetch_row($query)){
                 echo"<div class='ad'>".ucfirst($fornecedor[0])."</div>";
-            }
+            } */
         }
         ?>
         </div>
@@ -216,7 +211,7 @@ include_once('session_start.php');
             <h3>Minha Conta</h3>
             <div class="plk">
                 <a class="plink" id='text-profile'><img src="../icones/images/bottomProfile-red.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
+                    <form method="GET" action="back1_usuario_detalhe.php">
                         <button id="text-profile" name="visualizar_usuario" class="btn4" type="submit">
                             Dados
                       </button>
@@ -226,14 +221,14 @@ include_once('session_start.php');
             <h3>Restaurante</h3>
             <div class="plk">
                 <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
+                    <form method="GET" action="back1_usuario_detalhe.php">
                         <button id="text-profile" name="visualizar_restaurante" class="btn4" type="submit">
                         Meu Estabelecimento
                       </button>
                     </form>
                 </a>
                 <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
-                <form method="GET" action="back2_usuario_detalhe.php">
+                <form method="GET" action="back1_usuario_detalhe.php">
                         <button id="text-profile" name="restaurante_configuracao" class="btn4" type="submit">
                             Configurações
                       </button>

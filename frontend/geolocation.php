@@ -3,18 +3,20 @@
 
    <?php
   
-    if(isset($_SESSION['codusuario'])){
+    if(isset($_SESSION['codusuario']) && !isset($_COOKIE['endereco'])){
        echo"<script>console.log('logado');</script>";
        echo"<script>$('#message').css('display','none');</script>";
        ?>
        <script>
-        $('.uk-light .uk-slider-items #enter')
-        .on('click', function(){this.form.submit();})
+        $('.uk-light .uk-slider-items #enter').on('click', function(){
+          //this.form.submit();
+          UIkit.modal('#modal-center6').show();
+        })
      </script>
        <?php
     }
     else{
-        if(isset($_COOKIE['latitude'])&&isset($_COOKIE['longitude']))
+        if(isset($_COOKIE['latitude'])&&isset($_COOKIE['longitude']) or isset($_COOKIE['endereco']))
         {
         ?>
             <script>

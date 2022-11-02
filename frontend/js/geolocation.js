@@ -49,7 +49,9 @@ function geodecode(lat,lon){
     .then(function(response){
         //console.log(response);
         var endereco = `${response.data.results[0].formatted_address}`;
-        createCookie("endereco", endereco, '10');
+        var cep = `${response.data.results[0].address_components[6].long_name}`;
+        createCookie("endereco", endereco);
+        createCookie("cep", cep);
         //console.log(endereco);
         if ( $( " #mostrar-local .local" ).length == 0) { 
             $('#mostrar-local').prepend('<div class="local"><span>' + endereco + '</span></div>');
@@ -73,13 +75,14 @@ if('geolocation' in navigator){
             var latitude = `${position.coords.latitude}`;
             var longitude =  `${position.coords.longitude}`;
         
-        createCookie("latitude", latitude, "10");
-        createCookie("longitude", longitude, "10");
+        createCookie("latitude", latitude);
+        createCookie("longitude", longitude);
         //endereco='';
         geodecode(getCookie('latitude'),getCookie('longitude'))
         //console.log(getCookie('latitude'));
         UIkit.modal('#modal-center4').show();
          console.log('cokkie');
+         //console.log(res)
 
 
     },function error(){

@@ -78,7 +78,20 @@ include('../backend/session_start.php');
                mostrarCarrinho($con);
             }
             else{
-                echo"Não há produtos no carrinho";
+               ?>
+
+
+        <div class="grid-6">
+        <div class="forgotIMG">
+            <img src="../icones/images/cartEmpty.svg" alt="">
+        </div>
+        <div class="welcome-head">
+            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
+            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
+        </div>  
+        <div class="blank"></div>
+       </div>
+            <?php
                 
             }
 
@@ -88,6 +101,87 @@ include('../backend/session_start.php');
             </div>
             </div>
         </a>
+
+        <script>
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').on('click', function(){
+                //console.log('AEEE');
+                //$('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').css('display','none');
+            })
+        </script>
+
+        
+            <!-- <div style="display:none;" id='ala'>true</div>
+
+            <form method="GET">
+             <input type="hidden" id="aqui" value="true">   
+            </form> -->
+            
+
+            <!-- <script>
+            console.log('passou');
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod .unit form #plus').on('click',function(){
+            console.log('foi');
+
+                var _plus = 'true';
+               
+                var mais = $('.uk-navbar-container .uk-navbar-left form #aqui').val();
+                console.log(mais);
+
+                $.post("http://localhost/www/Oficial/frontend/funcoes.php", {plus : mais})
+                .done(function(data){
+                    console.log('FOII');
+                    return data;
+                });
+
+                /* $.ajax({
+                    url: "http://localhost/www/Oficial/frontend/funcoes.php",
+                    method: "POST",
+                    data: JSON.stringify({ plus : _plus }),
+                    //dataType: 'json',
+                    //contentType:'application/json'
+
+                }).done(function(resposta) {
+                    console.log(resposta);
+
+                }).fail(function(jqXHR, textStatus ) {
+                    console.log("Request failed: " + textStatus);
+
+                }).always(function() {
+                    console.log("completou");
+                }); */
+
+
+            });
+            </script>  -->
+            <!-- <script>
+                
+                $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list #prod .unit form #plus').on('click',function(){
+                   
+                    var campo = 'plus';
+                    var valor = 'true';
+                    // Verificar o Browser
+                    // Firefox, Google Chrome, Safari e outros
+                    if(window.XMLHttpRequest) {
+                    req = new XMLHttpRequest();
+                    }
+                    // Internet Explorer
+                    else if(window.ActiveXObject) {
+                    req = new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    // Aqui vai o valor e o nome do campo que pediu a requisição.
+                    var url = "http://localhost/www/Oficial/frontend/funcoes.php";
+                    // Chamada do método open para processar a requisição
+                    req.open("POST", url, true);
+                    req.setRequestHeader("Content-Type", "application/json");
+                    // Quando o objeto recebe o retorno, chamamos a seguinte função;
+                    req.onreadystatechange = function() {  
+                    }
+                    var data = {plus: valor};
+                    req.send(JSON.stringify(data));
+                });
+                
+            </script> -->
+        
 
         <ul class="uk-navbar-nav">
             <li class="uk-active"><a href="menu.php">Home</a></li>
@@ -243,7 +337,7 @@ include('../backend/session_start.php');
     
     <div class="uk-width-3-4@m" style="margin-top: 1%;">
         <div class="ui link cards uk-grid-row-large uk-grid-column-small  
-        uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m" uk grid>
+        uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m " uk grid uk-height-match>
         <?php
            
            include('../cadastro/conexao.php');
@@ -299,50 +393,81 @@ include('../backend/session_start.php');
             }
             while ($registro = mysqli_fetch_array($resulta) )
             {
-                $r++;
-                    $comando="select descricao_categoria from tb_categoria 
-                    where id_categoria='$registro[6]';";
-                    $categoria = mysqli_query($con,$comando);
+                if(isset($_COOKIE['cep'])&& isset($_COOKIE['endereco'])){
 
-               if($r<13){
-                if($row = mysqli_fetch_array($categoria)){
-                        //$row1 = $row['descricao_categoria']; data-type=$row[0] data-dieta=$row2[7]
-                              
-                        $titulo = mysqli_query($con,"select * from tb_imagem_produto 
-                        where tb_produto_id_produto='$registro[0]';");
-                            if($row2 = mysqli_fetch_array($titulo)){
-                            echo "<form name=fox action=produto_detalhe.php  method=GET >";
-                            echo"<button type=subbmit name=bot2  style='border: none;margin-bottom:3%;'";  
-                            echo"
-                            <div class='card' style=''>
-                            <div class='image'>
-                            <img src='../trivegano/produtos/$row2[1]'>
-                            <input name=codx id=codx  type=hidden value=$registro[0]>
-                            </div>
-                            <div class='content'>
-                            <div class='header'>$registro[1]</div>
-                            <div class='right floated' >
-                                <a class='ui orange label'>$row[0]</a>
-                            </div>
-                            <div class='description'>
-                                teste
-                            </div>
-                            </div>
-                            <div class='extra content'>
-                            <span class='right floated'>
-                                $registro[4]
-                            </span>
-                            </div>
-                            
-                            ";
-                            echo"</button>";
-                            echo"</form>";
-                            
-                            } 
+                    $query=mysqli_query($con,"SELECT * FROM tb_fornecedor WHERE id_fornecedor = '$registro[8]';");
+                    if($fornecedor = mysqli_fetch_array($query)){
+                        $apiKey = 'AIzaSyBzQCRKSKFi7AwHMynJuFb_aa4NH7l6-qM';
 
-                        
+                        $address = file_get_contents('https://maps.googleapis.com/maps/api/distancematrix/json?origins='.$fornecedor[12].'&destinations='.$_COOKIE['cep'].'&key='.$apiKey);
+                        $distance = json_decode($address);
+                        if($distance->status == 'OK'  && $distance->rows[0]->elements[0]->status == 'OK'){
+                            $dist_value = $distance->rows[0]->elements[0]->distance->value;
+                            $dist_text = $distance->rows[0]->elements[0]->distance->text;
+
+                            if($dist_value/1000 <= $fornecedor[18]){
+                                
+                                $comando="select descricao_categoria from tb_categoria 
+                                where id_categoria='$registro[6]';";
+                                $categoria = mysqli_query($con,$comando);
+
+                                if($r<13){$r++;
+                                    if($row = mysqli_fetch_array($categoria)){
+                                            //$row1 = $row['descricao_categoria']; data-type=$row[0] data-dieta=$row2[7]
+                                                
+                                            $titulo = mysqli_query($con,"select * from tb_imagem_produto 
+                                            where tb_produto_id_produto='$registro[0]';");
+                                                if($row2 = mysqli_fetch_array($titulo)){
+
+                                                    $comando="SELECT `nome_fantasia_fornecedor`FROM `tb_fornecedor` WHERE `id_fornecedor`='$registro[8]';";
+                                                    $query=mysqli_query($con,$comando);
+                                                    if($fornecedor=mysqli_fetch_row($query)){
+                                                        echo "<form name=fox action=produto_detalhe.php  method=GET >";
+                                                        echo"<button type=subbmit name=bot2  style='border: none;margin-bottom:3%;'"; 
+                                                        echo"
+                                                        <div class='card' style='width:2'>
+                                                        <div class='image'>
+                                                        <img style='' src='../trivegano/produtos/$row2[1]'>
+                                                        <input name=codx id=codx  type=hidden value=$registro[0]>
+                                                        </div>
+                                                        <div class='content uk-grid-medium' style='padding:1%;'>
+                                                            <span>$registro[1]</span>
+                                                            <span>$fornecedor[0]</span>
+                                                        </div>
+                                                        <div class='content' style='padding:1%;'>
+                                                        <a class='ui red ribbon label'>".ucfirst($row[0])."</a>
+                                                        <div class='uk-grid-large'>
+                                                        <span>$registro[4]</span>";
+                                                        echo "<span>$dist_text</span></div>";
+                                                        /* </div>
+                                                        <div class='content uk-grid-large' style='padding:1%;'>
+                                                        <span>NÃO SEI</span>"; */
+
+                                                        echo"</div>";
+                                                        /* echo"
+                                                        <div class='ui top left attached label'>
+                                                        <a class='ui red ribbon label' style='font-size:10px;'>".strtoupper($row[0])."</a>
+                                                        </div>"; */ 
+                                                        echo"</button>";
+                                                        echo"</form>";
+                                                    }
+                                                } 
+
+                                            
+                                        }
+                                }
+                            }
+                        }
+                        elseif(empty($distance->erro_message)){
+                            return $distance->erro_message;
+                        }
+                        else{
+                            echo"<script>alert('Erro com endereço')</script>";
+                        }
                     }
-              }      
+
+                }
+                          
                     
             } 
             echo"</div>";

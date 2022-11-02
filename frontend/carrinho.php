@@ -28,13 +28,20 @@ function carrinho($cod){
                     $adicional= array($array[0]);
                     $c=count($_POST['adicional']);
                     //se tiver mais salve os outros adicionais
-                    for($i=1; $i<$c; $i++){
+                    if($c!=1){
+                        for($i=1; $i<$c; $i++){
                         array_push($adicional, $array[$i]);
                         /* salva adicionais em variavel global que tem como indice o cod do prod que diz
                         respeito*/
                         $adicional_prod= array($cod => $adicional);
                         $_SESSION['adicional']=$adicional_prod;
-                    }  
+                        } 
+                    }
+                    else{
+                        $adicional_prod = array($cod => $adicional);
+                        $_SESSION['adicional'] = $adicional_prod;
+                    }
+                     
                 }
             }
             elseif(!empty($_SESSION['idcarrinho'])){
@@ -78,9 +85,10 @@ function carrinho($cod){
 
 function mostrarCarrinho($con){
     
-    echo"<div id='list'>";
+    echo"<div id='list' >";
     $_SESSION['valorcompra']=0;
     $carrinho=$_SESSION['idcarrinho'];
+    //var_dump($_SESSION['adicional']);
 
 
     for($i=0;$i<count($carrinho); $i++){
@@ -98,25 +106,69 @@ function mostrarCarrinho($con){
                 
                 if($quantidade_cod[$name] > 0){
                     include('funcoes.php');           
-
-                    echo"<br><div id='prod' class='uk-card uk-card-default '>";
+                    echo"<div class='uk-transition-toggle' id='mano'>";
+                    echo"<br><div id='prod' class='uk-card uk-card-default uk-transition-scale-up uk-transition-opaque' style='cursor:pointer;'>";
                     echo"<div class='uk-grid-large'>";
                     echo"<span>$produto[1]</span>";
                     echo"<span>$fornecedor[0]</span>";
                     ECHO"</div><br>";
-                    echo"<div>$produto[4]</div>";
-                    echo"
-                                        <div class='unit'>
-                                            <form method=POST>
-                                            <button name='minus[$produto[0]]' class='fl minus'>-</button>
-                                            <input type='text'  value='$quantidade_cod[$name]' class='fl'>
-                                            <button name='plus[$produto[0]]' type='' id='plus' class='fl plus'>+</button>
-                                            </form>
-                                            <div class='clr'></div>
-                                        </div>
-                    ";
+                    echo"<div class='uk-grid'>";
+                    
+                    
+                    if(!empty($_SESSION['adicional'][$produto[0]])){
+
+                        echo"<div>$produto[4]</div><div style='margin-left: 9%;'>";
+                        //var_dump($_SESSION['adicional']);
+                        $comando="SELECT * FROM `tb_produtos_adicionais` WHERE `tb_produto_id_produto`= '$produto[0]';";
+                        $query=mysqli_query($con,$comando);
+                        while($adicionais=mysqli_fetch_array($query)){
+                            echo"<span><img class='ui avatar mini image' src='../trivegano/adicionais/$adicionais[8]'></span>";
+                        }
+                        echo"</div>";
+                        echo"
+                                            <div class='unit uk-flex uk-flex-right' style='margin-left:4%;'>
+                                                <form method=POST>
+                                                <button name='minus[$produto[0]]' class='fl minus'>-</button>
+                                                <input type='text'  value='$quantidade_cod[$name]' class='fl'>
+                                                <button name='plus[$produto[0]]' type='' id='plus' class='fl plus'>+</button>
+                                                </form>
+                                                <div class='clr'></div>
+                                            </div>
+                        ";
+                        //VER DEPOIS QUANDO FOREM DIFERENTES E SE O USUARIO CONSEGUE CHEGAR AQUI
+                        $quant=count($_SESSION['adicional'][$produto[0]]);
+                        $adicional=$_SESSION['adicional'][$produto[0]];
+                        for($a=0;$a<$quant;$a++){
+                            $query=mysqli_query($con,"SELECT * FROM tb_produtos_adicionais WHERE id_adicional='$adicional[$a]';");
+                            if($adicionais = mysqli_fetch_array($query)){
+                                //echo $adicionais[2].'<br>';
+                                //$teste =  $adicionais[2]*$quantidade_cod[$name];
+                                //echo $teste.'<br>';
+                                //echo $quantidade_cod[$name].'<br>';
+                                $_SESSION['valorcompra'] += $adicionais[2]*$quantidade_cod[$name];
+                            }
+
+                        }
+                        //$_SESSION['valorcompra'] += $produto[4]*$quantidade_cod[$name];
+                    }
+                    else{
+                        echo"<div>$produto[4]</div><div>";
+                        echo"</div>";
+                        echo"
+                                            <div class='unit uk-flex uk-flex-right' style='margin-left:33%;'>
+                                                <form method=POST>
+                                                <button name='minus[$produto[0]]' class='fl minus'>-</button>
+                                                <input type='text'  value='$quantidade_cod[$name]' class='fl'>
+                                                <button name='plus[$produto[0]]' type='' id='plus' class='fl plus'>+</button>
+                                                </form>
+                                                <div class='clr'></div>
+                                            </div>
+                        ";
+                        $_SESSION['valorcompra'] += $produto[4]*$quantidade_cod[$name];
+                    }
+                    
                 
-                echo"</div>";
+                echo"</div></div></div>";
                 echo"<br><br>";
                 }
                 else{
@@ -135,14 +187,13 @@ function mostrarCarrinho($con){
             }
            
             $_SESSION['valorcompra'] += $produto[4]*$quantidade_cod[$name];
+
+           echo" <form method='POST' id='editar' action='finalizar_compra.php'>
+            <input type='hidden' id='cod' name='codigo' value='$produto[0]'> 
+            </form>";
             
             
-            if(!empty($_POST['adicional'])){
-               
-                   var_dump($_SESSION['adicional']);
-                
-                
-            } 
+           
         }
     } 
     //var_dump($_SESSION['quant_prod_cod']);
@@ -182,7 +233,11 @@ function mostrarCarrinho($con){
             <?php
        
     }
+    
    
            
 }
+
 ?>
+
+

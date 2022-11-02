@@ -741,6 +741,16 @@ ul{
 .grid-3{
   padding: 30px 0 90px;
 }
-.uk-open{
-  /* z-index: 10; */
+.address-item{
+  cursor: pointer;
+}
+.sAddress li{
+  padding-right: 1%;
+}
+.sAddress img{
+  margin-left: 2%;
+}
+.ui.ribbon.label{
+  left: calc(-6.1rem - 1.2em);
+    top: -19rem;
 }

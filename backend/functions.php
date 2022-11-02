@@ -344,7 +344,7 @@
         echo"</div>";
     }
 
-    function visualizarUsuario($cod){
+    function visualizarUsuario($cod,$tabela,$coluna,$foto,$email){
 
         echo '<div class="uk-margin-medium-top" >';
 
@@ -358,7 +358,7 @@
         /* salvar essa var em array de session de usu campo correspondente a CODX */
         // $_SESSION['CODX']=$codx;
         /* selecionar na tab de produtos o produto correspondente ao cod */
-        $comando= "SELECT * FROM `tb_adm_fornecedor` WHERE `id_adm_fornecedor` = '$cod';";
+        $comando= "SELECT * FROM `$tabela` WHERE `$coluna` = '$cod';";
         $resulta = mysqli_query($con,$comando);
         /* $comando= "select * from tb_imagem_receitas;";
                     $resulta = mysqli_query($con,$comando); */
@@ -372,7 +372,7 @@
                     style='margin-left:3%; margin-right:3%;margin-bottom:2%;'>   ";
                     echo"    <div>";
                     echo"       <div class ='uk-width-2xlarge'>";
-                    echo"       <img  widht=825 height=550 src=../trivegano/usuarios/$registro[6]> <br><br>";
+                    echo"       <img  widht=825 height=550 src=../trivegano/usuarios/$registro[$foto]> <br><br>";
                     echo"       </div>";
                     echo"    </div>";
                     echo"    <div class=''>";
@@ -393,7 +393,7 @@
                     echo"			Email: <br><br>
                             <div uk-grid>
                                     <div class='uk-widht-1-2' style='padding-top:2%;'>
-                                    $registro[3]
+                                    $registro[$email]
                                     </div>
                                     <div class='uk-widht-1-2'>
                                         <button uk-toggle='target: #modal-center' style='border:none;' id='editar'  type='button'>

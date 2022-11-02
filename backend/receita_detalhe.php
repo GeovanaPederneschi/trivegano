@@ -88,7 +88,7 @@ include_once('session_start.php');
         <div class="uk-width-1-5@m">
             <div class="uk-position-left ui secondary vertical pointing menu" id="grid">
                     <div class="item " id="avatar">
-                        <?php
+                    <?php
                         //require "cadastro/doLogin.php";
                         
                         include "../cadastro/conexao.php";
@@ -100,21 +100,28 @@ include_once('session_start.php');
                         $resultado=mysqli_query($con,"select * from tb_usuario_adm where id_usuario_adm='$_SESSION[codusuario]'");
                         if($r = mysqli_fetch_array($resultado)){
                 
+                            
                             echo"
+                            <form method='POST' action='back1Usuario.php'>
+                            <button id='btn-clientes' type='submit' class='btn item'>
                                 <div class='ui tiny image'>
                                 <img src='../trivegano/usuarios/$r[5]'>
                                 </div>
                                 <br><br>
                                 <div class='content'>
-                                <div class='header'>$r[1]</div>
+                                <div class='header'>".ucfirst($r[1]); 
+                                echo "</div>
                                 <div class='description'>
                                     <p></p>
                                 </div>
                                 </div>
+                            </button>
+                            </form>
+                              
                             ";
 
                         }
-                        ?>           
+                        ?>             
                     </div>
                     <br><br>
                     <div class="uk-text-large">
@@ -161,7 +168,7 @@ include_once('session_start.php');
 
       <!-- VISUALIZAR RECEITAS -->
       <?php
-        include('visualizar_receita.php')
+        include("visualizar_receita.php")
       ?>
     </li>
 

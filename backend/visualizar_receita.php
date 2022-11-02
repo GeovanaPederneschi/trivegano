@@ -28,14 +28,41 @@
           mysqli_query($con,'SET character_set_connection=utf8');  
           mysqli_query($con,'SET character_set_client=utf8');  
           mysqli_query($con,'SET character_set_results=utf8'); 
-          $comando=mysqli_query($con,"select * from tb_receitas;");
-          $i=0;
+          //$comando=mysqli_query($con,"select * from tb_receitas;");
+          $busca="select * from tb_receitas";
+          $total_reg = "8";
+          if(isset($_GET['pagina'])){
+              $pagina=$_GET['pagina'];
+              $pc = $pagina;
+          }
+          elseif (!isset($_GET['pagina'])) {
+          $pc = "1";
+          }
+          $inicio = $pc - 1;
+          $inicio = $inicio * $total_reg;
 
-          while($receita = mysqli_fetch_array($comando))
+          $limite = mysqli_query($con,"$busca LIMIT $inicio,$total_reg");
+          $todos = mysqli_query($con,$busca);
+
+          $tr = mysqli_num_rows($todos);
+          
+          //echo$tr;
+          // verifica o número total de registros
+          $tp = $tr / $total_reg; // verifica o número total de páginas
+
+          //ADICIONAR UM NO NUM DE PAG CASO RESGISTROS NÃO COMPLENTEM UMA PAG TODA
+          $resto= fmod($tr,$total_reg);
+          
+          if(!empty($resto)){
+            $tp=intval($tp)+1;
+          }
+          //echo $pc;
+          //echo $tp;
+          //echo $tr;
+          while($receita = mysqli_fetch_array($limite))
           {
             
-            if($i<11)
-            {
+            
                 /* echo "<form name=fox action=backReceita_detalhe.php  method=POST >";
                 echo"<button type=subbmit name=bot2  style='border: none;'"; */
 
@@ -58,7 +85,7 @@
 
                     <td>
                     <form name='form1' action='receita_detalhe.php' method='GET'>
-                    
+                   
                     <button style='border:none;' name='visualizar' id='visualizar'  type='submit' 
                       value='$receita[0]'>
                       <label for='codxv'><i class='big circular external alternate icon'></i></label>
@@ -68,6 +95,7 @@
 
                     <td>
                     <form name='form2'  method='GET' action='receita_detalhe.php' >
+                    <input type='hidden' value='$pc]' name='pagina'>
                         <button name='editar' style='border:none;' id='editar'  type='submit' 
                         value='$receita[0]'>
                           <label for='codxv'><i class='big circular pencil alternate icon'></i></label>
@@ -89,40 +117,54 @@
                   </tr>";
                   /*echo"</button>";
                   echo"</form>"; */
-                  $i++;
+                  
                       
-            }
-            else{
-                 echo" </tbody>";
-                                
-            }
-                                        
+            
+                                       
                                             
          } 
-                
+                echo" </tbody>"; 
            $close = mysqli_close($con);
 
         ?>
                           
-                          
-                              
+          <?php
 
-                          
-        
-                 <tfoot>
-                   <tr><th colspan="5">
-                     <div class="ui right floated pagination menu">
-                       <a class="icon item">
-                         <i class="left chevron icon"></i>
-                       </a>
-                       <a class="item">1</a>
-                       <a class="item">2</a>
-                       <a class="item">3</a>
-                       <a class="item">4</a>
-                       <a class="icon item">
-                         <i class="right chevron icon"></i>
-                       </a>
-                     </div>
-                   </th>
-                 </tr></tfoot>
+            // agora vamos criar os botões "Anterior e próximo"
+            $anterior = $pc -1;
+            $proximo = $pc +1;
+            ?>                     
+                  <tfoot>
+                    <tr><th colspan="10">
+                      <div class="ui right floated pagination menu">
+                        <?php
+                        //echo$pc;
+                        //echo'<br>'.$tp;
+                        if ($pc>1) {
+                          echo " <a class='icon item' href='?pagina=$anterior'>
+                          <i class='left chevron icon'></i>
+                                </a>";
+                        }if($tp>1){
+                          for($p=1;$p<=$tp;$p++){
+                            if($p==$pc){
+                              echo"<a class='item active' style='' href='?pagina=$p'>$p</a>";
+                            }
+                            else{
+                              echo"<a class='item' href='?pagina=$p'>$p</a>";
+                            }
+                           
+                          }
+                        }
+                        //echo $tp;
+                        if ($pc<$tp) {
+                          echo " <a class='icon item' href='?pagina=$proximo'>
+                          <i class='right chevron icon'></i>
+                                </a>";
+                          }
+
+                        ?>
+                        
+                      </div>
+                    </th>
+                  </tr></tfoot>
       </table>

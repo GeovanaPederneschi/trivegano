@@ -604,12 +604,14 @@ h3.space{
     display: block;
 }
 .cartlisting .dishimage{
-    width: 60px;
+    /* width: 60px; */
     height: 60px;
     border-radius:7px;
-    position: absolute;
-    left: 0;
-    top: 8px;
+    /* position: absolute; */
+     left: 0; 
+     top: 8px; 
+    display: flex;
+    margin-left: 1; 
 }
 .cartlisting .ten{
     font-weight: 600;
@@ -620,6 +622,7 @@ h3.space{
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 7px;
+    display: flex;
 }
 .unit input{
     border:1px solid #CCC;

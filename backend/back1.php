@@ -21,10 +21,13 @@ include_once('session_start.php');
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+  <script src='../js/jquery-3.5.1.min.js'></script>
+  
+  <!-- SEMANTIC -->
+  <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
+  <script src="../css/semantic/semantic.min.js"></script>
+  <!-----  ------->
+
 	<link rel="stylesheet" href="../frontend/css/style.css">
   <link rel="stylesheet" href="style.css">
   <!-- AJAX API PARA PDF -->
@@ -154,6 +157,13 @@ include_once('session_start.php');
             </div>
         </div>
 </div>
+
+<script>
+  $('.ui.rating')
+  .rating()
+;
+</script>
+
 <footer class="footer">
 	<div class="container">
 		<div class="row">

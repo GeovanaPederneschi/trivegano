@@ -1,9 +1,8 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script src="acabar.js"></script>
 <?php
 
 session_start();
 session_destroy();
-setcookie('latitude','',time()-3600);
-setcookie('longitude','',time()-3600);
-echo'<script>console.log("'.var_dump($_COOKIE).'")</script>';
-
+header('Location: menu.php');
 ?>

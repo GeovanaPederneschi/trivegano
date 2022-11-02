@@ -1,3 +1,6 @@
+<?php
+include('../backend/session_start.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,14 +8,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano - Login</title>
 	
+    <link rel="stylesheet" href="../backend/style1.css">
 
     <!-- UIKIT -->
 	
 	<link rel="stylesheet" href="../css/uikit.min.css" />
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 	<!---------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="../cadastro/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -20,11 +24,16 @@
 	<link rel="stylesheet" type="text/css" href="../cadastro/vendor/animsition/css/animsition.min.css">
 	<link rel="stylesheet" type="text/css" href="../cadastro/css/util.css">
 
-    <link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="../cadastro/style.css">
+    
+    <script src='../js/jquery-3.5.1.min.js'></script>
 
-  
-	
+    <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
+    <script src="../css/semantic/semantic.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
+	<link rel="stylesheet" href="css/style.css">   
+	<link rel="stylesheet" href="../cadastro/style.css">
 
 </head>
 </style>
@@ -51,14 +60,121 @@
 		</div>
 	</header>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script  src="js/script.js"></script>
-    <script>
-       
-        
-    </script>
+
+
+
+ <script  src="js/script.js"></script>
+ 
+
+        <div id="modal-center8" class="uk-flex-top" uk-modal="esc-close:false;bg-close:false;">
+            <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                <div class="head" style="position: relative;">
+                    <a href="orderList.html"><img src="../icones/images/back-black.svg" class="back" alt=""></a>
+                    <div class="text">
+                        Detalhes do Pedido
+                    </div>
+                </div>
+
+
+
+
+            
+           <div class="spacescroll">
+                
+                <div class="cart">
+                    <div class="oBreif">
+                        <?php include('../cadastro/conexao.php'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
+                        if($id=mysqli_fetch_array($query)){ $num=$id[0]+1; echo "#".$num;}?>
+                        <!-- BOTAR EM PT DEPOIS -->
+                        <span class="caption"><?php date_default_timezone_set('Brazil/East'); $today = date("j F \à\s g:i a"); echo $today;?></span>
+                        <span class="status done">DELIVER</span>
+                    </div>
+                    <div class="ui accordion">
+                    
+                            <ul>
+                            
+                                <?php  //var_dump($_SESSION);
+                                
+                                $carrinho=$_SESSION['idcarrinho'];
+                                $quant_prod=$_SESSION['quant_prod_cod'];
+                            
+                            
+                                for($i=0;$i<count($carrinho); $i++){
+                                    echo"<li>";
+                                    echo"<div class='title'>  
+                                    <div class='cartlisting'>";
+                                        $query = mysqli_query($con,"SELECT imagem_produto FROM tb_imagem_produto WHERE tb_produto_id_produto='$carrinho[$i]';");
+                                        if($img = mysqli_fetch_array($query)){
+                                            echo"<div class='fl'>
+                                            <div uk-grid><img style='padding-left:0;' src='../trivegano/produtos/$img[0]' class='dishimage' style='' alt=''>";
+                                        }
+                                        $query = mysqli_query($con,"SELECT * FROM tb_produto WHERE id_produto= '$carrinho[$i]';");
+                                        if($produto = mysqli_fetch_array($query)){
+                                            $name=$produto[1];
+                                            $valor_item = $produto[4]*$quant_prod[$name];
+                                            echo"
+                                            <div>
+                                                <div class='dishname'>$produto[1]</div>
+                                                <div class='ten'>$quant_prod[$name] X</div></div></div>
+                                            </div>
+                                            <div class='fr'>
+                                                <div class='cost'>
+                                                    $$valor_item
+                                                </div>
+                                            </div>
+                                            <div class='clr'></div>
+                                            
+                                    </div>
+                                    </div>
+                                    <div class='content'>
+                                        <p class='transition hidden'>TESTE
+                                        </p>
+                                    </div>
+                                    </li>
+                                    ";
+                                    }
+                                    
+                                }
+                                ?>
+                                
+                                
+                            </ul>
+                    
+                    </div>
+                    
+                    
+                    <div class="summary">
+                        <div>
+                            Item Total<span class="fr">$49.00</span>
+                        </div>
+                        <div>
+                            Discount<span class="fr">$10.00</span>
+                        </div>
+                        <div class="Green">
+                            Delivery Fee<span class="fr">FREE</span>
+                        </div>
+                    </div>
+                    <div class="total">
+                        Paid <span class="fr">$39.00</span>
+                    </div>
+                    <div class="blank"></div>
+                    <div class="centerLinker">
+                        <a href="#">Give your Review</a>
+                    </div>
+                </div>
+                
+           </div>
+
+                
+
+            </div>
+        </div>
+    
 	<?php
-        session_start();
+
         
         if(empty($_SESSION['codusuario'])){
            
@@ -101,7 +217,7 @@
                                 <div class="contain-login100-form-btn">
                                     <div class="wrap-login100-form-btn">
                                         <div class="login100-form-bgbtn"></div>
-                                        <button class="login100-form-btn" type="submit" name="submit">
+                                        <button class="login100-form-btn" id="btn-form" type="button" name="submit">
                                             CONTINUAR
                                         </button>
                                     </div>
@@ -145,8 +261,103 @@
             echo" BEM VINDA: ".$_SESSION['loginpa'];
             
         }
+
+
+        //EDITAR
+        //var_dump($_POST);
+    if(isset($_POST['codigo'])){
+       /*  $comando="SELECT * FROM `tb_produto` WHERE `id_produto` = '$_POST[codigo]';";
+        $resultado= mysqli_query($con,$comando); 
+        if($produto= mysqli_fetch_array($resultado)){
+            echo"<div class='edit'>";
+            echo"EDITAR<br>";
+
+            //var_dump($_SESSION['adicional_quant']);
+            
+            for($l=1; $l<=$quantidade_cod[$name]; $l++){
+                echo'ALA <br>';
+                   
+                    
+                    if($quantidade_cod[$produto[1]]==1){
+
+                    }
+                    elseif($quantidade_cod[$produto[1]]>1){
+                        //mostrar um produto por quantidade escolhida
+                        for($y=0;$y<=$quantidade_cod[$produto[1]];$y++){
+                            include('funcoesEditar.php');           
+                            echo"<br><div id='prod' class='uk-card uk-card-default'>";
+                            echo"<div class='uk-grid-large'>";
+                            echo"<span>$produto[1]</span>";
+                            echo"<span>$fornecedor[0]</span>";
+                            ECHO"</div><br>";
+                            echo"<div class='uk-grid'>";
+                            if(isset($_SESSION['adicional_quant'][$produto[1]])){
+                                echo"<div>$produto[4]</div><div style='margin-left: 9%;'>";
+                                //var_dump($_SESSION['adicional']);
+                                $comando="SELECT * FROM `tb_produtos_adicionais` WHERE `tb_produto_id_produto`= '$produto[0]';";
+                                $query=mysqli_query($con,$comando);
+                                while($adicionais=mysqli_fetch_array($query)){
+                                    echo"<span><img class='ui avatar mini image' src='../trivegano/adicionais/$adicionais[8]'></span>";
+                                }
+                                echo"</div>";
+                                echo"
+                                                    <div class='unit uk-flex uk-flex-right' style='margin-left:4%;'>
+                                                        <form method=POST>
+                                                        <button name='minus[$produto[0]]' class='fl minus'>-</button>
+                                                        <input type='text'  value='$quantidade_cod[$name]' class='fl'>
+                                                        <button name='plus[$produto[0]]' type='' id='plus' class='fl plus'>+</button>
+                                                        </form>
+                                                        <div class='clr'></div>
+                                                    </div>
+                                ";
+                            }
+                            else{
+                                echo"<div>$produto[4]</div><div>";
+                                echo"</div>";
+                                echo"
+                                                    <div class='unit uk-flex uk-flex-right' style='margin-left:33%;'>
+                                                        <form method=POST>
+                                                        <button name='minus[$produto[0]]' class='fl minus'>-</button>
+                                                        <input type='text'  value='$quantidade_cod[$name]' class='fl'>
+                                                        <div>$produto[0]</div>
+                                                        <button name='plus[$produto[0]]' type='button' id='plus' class='fl plus'>+</button>
+                                                        </form>
+                                                        <div class='clr'></div>
+                                                    </div>
+                                ";
+                            }
+                        }
+                        
+                    }
+
+                    
+                
+                echo"</div></div></div>";
+                echo"<br><br>";
+                
+            }
+            echo"</div>";
+        } */ echo"<script>console.log('bosta');</script>";
+        ?>
+       
+        
+        <?php
+        //echo'TESTE';
+    }
     ?>
 	
+       <script>
+        $('.limiter .container-login100 .wrap-login100 .login100form .contain-login100-form-btn .wrap-login100-form-btn #btn-form').on('click',function(){
+            console.log('bosta');
+        })
+        if(Cookies.get('editar_cod')){
+            console.log('não vai ir');
+            UIkit.modal('#modal-center8').show();
+        }
+        $('#modal-center8 .uk-modal-dialog .spacescroll .cart .ui.accordion')
+        .accordion()
+        ;
+       </script>
 
 	<footer class="footer">
 		<div class="container">

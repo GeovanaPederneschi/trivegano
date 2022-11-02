@@ -11,8 +11,6 @@ $senhax=$_POST['senha'];
 		
 		$_SESSION['codusuario']=$r[0];
 		header('Location:finalizar_compra.php');
-        echo"foi <br>";
-        echo"$_SESSION[codusuario]";
 	}
 	
 	

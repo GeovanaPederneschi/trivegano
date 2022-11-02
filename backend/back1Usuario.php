@@ -142,7 +142,7 @@ include_once('session_start.php');
             <h3>Minha Conta</h3>
             <div class="plk">
                 <a class="plink" id='text-profile'><img src="../icones/images/bottomProfile-red.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
+                    <form method="GET" action="back1_usuario_detalhe.php">
                         <button id="text-profile" name="visualizar_usuario" class="btn4" type="submit">
                             Dados
                       </button>

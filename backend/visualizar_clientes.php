@@ -24,15 +24,43 @@
           mysqli_query($con,"SET NAMES 'utf8'");  
           mysqli_query($con,'SET character_set_connection=utf8');  
           mysqli_query($con,'SET character_set_client=utf8');  
-          mysqli_query($con,'SET character_set_results=utf8'); 
+          mysqli_query($con,'SET character_set_results=utf8');
+          $total_reg = "10";
+          if(isset($_GET['pagina'])){
+              $pagina=$_GET['pagina'];
+              $pc = $pagina;
+          }
+          elseif (!isset($_GET['pagina'])) {
+          $pc = "1";
+          }
+          $inicio = $pc - 1;
+          $inicio = $inicio * $total_reg;
+          $busca="select * from tb_cliente";
+          $limite = mysqli_query($con,"$busca LIMIT $inicio,$total_reg"); 
           $comando=mysqli_query($con,"select * from tb_cliente;");
-          $i=0;
+          
 
-          while($cliente = mysqli_fetch_array($comando))
+          $tr = mysqli_num_rows($comando); 
+          //echo$tr;
+          // verifica o número total de registros
+          $tp = $tr / $total_reg; // verifica o número total de páginas
+          //echo $tp;
+          //echo$tr;
+          // verifica o número total de registros
+          $tp = $tr / $total_reg; // verifica o número total de páginas
+
+          //ADICIONAR UM NO NUM DE PAG CASO RESGISTROS NÃO COMPLENTEM UMA PAG TODA
+          $resto= fmod($tr,$total_reg);
+          
+          if(!empty($resto)){
+            $tp=intval($tp)+1;
+          }
+          
+
+          while($cliente = mysqli_fetch_array($limite))
           {
             
-            if($i<11)
-            {
+           
                 /* echo "<form name=fox action=backReceita_detalhe.php  method=POST >";
                 echo"<button type=subbmit name=bot2  style='border: none;'"; */
 
@@ -69,15 +97,10 @@
                   </tr>";
                   /*echo"</button>";
                   echo"</form>"; */
-                  $i++;
-                      
-            }
-            else{
-                 echo" </tbody>";
-                                
-            }
+                  
+           
                                         
-                                            
+               echo" </tbody>";                             
          } 
                 
            $close = mysqli_close($con);
@@ -85,24 +108,39 @@
         ?>
                           
                           
-                              
+                    <?php
 
-                          
-        
-                 <tfoot>
-                   <tr><th colspan="5">
-                     <div class="ui right floated pagination menu">
-                       <a class="icon item">
-                         <i class="left chevron icon"></i>
-                       </a>
-                       <a class="item">1</a>
-                       <a class="item">2</a>
-                       <a class="item">3</a>
-                       <a class="item">4</a>
-                       <a class="icon item">
-                         <i class="right chevron icon"></i>
-                       </a>
-                     </div>
-                   </th>
-                 </tr></tfoot>
+                    // agora vamos criar os botões "Anterior e próximo"
+                    $anterior = $pc -1;
+                    $proximo = $pc +1;
+                    ?>                     
+                          <tfoot>
+                            <tr><th colspan="10">
+                              <div class="ui right floated pagination menu">
+                                <?php
+                                
+                                if ($pc>1) {
+                                  echo " <a class='icon item' href='?pagina=$anterior'>
+                                  <i class='left chevron icon'></i>
+                                        </a>";
+                                }
+                                if($tp>1 && $tp!=1){
+                                  for($p=1;$p<=$tp;$p++){
+                                    
+                                      echo"<a class='item active' style='' href='?pagina=$p'>$p</a>";
+                                    
+                                  }
+                                }
+                                
+                                if ($pc!=$tp) {
+                                  echo " <a class='icon item' href='?pagina=$proximo'>
+                                  <i class='right chevron icon'></i>
+                                        </a>";
+                                  }
+
+                                ?>
+                                
+                              </div>
+                            </th>
+                          </tr></tfoot>
       </table>
