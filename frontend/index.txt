@@ -9,15 +9,15 @@
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
 			<ul>
-				<li><a href="../index.html">Home</a></li>
+				<li><a href="../index.php">Home</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<li><a href="login.html">Login</a></li>
 			</ul>
 		</div>

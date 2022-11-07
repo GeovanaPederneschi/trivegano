@@ -18,6 +18,7 @@ include('../backend/session_start.php');
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
+    <script src='../js/jquery-3.5.1.min.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
@@ -29,10 +30,7 @@ include('../backend/session_start.php');
 
 </head>
 <body>
- <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script> 
+
 <script src="../css/semantic/semantic.min.js"></script>
 
     
@@ -41,15 +39,26 @@ include('../backend/session_start.php');
 		<div class="logo">
 			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
 		</div>
+        <!-- nav -->
 		<div class="catalogo">
-			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+            <!-- menu -->
+			<ul class='items'>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
-				<li><a href="home_receitas.php">Receitas</a></li>
-				<li><a href="guia.html">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a  href="home_receitas.php">Receitas</a></li>
+				<li><a href="home_guia.php">Guia</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 				
 			</ul>
 		</div>
@@ -60,7 +69,7 @@ include('../backend/session_start.php');
 		</div>
 	</header>
 
-<script src='../js/jquery-3.5.1.min.js'></script>
+
 <script  src="js/script.js"></script>
 
 
@@ -319,10 +328,7 @@ include('../backend/session_start.php');
                         
                     </ul>
                 </div>
-                <!-- <div class="blank"></div>
-                <div class="ifield MR">
-                    <button class="btn3" id="mylocation"><span>ADD NEW ADDRESS</span></button>
-                </div> -->
+                <!-- -->
            </div>
         </div>
 
@@ -334,53 +340,77 @@ include('../backend/session_start.php');
                 Cookies.set('cep', $(this).children().first().text());
                 location.reload(true);
             })
+            
         </script>
 
     </div>
 </div>
+
+<?php include('modal.php');?>
+
+<script>
+     if(Cookies.get('passo1')==3){
+            console.log('mano');
+             UIkit.modal('#modal-center14').show();
+            Cookies.remove('passo1');
+             
+        };
+    $.ajax({
+        url:'carrinho_itens.php',
+        method:'POST',
+        dataType:'json'
+    }).done(function(result){
+
+    })
+</script>
   
 <nav class="uk-navbar-container uk-margin" style="margin-left:15%; margin-right:15%;" uk-navbar>
     <div class="uk-navbar-left">
 
         <a class="uk-navbar-item uk-logo" href="#">
-            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span></button>
+            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span>
+            <?php
+                if(isset($_SESSION['quant_prod_cod'])){
+                 echo"   <span class='digit'>".array_sum($_SESSION['quant_prod_cod'])."</span>";
+                }
+            ?></button>
 
             <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
             <div class="uk-offcanvas-bar uk-width-1-3">
 
             <button class="uk-offcanvas-close" type="button" uk-close></button>
 
-            <?php
-                include('../cadastro/conexao.php');
-                include('carrinho.php');
+                <?php
+                    include('../cadastro/conexao.php');
+                    include('carrinho.php');
 
-            if(array_key_exists('compra', $_POST)) {
-                carrinho($_POST['compra']);
+                if(array_key_exists('compra', $_POST)) {
+                    carrinho($_POST['compra']);
 
-            }
+                }
 
-			if(!empty($_SESSION['pedido'])){
-               mostrarCarrinho($con);
-            }
-            else{
-               ?>
+                if(!empty($_SESSION['pedido'])){
+                mostrarCarrinho($con);
+                }
+                else{
+                ?>
+           
 
+                        <div class="grid-6">
+                        <div class="forgotIMG">
+                            <img src="../icones/images/cartEmpty.svg" alt="">
+                        </div>
+                        <div class="welcome-head">
+                            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
+                            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
+                        </div>  
+                        <div class="blank"></div>
+                    </div>
+                <?php
+                    
+                }
 
-        <div class="grid-6">
-        <div class="forgotIMG">
-            <img src="../icones/images/cartEmpty.svg" alt="">
-        </div>
-        <div class="welcome-head">
-            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
-            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
-        </div>  
-        <div class="blank"></div>
-       </div>
-            <?php
-                var_dump($_COOKIE);
-            }
-
-            ?>
+                ?>
 
 
             </div>
@@ -391,7 +421,13 @@ include('../backend/session_start.php');
             $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').on('click', function(){
                 //console.log('AEEE');
                 //$('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list').css('display','none');
-            })
+            });
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar .uk-flex .botao').click(function(){
+                //console.log('AEEE');
+                $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar').submit();
+                var cod = $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar #cod').val();
+                Cookies.set('editar_cod', true)
+            });
         </script>
 
         <ul class="uk-navbar-nav">
@@ -513,29 +549,28 @@ include('../backend/session_start.php');
 
 <!-- ROLAGEM DE PROMOCOES -->
  
-<div id="promocao" uk-slider style="margin: 1%;" autoplay attoplay-interval="3500">
+<div id="box_promocao" uk-slider style="margin: 1%;" autoplay attoplay-interval="3500" style='cursor:auto;'>
 
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
 
         <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-height-small uk-grid-small">
-            <li>
-                <img src="../trivegano/first_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/acima4_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/acima50_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/verao_st_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/molde_imagem_promocao.jpg" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/molde_imagem_promocao.jpg" width="400" alt="">
-            </li>
+            <?php
+
+            include('../cadastro/conexao.php');
+            mysqli_query($con,"SET NAMES 'utf8'");  
+            mysqli_query($con,'SET character_set_connection=utf8');  
+            mysqli_query($con,'SET character_set_client=utf8');  
+            mysqli_query($con,'SET character_set_results=utf8'); 
+            $query=mysqli_query($con,"SELECT * FROM tb_promocao WHERE status_promocao='ativo';");
+
+            while($promocao = mysqli_fetch_array($query)){
+                echo"<li class='uk-transition-toggle'>
+                <input type='hidden' name='token' id='token' value='$promocao[1]'>
+                    <img  class='uk-transition-scale-up uk-transition-opaque' src='../trivegano/promocao/$promocao[11]' width='400' alt=''>
+                </li>";
+            }
+
+            ?>
             
         </ul>
 
@@ -543,8 +578,15 @@ include('../backend/session_start.php');
         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
 
     </div>
-
-    <!-- <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul> -->
+    
+   <script>$(' #box_promocao .uk-position-relative .uk-slider-items .uk-transition-toggle').click(function(){
+        console.log('aii');
+        var token = $(this).children().first().val();
+        console.log(token);
+        //token.setSelectionRange(0,99999)
+        navigator.clipboard.writeText(token);
+        UIkit.notification({message: '<span uk-icon=\'icon: copy\'></span> Token Copiado', status: 'danger',pos: 'top-right'});
+   })</script>
 
 </div>
 <!-- RECEITAS -->
@@ -687,7 +729,7 @@ include('../backend/session_start.php');
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -695,7 +737,7 @@ include('../backend/session_start.php');
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>
@@ -706,7 +748,7 @@ include('../backend/session_start.php');
 				<ul>
 					<li><a href="home_receitas.php">Receitas</a></li>
 					<li><a href="menu.php">Menu</a></li>
-					<li><a href="guia.html">Guia</a></li>
+					<li><a href="home_guia.php">Guia</a></li>
 				</ul>
 			</div>
 

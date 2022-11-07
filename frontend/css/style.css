@@ -5,14 +5,17 @@
     font-family: 'Ubuntu', sans-serif;
   }
   
+  
   body, html{
   
     width: 100%;
-    height: auto;
+    height: 100%;
     background: #dfc4a6;
     z-index: 1;
     /*background-image: linear-gradient(to right, #005416, #c1d948);*/
   }
+
+ 
   
   header {
     width: 100%;
@@ -33,7 +36,9 @@
   
   .catalogo {
     display: flex;
-    /*justify-content: space-around;*/
+    justify-content: space-around;
+    margin-top:2%;
+    
   }
   
   .catalogo ul {
@@ -52,6 +57,8 @@
     color: #969f2a;
     font-size: 1rem;
   }
+
+  
   
   .hamburger {
     visibility: none;
@@ -71,6 +78,7 @@
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
     cursor: pointer;
+    z-index: 4;
   }
   
   .hamburger span {
@@ -103,6 +111,7 @@
     top: 33.5px;
   }
   
+  
   .hamburger.open span:nth-child(1) {
     top: 21.5px;
     -webkit-transform: rotate(135deg);
@@ -122,14 +131,24 @@
     -moz-transform: rotate(-135deg);
     -o-transform: rotate(-135deg);
     transform: rotate(-135deg);
+    
   }
   
   .catalogo.open {
-    z-index: 2;
+    z-index: 10;
     transform: translateX(0%);
     transition: transform 0.3s ease-in;
+     position: fixed; top: 7%; left: 0;
+  }
+
+  
+  
+  .fixed{
+    z-index: 2; position: fixed; top: 0; left: 0;
     
   }
+
+  
   
   @media(max-width: 480px){ /*dispositivos moveis*/
     body {
@@ -411,7 +430,7 @@
   
   .welcome-titulo {
     float: right;
-    padding-top: 70px;
+    padding-top: 80px;
     font-size: 3em;
     width: 400px;
     height: auto;
@@ -724,9 +743,9 @@ ul{
   cursor: pointer;
 }
 
-#promocao li{
+#box_promocao img{
   cursor: pointer;
-}
+} 
 #message{
   /* margin-left:5%;
   margin-right: 7%; */
@@ -753,4 +772,131 @@ ul{
 .ui.ribbon.label{
   left: calc(-6.1rem - 1.2em);
     top: -19rem;
+}
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-left: 7%;
+}
+
+.btn {
+  min-width: 260px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+background: linear-gradient(90deg, rgba(205,133,63,1) 0%, rgba(160,82,45,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(160,82,45,1);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  margin-top: 2%;
+  }
+
+.btn::before{
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #A0522D;
+  box-shadow: 0 0 60px rgba(160,82,45,1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.btn:hover, .btn:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.btn:hover::before, btn:focus::before {
+  opacity: 1;
+}
+
+.btn::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #A0522D;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+btn:hover::after, btn:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+.botao {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: 2px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.botao:hover, .botao:focus {
+  color: #fff;
+  outline: 0;
+  
+}
+.third {
+  border-color: #e0a212;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #e0a212 inset, 0 0 0 0 #e0a212;
+  -webkit-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+}
+.third:hover {
+  box-shadow: 0 0 10px 0 #e0a212 inset, 0 0 10px 4px #e0a212;
 }

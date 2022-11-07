@@ -22,17 +22,27 @@
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
 			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                session_start();
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 			</ul>
 		</div>
 	</header>
@@ -72,30 +82,20 @@
 
     <?php
   
-    //SESSION_START();
+    
     include "../cadastro/conexao.php";
-    /* puxar o cod da receita e salvar em var */
-    $codx=$_POST['codx'];
-
-	//echo $codx;
-    /* salvar essa var em array de session de usu campo correspondente a CODX */
-    // $_SESSION['CODX']=$codx;
-    /* selecionar na tab de produtos o produto correspondente ao cod */
+    
     $comando= "select * from tb_receitas where id_receitas=$codx";
     $resulta = mysqli_query($con,$comando);
-    /* $comando= "select * from tb_imagem_receitas;";
-                $resulta = mysqli_query($con,$comando); */
+   
     if ($registro = mysqli_fetch_array($resulta))
     {
             $comando="select descricao_categoria from tb_categoria 
             where id_categoria='$registro[4]';";
             $categoria = mysqli_query($con,$comando);
 
-            /* while ($row = $categoria->fetch_assoc()) {
-                //echo $row['descricao_categoria']."<br>";
-            } */
         if($row = mysqli_fetch_array($categoria)){
-            //$row1 = $row['descricao_categoria'];
+           
                     
             $titulo = mysqli_query($con,"select * from tb_imagem_receitas 
                 where tb_receitas_id_receitas='$codx';");
@@ -146,7 +146,7 @@
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -154,7 +154,7 @@
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

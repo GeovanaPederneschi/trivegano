@@ -77,7 +77,7 @@
       cursor: pointer;
       background-color: transparent;
     }
-    #visualizar, #editar{
+    #visualizar, #editar, #deletar{
       background-color: transparent;
       cursor: pointer;
     }

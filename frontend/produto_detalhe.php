@@ -21,41 +21,46 @@ include('../backend/session_start.php');
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
     
+    <script src='../js/jquery-3.5.1.min.js'></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 
-    
-	<link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/styleCarrinho.css">
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+	
 
-    <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
-    <script src="../css/semantic/semantic.min.js"></script>
+   
 
-  
+  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleCarrinho.css">
 </head>
 
 
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+			<ul class='items'>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+               
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 			</ul>
 		</div>
 	</header>
@@ -64,8 +69,7 @@ include('../backend/session_start.php');
 		  <span></span>
 		  <span></span>
 	</div>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="js/script.js"></script>
-    <script src='https://code.jquery.com/jquery-3.6.1.min.js' integrity='sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=' crossorigin='anonymous'></script>
+	<script  src="js/script.js"></script>
 
   
 <nav class="uk-navbar-container uk-margin" style="margin-left:15%; margin-right:15%;" uk-navbar>
@@ -73,7 +77,12 @@ include('../backend/session_start.php');
 
         <!inico do botão do carrinho-->
         <a class="uk-navbar-item uk-logo" href="#">
-            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span></button>
+            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span>
+            <?php
+                if(isset($_SESSION['quant_prod_cod'])){
+                 echo"   <span class='digit'>".array_sum($_SESSION['quant_prod_cod'])."</span>";
+                }
+            ?></button>
 
             <div id="offcanvas-flip" class="flip" uk-offcanvas="flip: true; overlay: true">
             <div class="uk-offcanvas-bar uk-width-1-3">
@@ -81,7 +90,7 @@ include('../backend/session_start.php');
             <button class="uk-offcanvas-close" type="button" uk-close></button>
 
             <?php
-            
+             //var_dump($_POST);
             
             
             include('../cadastro/conexao.php');
@@ -97,24 +106,25 @@ include('../backend/session_start.php');
                mostrarCarrinho($con);
             }
             else{
+            
                ?>
+            
 
-
-        <div class="grid-6">
-        <div class="forgotIMG">
-            <img src="../icones/images/cartEmpty.svg" alt="">
-        </div>
-        <div class="welcome-head">
-            <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
-            <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
-        </div>  
-        <div class="blank"></div>
-       </div>
+                    <div class="grid-6">
+                    <div class="forgotIMG">
+                        <img src="../icones/images/cartEmpty.svg" alt="">
+                    </div>
+                    <div class="welcome-head">
+                        <h3 class="uk-flex uk-flex-center">Carrrinho Vazio</h3>
+                        <span class="caption">Boa comida você encontra aqui! Vá em frente, peça alguma comida gostosa no menu.</span>
+                    </div>  
+                    <div class="blank"></div>
+                    </div>
             <?php
                
                 
             }
-
+            
             ?>
 
             </div>
@@ -123,15 +133,13 @@ include('../backend/session_start.php');
 
        <!final do botão do carrinho-->
        <script>
-            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').on('click', function(){
-                //console.log('AEEE');
-                $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar').submit();
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-flex .botao').click(function(){
+                console.log('AEEE');
+                $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list #editar').submit();
                 var cod = $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar #cod').val();
-                Cookies.set('editar_cod', cod)
+                Cookies.set('editar_cod', true);
             });
-            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod .unit form #plus').on('click',function(){
-
-            });
+           
         </script>
 
         <ul class="uk-navbar-nav">
@@ -174,7 +182,7 @@ include('../backend/session_start.php');
                     
                 
            
-                echo "<div class='uk-width-1-2@m' style='margin:2%;'>";
+                echo "<div class='uk-width-1-2@m' style='margin:3%;'>";
                 echo "";
                 echo"    <div>";
                 echo"       <div class ='uk-width-2xlarge'>";
@@ -202,7 +210,7 @@ include('../backend/session_start.php');
                 
 				echo"  </div>";
 				echo" <div class='' style=margin-left:4%;margin-bottom:2%;font-size:20px;margin-right:4%;>";
-                echo"    <div name=informacoes>";
+                echo"    <div name=informacoes><div class='uk-grid'><div>";
                 echo"        <div>";
                 echo"            <h1>$registro[1]</h1>";
                 echo"        </div>";
@@ -213,23 +221,17 @@ include('../backend/session_start.php');
 				echo"			    <span class='uk-label uk-text-center uk-label-warning'>";
                 echo"            		dieta";
 				echo"				</span>";
-                echo"     	 </div>";
-                echo"        <div>
-                                $registro[4]
-                            </div>";
+                echo"     	 </div></div>";
+                echo"        <div style='margin-top:3%;margin-left:50%;'>
+                          R$   ".number_format($registro[4],2,",",".")."
+                            </div></div>";
                 echo"    </div><br>";
 				echo
 								nl2br($registro[3]);
                 echo"</div>";
 
 
-                echo "<div class='uk-flex uk-flex-center'>";
-                echo"<div class='wrap '>";
-                echo"<button class='btn' type='submit' onClick='this.form.submit()' name='compra' value='$registro[0]'>";
-                echo"Adicionar ao Carrinho";
-                echo"</div>
-                    </div>";
-                echo"</button>";
+               
                 echo"    </div>";
                
                
@@ -251,6 +253,7 @@ include('../backend/session_start.php');
 
     while($adicionais=mysqli_fetch_array($query)){
         echo"
+       
                     <li>
                         <a class='uk-accordion-title ' href='#'>$adicionais[1]</a>
                         <div class='uk-accordion-content uk-grid uk-grid-large' >
@@ -263,7 +266,7 @@ include('../backend/session_start.php');
                         <div class='uk-width-1-2' style='padding-left:37%;'>
                         <br>
                             <div style='margin-lft:2%;' class='ui toggle checkbox '>
-                            <input type='checkbox' value='$adicionais[0]' name='adicional[]'>
+                            <input type='checkbox' value='$adicionais[0]' name='adicional[$registro[0]][]'>
                             <label></label>
                             </div>
                         </div>
@@ -283,6 +286,13 @@ include('../backend/session_start.php');
         
         </div>
         ";
+        echo "<div style='margin-left: 34%;'>";
+        echo"<div class='wrap '>";
+        echo"<button class='btn' type='submit' onClick='this.form.submit()' name='compra' value='$registro[0]'>";
+        echo"Adicionar ao Carrinho";
+        echo"</div>
+            </div>";
+        echo"</button>";
     
     
     $close = mysqli_close($con);
@@ -298,7 +308,7 @@ include('../backend/session_start.php');
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -306,7 +316,7 @@ include('../backend/session_start.php');
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

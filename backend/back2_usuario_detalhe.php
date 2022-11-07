@@ -282,7 +282,7 @@ include_once('session_start.php');
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -290,7 +290,7 @@ include_once('session_start.php');
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="../frontend/faq.html">FAQ</a></li>
+					<li><a href="../frontend/faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

@@ -175,3 +175,14 @@
   margin-top:30%;
 
 }
+.digit{
+  position: absolute;
+    background: #BC2C3D;
+    color: #FFF;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 16px;
+}

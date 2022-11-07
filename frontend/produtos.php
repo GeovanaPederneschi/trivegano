@@ -30,17 +30,28 @@ include('../backend/session_start.php');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
 			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+                    //     $cod = $_SESSION['cod_fornecedor'][0];
+                    // $query=mysqli_query($con,"SELECT * FROM tb_usa WHERE id_fornecedor = $cod");
+                    // if($fornecedor=mysqli_fetch_array($query)){
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 				
 			</ul>
 		</div>
@@ -57,7 +68,13 @@ include('../backend/session_start.php');
     <div class="uk-navbar-left">
 
         <a class="uk-navbar-item uk-logo" href="#">
-            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span></button>
+            <button class="uk-button uk-button-default" type="button" uk-toggle="target: #offcanvas-flip" style="border: none;"><span uk-icon="bag"></span>
+            <?php
+                if(isset($_SESSION['quant_prod_cod'])){
+                 echo"   <span class='digit'>".array_sum($_SESSION['quant_prod_cod'])."</span>";
+                }
+            ?>
+            </button>
 
             <div id="offcanvas-flip" uk-offcanvas="flip: true; overlay: true">
             <div class="uk-offcanvas-bar uk-width-1-3">
@@ -107,6 +124,12 @@ include('../backend/session_start.php');
                 //console.log('AEEE');
                 //$('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #list .uk-transition-toggle #prod').css('display','none');
             })
+            $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar .uk-flex .botao').click(function(){
+                //console.log('AEEE');
+                $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar').submit();
+                var cod = $('.uk-navbar-container .uk-navbar-left .uk-navbar-item #offcanvas-flip .uk-offcanvas-bar #editar #cod').val();
+                Cookies.set('editar_cod', true)
+            });
         </script>
 
         
@@ -334,7 +357,7 @@ include('../backend/session_start.php');
     </form>
     </div>
 
-    
+    <?php ?>
     <div class="uk-width-3-4@m" style="margin-top: 1%;">
         <div class="ui link cards uk-grid-row-large uk-grid-column-small  
         uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m " uk grid uk-height-match>
@@ -399,9 +422,17 @@ include('../backend/session_start.php');
                     if($fornecedor = mysqli_fetch_array($query)){
                         $apiKey = 'AIzaSyBzQCRKSKFi7AwHMynJuFb_aa4NH7l6-qM';
 
+                    //   echo'  <div class="ui segment" id="loader">
+                    //     <div class="ui active inverted dimmer">
+                    //         <div class="ui text loader">Carregando</div>
+                    //     </div>
+                    //     <p></p>                       
+                    // </div>';
+
                         $address = file_get_contents('https://maps.googleapis.com/maps/api/distancematrix/json?origins='.$fornecedor[12].'&destinations='.$_COOKIE['cep'].'&key='.$apiKey);
                         $distance = json_decode($address);
                         if($distance->status == 'OK'  && $distance->rows[0]->elements[0]->status == 'OK'){
+                            //echo"<srcipt>$('#loader').css('display','none');<script>";
                             $dist_value = $distance->rows[0]->elements[0]->distance->value;
                             $dist_text = $distance->rows[0]->elements[0]->distance->text;
 
@@ -437,7 +468,7 @@ include('../backend/session_start.php');
                                                         <div class='content' style='padding:1%;'>
                                                         <a class='ui red ribbon label'>".ucfirst($row[0])."</a>
                                                         <div class='uk-grid-large'>
-                                                        <span>$registro[4]</span>";
+                                                        <span>R$ ".number_format($registro[4],2,",",".")."</span>";
                                                         echo "<span>$dist_text</span></div>";
                                                         /* </div>
                                                         <div class='content uk-grid-large' style='padding:1%;'>
@@ -500,7 +531,7 @@ include('../backend/session_start.php');
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -508,7 +539,7 @@ include('../backend/session_start.php');
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

@@ -95,7 +95,7 @@
 
                     <td>
                     <form name='form2'  method='GET' action='receita_detalhe.php' >
-                    <input type='hidden' value='$pc]' name='pagina'>
+                    
                         <button name='editar' style='border:none;' id='editar'  type='submit' 
                         value='$receita[0]'>
                           <label for='codxv'><i class='big circular pencil alternate icon'></i></label>
@@ -108,7 +108,7 @@
 
                       <button type='submit' name='deletar' id='deletar' style='border:none;' value='$receita[0]'>
 
-                          <label for=''><i class='big circular trash alternate icon'></i></label>
+                          <label for='codxv'><i class='big circular trash alternate icon'></i></label>
 
                           </button>
                     </form>

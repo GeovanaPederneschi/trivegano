@@ -22,17 +22,27 @@
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
 			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                session_start();
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 			</ul>
 		</div>
 	</header>

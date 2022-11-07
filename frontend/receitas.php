@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano</title>
-	<link rel="stylesheet" href="css/style.css">
+	
 	
 	<!-- UIKIT -->
 	<link rel="stylesheet" href="../css/uikit.min.css" />
@@ -12,22 +12,38 @@
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+    
+    
+    <script src='../js/jquery-3.5.1.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+			<ul class='items'>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                session_start();
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 			</ul>
 		</div>
 		<div class="hamburger">
@@ -224,7 +240,7 @@
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -232,7 +248,7 @@
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

@@ -30,17 +30,27 @@
 <script src="../css/semantic/semantic.min.js"></script>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+			<ul class='items'>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                session_start();
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 			</ul>
 		</div>
 		<div class="hamburger">
@@ -75,6 +85,7 @@
 </div>
 
 <!-- NAVBAR -->
+
 
 <nav class="uk-navbar-container uk-margin" style="margin-left:15%; margin-right:15%;" uk-navbar>
     <div class="uk-navbar-left">
@@ -152,6 +163,7 @@
 
             <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
                     <?php
+                    
                         include "../cadastro/conexao.php";
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
@@ -221,7 +233,7 @@
 
         <!-- IMAGEM COM INFORMACOES -->
 
-        <div class="uk-height-large uk-background-cover uk-overflow-hidden uk-dark uk-flex" style="background-image: url('../trivegano/leaves-4754980_1920.jpg'); margin-bottom:4%;">
+        <div class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex" style="background-image: url('../trivegano/healthy-breakfast.jpg'); margin-bottom:4%;">
             <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">
                 <h1 uk-parallax="opacity: 0,1; y: -100,0; scale: 2,1; end: 50vh + 50%;">Headline</h1>
                 <p uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -360,15 +372,19 @@
 
     <div class="uk-width-1-5@m" style="padding-left: 0;">
         <div class="uk-section uk-dark" style="padding-bottom:0;">
-            <div class="uk-container" style="padding-left: 7%;" uk-grid>
+            <div class="" style="padding-right:2%; text-align: justify; " uk-grid>
 
-                <h3>Nossas Guias</h3>
+            <h3 class="ui header">
+            <i class="thumbtack icon"></i>
+            <div class="content">Nossas Guias<div class="sub header">Gerenciar preferencias</div>
+            </div>
+            </h3>
 
-                <div>
-                    <p>Um dos compromissos do trivegano é a acessibilidade dos nossos consumidores.
+                
+                    <p>Um dos compromissos da equipe trivegano é a acessibilidade dos nossos consumidores.
                         
                     </p>
-                </div>
+                
                 <div>
                     <p>A criação de uma plataforma que tivesse o preço justo estava intrínseca a disponibilidade de 
                         conteúdos de baixo custo que pudesse ajudar os mais diversos tipos de consumidores.</p>
@@ -418,10 +434,33 @@
             </div>
 
         </div>
+
+        
         <div  class="uk-flex uk-flex-center">
             <img style="margin-top:10%;margin-bottom:10%;" src="../trivegano/Foodies_-_Food_Delivery_1-removebg-preview.png" alt="">
         </div>
+        
+        <!-- <div class="uk- flex -uk-flex-center ui statistic">
+            <div class="value">
+                5,550
+            </div>
+            <div class="label">Downloads </div>
+        </div>
+        
+ -->
+ <div class="ui center aligned basic segment" style="margin-right: 5%;">
+ <h4 class="ui center aligned icon header"><i class="newspaper icon"></i> Conheça Nossa Newsletter </h4>
+  <div class="ui left icon action input">
+    <i class="search icon"></i>
+    <input type="text" placeholder="@" style='width:10%;'>
+    <div class="ui blue submit button">ASSINE</div>
+  </div>
+  <div class="ui horizontal divider">Ou </div>
+  <!-- <div class="ui teal labeled icon button">Create New Order <i class="add icon"></i> </div> -->
+  <button class="ui instagram red button"><i class="instagram icon"></i> Instagram </button>
+</div>
     </div>
+
 </div>
 
 
@@ -434,7 +473,7 @@
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -442,7 +481,7 @@
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

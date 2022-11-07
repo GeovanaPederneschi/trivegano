@@ -18,26 +18,65 @@
                 $_SESSION['quant_prod_cod']= $quantidade_cod;
                 $quantidade_cod = $_SESSION['quant_prod_cod'];
                 //verifica se o produto tem adicional cadastrado
-                if(isset($_SESSION['adicional'][$produto[0]])){
-                    $adicional=$_SESSION['adicional'];
+                if(isset($_SESSION['adicional'][$produto[1]])){
+                    $adicional=$_SESSION['adicional'][$produto[1]];
                     //laço de repetição para cada quantidade
                     for($z=1;$z<=$quantidade_cod[$name];$z++){
                         //no primeiro laço recebe 
                     
-                        if($z==1){
+                        
+                            if($z==1){
                             
-                            $_SESSION['ras']=array($adicional[$produto[0]]);
+                                //$_SESSION['ras']=array($adicional[$produto[0]]);
+                                $nome=$name.$z;
+                                $_SESSION['adicional'.$produto[0]]=array($nome=>$adicional);
+                            }
+                            else{
+                                $nome=$name.$z;
+                                $result=array_merge($_SESSION['adicional'.$produto[0]],array($nome=>$adicional));
+                                $_SESSION['adicional'.$produto[0]]=$result;
+                            }
+                       /*  }
+                        else{
+
+                            $nome=$name.$z;
+                            $result=array_merge($_SESSION['adicional_quant'],array($nome=>$adicional));
+                            $_SESSION['adicional_quant']=$result;
+
+                        }  */
+
+
+                       /*  if($z==1 && !isset($_SESSION['adicional_item'])){
+                            
+                            //$_SESSION['ras']=array($adicional[$produto[0]]);
+                            $nome=$name.$z;
+                            $name_=str_replace(" ","",$name);
+                            $result=array($nome=>$adicional);
+
+                            $_SESSION['adicional_quant']=array($name_=>$result);
                         }
                         else{
-                            $result=array_merge($_SESSION['ras'],array($z=>$adicional[$produto[0]]));
-                            $_SESSION['ras']=$result;
-                        }
+                            $nome=$name.$z;
+                            $name_=str_replace(" ","",$name);
+                            
+
+                            if(!isset($_SESSION['adicional_item'][$name])){
+                                
+                                $result=array_merge($_SESSION['adicional_quant'],array($name_=>array($nome=>$adicional)));
+                                $_SESSION['adicional_quant']=$result;
+                            }
+                            else{
+                                $result=array_merge($_SESSION['adicional_quant'],array($name=>array($nome=>$adicional)));
+                                echo $result;
+                                $_SESSION['adicional_quant']=$result;
+                            }
+                            
+                            
+                        } */
+                            
                         
                     }
-                        //var_dump($_SESSION['ras']);
-                         $adicional_quant = array($name => $_SESSION['ras']);
-                         $_SESSION['adicional_quant'] = $adicional_quant;
-                         unset($_SESSION["ras"]);
+                        
                 }
                 echo"
                 <script>

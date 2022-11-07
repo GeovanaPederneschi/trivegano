@@ -17,12 +17,17 @@
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+
+  <script src='../js/jquery-3.5.1.min.js'></script>
+
+   <!-- SEMANTIC -->
+   <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
+  <script src="../css/semantic/semantic.min.js"></script>
+  <!-----  ------->
 	<link rel="stylesheet" href="../frontend/css/style.css">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    
 </head>
 <style>
     #grid{
@@ -43,7 +48,7 @@
     }
 </style>
 <body>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+	<script  src="./script.js"></script>
 
 <div uk-grid>
 <div class="uk-width-1-5@m">
@@ -160,12 +165,11 @@
         </div>
 </div>
 
-
-
-	<!-- <div class="textoTela1">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut. Ut libero enim, blandit eget tortor vitae, cursus ultricies dui. Etiam eu metus consequat, vehicula nibh vitae, euismod magna. Aenean suscipit quam ipsum, quis fermentum nibh rutrum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum urna eu elit porta, condimentum rutrum metus accumsan. Sed lacinia, quam non vehicula vehicula, nisl neque egestas ligula, blandit sodales eros dolor eget dui. Etiam ullamcorper quis metus et porta. Curabitur pulvinar turpis non dolor laoreet, ac condimentum metus efficitur. Nunc vehicula a purus accumsan congue. Etiam semper purus metus, vitae aliquet ante ornare sit amet. Nullam in massa id magna sollicitudin vestibulum.
-	</div> -->
-	
+<script>
+  $('.ui.rating')
+  .rating()
+;
+</script>
 <footer class="footer">
 	<div class="container">
 		<div class="row">
@@ -174,7 +178,7 @@
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -182,7 +186,7 @@
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>

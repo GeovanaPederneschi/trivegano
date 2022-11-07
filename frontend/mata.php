@@ -1,0 +1,2 @@
+<?php session_start();
+ unset($_SESSION['idcarrinho']); unset($_SESSION['carr_quant_prod']);unset($_SESSION['adicional']);unset($_SESSION['valorcompra']);unset($_SESSION['quant_prod_cod']);unset($_SESSION['codfornecedor']);unset($_SESSION['pedido']);?>

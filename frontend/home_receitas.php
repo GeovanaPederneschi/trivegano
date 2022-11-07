@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano</title>
 	
+   
+
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
 	rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
@@ -22,17 +24,27 @@
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.html"><img src="../trivegano/logo1.png"></a>
+			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="faq.html">FAQ</a></li>
+			<ul class='items'>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="faq.php">FAQ</a></li>
 				<li><a href="menu.php">Menu</a></li>
 				<li><a href="home_receitas.php">Receitas</a></li>
 				<li><a href="home_guia.php">Guia</a></li>
-				<li><a href="sobrenos.html">Sobre nós</a></li>
-				<li><a href="../cadastro/login.html">Login</a></li>
+				<li><a href="sobrenos.php">Sobre nós</a></li>
+				<?php 
+                include('../cadastro/conexao.php');
+                session_start();
+                    if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
+
+                        echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
+                    }
+                    else{
+                        echo"<li><a href='../cadastro/login.html'>Login</a></li>";
+                    }
+                ?>
 			</ul>
 		</div>
 		<div class="hamburger">
@@ -67,6 +79,7 @@
 </div>
 
 <!-- NAVBAR -->
+
 
 <nav class="uk-navbar-container uk-margin" style="margin-left:15%; margin-right:15%;" uk-navbar>
     <div class="uk-navbar-left">
@@ -362,29 +375,29 @@
 
 <!-- ROLAGEM DE PROMOCOES -->
  
-<div id="promocao" uk-slider style="margin: 2%;" autoplay attoplay-interval="3500">
+<div id="box_promocao" uk-slider style="margin: 1%;" autoplay attoplay-interval="3500" style='cursor:auto;'>
 
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
 
         <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-height-small uk-grid-small">
-            <li>
-                <img src="../trivegano/first_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/acima4_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/acima50_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/verao_st_promocao.png" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/molde_imagem_promocao.jpg" width="400" alt="">
-            </li>
-            <li>
-                <img src="../trivegano/molde_imagem_promocao.jpg" width="400" alt="">
-            </li>
+            <?php
+
+            include('../cadastro/conexao.php');
+            mysqli_query($con,"SET NAMES 'utf8'");  
+            mysqli_query($con,'SET character_set_connection=utf8');  
+            mysqli_query($con,'SET character_set_client=utf8');  
+            mysqli_query($con,'SET character_set_results=utf8'); 
+            $comando= "select * from tb_imagem_receitas;";
+            $query=mysqli_query($con,"SELECT * FROM tb_promocao WHERE status_promocao='ativo';");
+
+            while($promocao = mysqli_fetch_array($query)){
+                echo"<li class='uk-transition-toggle'>
+                <input type='hidden' name='token' id='token' value='$promocao[1]'>
+                    <img  class='uk-transition-scale-up uk-transition-opaque' src='../trivegano/promocao/$promocao[11]' width='400' alt=''>
+                </li>";
+            }
+
+            ?>
             
         </ul>
 
@@ -392,8 +405,14 @@
         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
 
     </div>
-
-    <!-- <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul> -->
+    
+   <script>$('#box_promocao .uk-position-relative .uk-slider-items li img').click(function(){
+        console.log('aii');
+        var token = $('#box_promocao .uk-position-relative .uk-slider-items li #token').val();
+        //token.setSelectionRange(0,99999)
+        navigator.clipboard.writeText(token);
+        UIkit.notification({message: '<span uk-icon=\'icon: copy\'></span> Token Copiado', status: 'danger',pos: 'top-right'});
+   })</script>
 
 </div>
 
@@ -405,7 +424,7 @@
 			<div class="footer-col">
 				<h4>Quem Somos</h4>
 				<ul>
-					<li><a href="sobrenos.html">Visite Nossa Página</a></li>
+					<li><a href="sobrenos.php">Visite Nossa Página</a></li>
 				</ul>
 			</div>
 
@@ -413,7 +432,7 @@
 			<div class="footer-col">
 				<h4>Procure Ajuda</h4>
 				<ul>
-					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="fale.html">Fale Conosco</a></li>
 				</ul>
 			</div>
