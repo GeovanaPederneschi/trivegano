@@ -84,6 +84,7 @@
   
     
     include "../cadastro/conexao.php";
+	$codx=$_POST['codx'];
     
     $comando= "select * from tb_receitas where id_receitas=$codx";
     $resulta = mysqli_query($con,$comando);

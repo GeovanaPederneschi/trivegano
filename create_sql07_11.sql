@@ -183,7 +183,7 @@ CREATE TABLE `tb_comentario` (
   `foto_usuario` varchar(45) DEFAULT NULL,
   `nome_usuario` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_comentario`,`tb_guia_id_guia`,`tb_cliente_id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +192,7 @@ CREATE TABLE `tb_comentario` (
 
 LOCK TABLES `tb_comentario` WRITE;
 /*!40000 ALTER TABLE `tb_comentario` DISABLE KEYS */;
-INSERT INTO `tb_comentario` VALUES (14,'Melhor receita do mundo',2,3,NULL,'2022-11-04','joao3.jpg','João'),(23,'Trivegano o melhor',2,3,NULL,'2022-11-04','joao3.jpg','João'),(28,'Vcs me ajudam muito como ser humano!!',2,3,NULL,'2022-11-04','joao3.jpg','João'),(29,'Olha que coisa mais linda mais cheia de graça',2,3,NULL,'2022-11-04','joao3.jpg','João'),(38,'bora la',2,3,NULL,'2022-11-05','joao3.jpg','João'),(54,'e agora',2,3,NULL,'2022-11-05','joao3.jpg','João'),(55,'mds',2,3,NULL,'2022-11-05','joao3.jpg','João'),(56,'mds',2,3,NULL,'2022-11-05','joao3.jpg','João'),(57,'amanha eu faço isso',2,3,NULL,'2022-11-05','joao3.jpg','João'),(58,'amanha eu faço isso',2,3,NULL,'2022-11-05','joao3.jpg','João'),(59,'amanha eu faço isso',2,3,NULL,'2022-11-05','joao3.jpg','João'),(60,'caraca',2,3,NULL,'2022-11-05','joao3.jpg','João'),(61,'caraca',2,3,NULL,'2022-11-05','joao3.jpg','João'),(62,'caraca',2,3,NULL,'2022-11-05','joao3.jpg','João'),(63,'caraca',2,3,NULL,'2022-11-05','joao3.jpg','João'),(64,'Comentario',1,3,NULL,'2022-11-05','joao3.jpg','João'),(65,'ala',1,3,NULL,'2022-11-05',NULL,'João'),(66,'ala',1,3,NULL,'2022-11-05',NULL,'João'),(67,'eai',2,3,NULL,'2022-11-05',NULL,'João');
+INSERT INTO `tb_comentario` VALUES (14,'Melhor receita do mundo',2,3,NULL,'2022-11-04','joao3.jpg','João'),(23,'Trivegano o melhor',2,3,NULL,'2022-11-04','joao3.jpg','João'),(28,'Vcs me ajudam muito como ser humano!!',2,3,NULL,'2022-11-04','joao3.jpg','João'),(29,'Olha que coisa mais linda mais cheia de graça',2,3,NULL,'2022-11-04','joao3.jpg','João');
 /*!40000 ALTER TABLE `tb_comentario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -688,4 +688,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-07  1:19:34
+-- Dump completed on 2022-11-07  1:39:52

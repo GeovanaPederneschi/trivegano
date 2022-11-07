@@ -56,7 +56,7 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
                     //     $cod = $_SESSION['cod_fornecedor'][0];
                     // $query=mysqli_query($con,"SELECT * FROM tb_usa WHERE id_fornecedor = $cod");
@@ -302,7 +302,7 @@
 
       <?php 
       
-        if(!isset($_SESSION['codsuario'])){
+        if(!isset($_SESSION['codusuario'])){
 
           ?><script> $('.div .ui.comments #form1 button').click(function(){
             $('.div .ui.comments #form1').submit(function(e){
