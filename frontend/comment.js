@@ -13,7 +13,7 @@ console.log('MEU DEUS');
         console.log(_comment,_cod);
 
         $.ajax({
-            url:'http://localhost/www/Oficial/frontend/inserir_comment.php',
+            url:'http://localhost/trivegano-main/frontend/inserir_comment.php',
             method: 'POST',
             data:{comment:_comment,cod:_cod},
             dataType:'json'
@@ -40,7 +40,7 @@ function getComments(_cod) {
     var _cod = $('#cod').val();
     console.log(_cod);
     $.ajax({
-        url: 'http://localhost/www/Oficial/frontend/selecionar_comments.php',
+        url: 'http://localhost/trivegano-main/frontend/selecionar_comments.php',
         method: 'POST',
         data:{cod:_cod},
         dataType: 'json'

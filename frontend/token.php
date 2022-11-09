@@ -5,7 +5,7 @@ header('Content-Type:application/json');
 $token = $_POST['token'];
 
 
-$pdo = new PDO('mysql:host=localhost; dbname=trivegano;', 'root', '20050213');
+$pdo = new PDO('mysql:host=localhost; dbname=trivegano;', 'root', '');
 
     $stmt = $pdo->prepare("SELECT * FROM tb_promocao WHERE token_promocao = :token AND status_promocao = 'ativo';");
     $stmt -> bindValue(':token',$token);

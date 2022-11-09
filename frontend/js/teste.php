@@ -2,7 +2,7 @@
 <?php
    $cod='2';
 
-   $pdo = new PDO('mysql:host=localhost; dbname=trivegano;','root','20050213');
+   $pdo = new PDO('mysql:host=localhost; dbname=trivegano;','root','');
 
    $stmt = $pdo->prepare("SELECT * FROM tb_comentario WHERE tb_guia_id_guia = $cod ");
    $stmt->execute();

@@ -5,7 +5,7 @@
     
     $cod=$_POST['cod'];
 
-    $pdo = new PDO('mysql:host=localhost; dbname=trivegano;', 'root', '20050213');
+    $pdo = new PDO('mysql:host=localhost; dbname=trivegano;', 'root', '');
 
     $stmt = $pdo->prepare("SELECT * FROM tb_comentario WHERE tb_guia_id_guia= :co");
     $stmt -> bindValue(':co',$cod);

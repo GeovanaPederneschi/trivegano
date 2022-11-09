@@ -1,13 +1,8 @@
-<style>
-    .segment{
-        cursor:pointer;
-    }
-</style>
 <?php
-
+include('../cadastro/conexao.php');
+session_start();
 $query=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE status_venda='enviada' and tb_fornecedor_id_fornecedor=$_SESSION[codfornecedor];");
 while($venda=mysqli_fetch_array($query)){
-    // var_dump($venda);
 
     echo"
         <div class='ui segment uk-transition-toggle'>
@@ -69,23 +64,3 @@ while($venda=mysqli_fetch_array($query)){
 }
     
 ?>
-
-<div id="modal-center1" class="uk-flex-top" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        
-
-    </div>
-</div>
-
-<script>
-    $('#conteudo ul li .ui.segment .ui.cards .card .content').click(function(){
-        var cod = $(this).children().first().val();
-        UIkit.modal('#modal-center1').show();
-        console.log(cod);
-    })
-</script>
-            
-          

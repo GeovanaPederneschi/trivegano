@@ -1,6 +1,3 @@
-<?php
-include('session_start.php');
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,16 +17,17 @@ include('session_start.php');
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
+
   <script src='../js/jquery-3.5.1.min.js'></script>
 
-   
    <!-- SEMANTIC -->
    <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
   <script src="../css/semantic/semantic.min.js"></script>
   <!-----  ------->
-
-  <link rel="stylesheet" href="../frontend/css/style.css">
+	<link rel="stylesheet" href="../frontend/css/style.css">
     <link rel="stylesheet" href="style.css">
+
+    
 </head>
 <style>
     #grid{
@@ -39,6 +37,9 @@ include('session_start.php');
     padding-left: 20px;
     margin:0;
     }
+    /* .footer{
+        margin-top:80%;
+    } */
     #avatar{
       margin:center;
     }
@@ -47,43 +48,7 @@ include('session_start.php');
     }
 </style>
 <body>
-  <script  src="./script.js"></script>
-
-    <div id="offcanvas-push" class="push" uk-offcanvas=" mode:push; overlay: true">
-    <div class="uk-offcanvas-bar uk-width-3-5">
-
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-
-        <?php
-
-        include('functions.php');
-          
-          if(array_key_exists('visualizar', $_GET)){
-            $cod=$_GET['visualizar'];
-            echo"
-            <script>
-            UIkit.offcanvas('.push').show();
-            </script>
-            ";
-            visualizarProdutos($cod);
-            
-            
-          }
-          if(array_key_exists('editar', $_GET)){
-            $cod=$_GET['editar'];
-            echo"
-            <script>
-            UIkit.offcanvas('.push').show();
-            </script>
-            ";
-            editarProdutos($cod);
-          }
-        /* $_POST['visualizar']=0;
-        $_POST['editar']=0; */
-        ?>
-
-    </div>
-</div>
+	<script  src="./script.js"></script>
 
 <div uk-grid>
 <div class="uk-width-1-5@m">
@@ -91,29 +56,29 @@ include('session_start.php');
             <div class="item " id="avatar">
                 <?php
                 //require "cadastro/doLogin.php";
-              
+                session_start();
                 include "../cadastro/conexao.php";
                 $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
                 if($r = mysqli_fetch_array($resultado)){
                 
-                  echo"
-                  <form method='POST' action='back2Usuario.php'>
-                  <button id='btn-clientes' type='submit' class='btn item'>
-                       <div class='ui tiny image'>
-                      <img src='../trivegano/usuarios/$r[6]'>
-                      </div>
-                      <br><br>
-                      <div class='content'>
-                      <div class='header'>".ucfirst($r[1]); 
-                      echo "</div>
-                      <div class='description'>
-                          <p></p>
-                      </div>
-                      </div>
-                  </button>
-                  </form>
-                     
-                  ";
+                    echo"
+                    <form method='POST' action='back2Usuario.php'>
+                    <button id='btn-clientes' type='submit' class='btn item'>
+                         <div class='ui tiny image'>
+                        <img src='../trivegano/usuarios/$r[6]'>
+                        </div>
+                        <br><br>
+                        <div class='content'>
+                        <div class='header'>".ucfirst($r[1]); 
+                        echo "</div>
+                        <div class='description'>
+                            <p></p>
+                        </div>
+                        </div>
+                    </button>
+                    </form>
+                       
+                    ";
 
                 }
                 ?>
@@ -121,11 +86,11 @@ include('session_start.php');
             </div>
             <br><br>
             <div class="uk-text-large">
-                      <button id="btn-clientes" class="btn item active">
+                      <form method="POST" action="back2.php">
+                        <button id="btn-clientes" type="submit" class="btn item">
                             Produtos
                       </button>
-                      <form method="POST" action="back2Pedidos.php">
-                        <button id="btn-clientes" type="submit" class="btn item">
+                      <button id="btn-clientes" class="btn item active">
                             Pedidos
                       </button>
                       </form>
@@ -156,9 +121,9 @@ include('session_start.php');
     <div class="uk-margin-medium-top" id="conteudo">
                         
 <ul style="font-size: 60px; text-decoration-color:black;" class="uk-subnav uk-subnav-pill uk-flex-center"  uk-switcher="animation: uk-animation-fade">
-  <li><a href="#">VISUALIZAR</a></li>
-  <li><a href="#">INSERIR</a></li>
-  <li><a href="#">DESEMPENHO</a></li>
+  <li><a href="#">ACOMPANHAR</a></li>
+  <li><a href="#">COMUNICAÇÃO</a></li>
+  
 </ul>
 
 <ul class="uk-switcher uk-margin">
@@ -170,8 +135,9 @@ include('session_start.php');
       mysqli_query($con,'SET character_set_connection=utf8');  
       mysqli_query($con,'SET character_set_client=utf8');  
       mysqli_query($con,'SET character_set_results=utf8'); 
-        include('visualizar_produtos.php')
+        include('visualizar_pedidos.php')
       ?>
+      
 
     </li>
 
@@ -200,18 +166,12 @@ include('session_start.php');
         </div>
 </div>
 
-
-
-	<!-- <div class="textoTela1">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut. Ut libero enim, blandit eget tortor vitae, cursus ultricies dui. Etiam eu metus consequat, vehicula nibh vitae, euismod magna. Aenean suscipit quam ipsum, quis fermentum nibh rutrum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum urna eu elit porta, condimentum rutrum metus accumsan. Sed lacinia, quam non vehicula vehicula, nisl neque egestas ligula, blandit sodales eros dolor eget dui. Etiam ullamcorper quis metus et porta. Curabitur pulvinar turpis non dolor laoreet, ac condimentum metus efficitur. Nunc vehicula a purus accumsan congue. Etiam semper purus metus, vitae aliquet ante ornare sit amet. Nullam in massa id magna sollicitudin vestibulum.
-	</div> -->
-  <script>
+<script>
   $('.ui.rating')
   .rating()
 ;
 </script>
-	
-<footer class="footer">
+<footer class="footer" style='margin-top:25%;'>
 	<div class="container">
 		<div class="row">
 

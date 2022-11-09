@@ -7,10 +7,10 @@
 
   
 
-   $pdo = new PDO('mysql:host=localhost; dbname=trivegano;','root','20050213');
+   $pdo = new PDO('mysql:host=localhost; dbname=trivegano;','root','');
 
    $smt = $pdo->prepare("INSERT INTO tb_comentario (comentario, tb_guia_id_guia, tb_cliente_id_cliente, data_coment, foto_usuario, nome_usuario)
-    VALUES (:co, :id_g, :id_c, :dat, :fot, :nome);");
+    VALUES (':co', ':id_g', ':id_c', ':dat', ':fot', ':nome');");
 
    session_start();
    $smt->bindValue(':co',$comment);
@@ -20,6 +20,8 @@
    $smt->bindValue(':fot',$_SESSION['foto_usuario']);
    $smt->bindValue(':nome',$_SESSION['loginpa']);
    $smt->execute();
+
+   
 
    if ($smt->rowCount() >= 1) {
     echo json_encode('Comentário Salvo com Sucesso');

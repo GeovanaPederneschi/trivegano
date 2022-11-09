@@ -79,9 +79,9 @@ if($status==true){
                             if($item_venda= mysqli_fetch_array($query)){
                                 
                                 //verificando se o produto tem adicional e atribuindo eles ao valor final
-                                if(!empty($_SESSION['adicional'][$nomeSemE.$q])){
-                                    $quant=count($_SESSION['adicional'][$nomeSemE.$q]);
-                                    $adicional=$_SESSION['adicional'][$nomeSemE.$q];
+                                if(!empty($_SESSION['adicional_pedido'][$nomeSemE.$q])){
+                                    $quant=count($_SESSION['adicional_pedido'][$nomeSemE.$q]);
+                                    $adicional=$_SESSION['adicional_pedido'][$nomeSemE.$q];
                                     
                                     foreach($adicional as $a){
                                         $query=mysqli_query($con,"INSERT INTO `tb_adicional_item_venda`(`id_adicional_venda`, `tb_item_venda_id_item_venda`, `tb_produtos_adicionais_id_adicionais`) 
@@ -106,7 +106,7 @@ if($status==true){
     unset($_SESSION['pedido']);
     
     
-    echo"<script>window.location.replace('http://localhost/www/Oficial/frontend/menu.php');</script>";
+    echo"<script>window.location.replace('http://localhost/trivegano-main/frontend/menu.php');</script>";
 }
 
 

@@ -1,12 +1,10 @@
-<?php
-include('session_start.php');
-?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano</title>
+     <link rel="stylesheet" href="style1.css">
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<!-- font -->
@@ -20,16 +18,12 @@ include('session_start.php');
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
-  <script src='../js/jquery-3.5.1.min.js'></script>
-
-   
-   <!-- SEMANTIC -->
-   <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
-  <script src="../css/semantic/semantic.min.js"></script>
-  <!-----  ------->
-
-  <link rel="stylesheet" href="../frontend/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+	<link rel="stylesheet" href="../frontend/css/style.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 </head>
 <style>
     #grid{
@@ -39,51 +33,21 @@ include('session_start.php');
     padding-left: 20px;
     margin:0;
     }
+    /*.footer{
+        margin-top:80%;
+    }*/
     #avatar{
       margin:center;
     }
     #conteudo{
         width:80%;
     }
+    .item{
+      padding-left: 40px;
+    }
 </style>
 <body>
-  <script  src="./script.js"></script>
-
-    <div id="offcanvas-push" class="push" uk-offcanvas=" mode:push; overlay: true">
-    <div class="uk-offcanvas-bar uk-width-3-5">
-
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-
-        <?php
-
-        include('functions.php');
-          
-          if(array_key_exists('visualizar', $_GET)){
-            $cod=$_GET['visualizar'];
-            echo"
-            <script>
-            UIkit.offcanvas('.push').show();
-            </script>
-            ";
-            visualizarProdutos($cod);
-            
-            
-          }
-          if(array_key_exists('editar', $_GET)){
-            $cod=$_GET['editar'];
-            echo"
-            <script>
-            UIkit.offcanvas('.push').show();
-            </script>
-            ";
-            editarProdutos($cod);
-          }
-        /* $_POST['visualizar']=0;
-        $_POST['editar']=0; */
-        ?>
-
-    </div>
-</div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 
 <div uk-grid>
 <div class="uk-width-1-5@m">
@@ -91,29 +55,29 @@ include('session_start.php');
             <div class="item " id="avatar">
                 <?php
                 //require "cadastro/doLogin.php";
-              
+                session_start();
                 include "../cadastro/conexao.php";
                 $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
                 if($r = mysqli_fetch_array($resultado)){
                 
-                  echo"
-                  <form method='POST' action='back2Usuario.php'>
-                  <button id='btn-clientes' type='submit' class='btn item'>
-                       <div class='ui tiny image'>
-                      <img src='../trivegano/usuarios/$r[6]'>
-                      </div>
-                      <br><br>
-                      <div class='content'>
-                      <div class='header'>".ucfirst($r[1]); 
-                      echo "</div>
-                      <div class='description'>
-                          <p></p>
-                      </div>
-                      </div>
-                  </button>
-                  </form>
-                     
-                  ";
+                    echo"
+                    <form method='POST' action='back2Usuario.php'>
+                    <button id='btn-clientes' type='submit' class='btn item'>
+                         <div class='ui tiny image'>
+                        <img src='../trivegano/usuarios/$r[6]'>
+                        </div>
+                        <br><br>
+                        <div class='content'>
+                        <div class='header'>".ucfirst($r[1]); 
+                        echo "</div>
+                        <div class='description'>
+                            <p></p>
+                        </div>
+                        </div>
+                    </button>
+                    </form>
+                       
+                    ";
 
                 }
                 ?>
@@ -121,9 +85,11 @@ include('session_start.php');
             </div>
             <br><br>
             <div class="uk-text-large">
-                      <button id="btn-clientes" class="btn item active">
+                     <form method="POST" action="back2.php">
+                      <button id="btn-clientes" type ="submit" class="btn item">
                             Produtos
                       </button>
+                      </form>
                       <form method="POST" action="back2Pedidos.php">
                         <button id="btn-clientes" type="submit" class="btn item">
                             Pedidos
@@ -155,49 +121,88 @@ include('session_start.php');
 <div class="uk-width-4-5@m">
     <div class="uk-margin-medium-top" id="conteudo">
                         
-<ul style="font-size: 60px; text-decoration-color:black;" class="uk-subnav uk-subnav-pill uk-flex-center"  uk-switcher="animation: uk-animation-fade">
-  <li><a href="#">VISUALIZAR</a></li>
-  <li><a href="#">INSERIR</a></li>
-  <li><a href="#">DESEMPENHO</a></li>
-</ul>
-
-<ul class="uk-switcher uk-margin">
-    <li>
-
-      <!-- VISUALIZAR RECEITAS -->
-      <?php
-      mysqli_query($con,"SET NAMES 'utf8'");  
-      mysqli_query($con,'SET character_set_connection=utf8');  
-      mysqli_query($con,'SET character_set_client=utf8');  
-      mysqli_query($con,'SET character_set_results=utf8'); 
-        include('visualizar_produtos.php')
-      ?>
-
-    </li>
-
-    <li>
-      <!-- INSERIR RECEITA -->
-      <?php
-        //include('inserir_receita.php')
-      ?>
-    </li>
-
-
-    <li>
-   <!--  <div class="outercube cube">
-            <div class="innerCube cube">
-              <div class="innerCube2 cube"></div>
-            </div>
-    </div> -->
+    <div class="head transparent">
+      <div class="text white" style="padding-left:20%;">Perfil</div>
+      <div class="notification">
+        <img src="../icones/images/notificationBellW.svg" alt="">
+        <span class="digit white">2</span>
+    </div>
+    </div>     
+    <div class="spacescroll">
+        <img src="images/accessBase.svg" alt="" class="base">
+        <img src="images/clipart.svg" alt="" class="clipart">
+        <div class="prDetail">
         <?php
-        //include('desempenho_receita.php')
+        $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
+        if($r = mysqli_fetch_array($resultado)){
+            echo"<div class='image'><img src='../trivegano/usuarios/$r[6]' alt=''>
+            <button class='edit filterICN'>Edit</button></div>
+            <div class='name'>".ucfirst($r[1])."</div>
+            <div class='ep'>$r[3]</div>";
+            $comando="SELECT `nome_fantasia_fornecedor`FROM `tb_fornecedor` WHERE `id_fornecedor`='$r[5]';";
+            $query=mysqli_query($con,$comando);
+            if($fornecedor=mysqli_fetch_row($query)){
+                echo"<div class='ad'>".ucfirst($fornecedor[0])."</div>";
+            }
+        }
         ?>
-    </li>
-</ul>
+        </div>
 
-                    
+    <div class="cover">
+        <div class="myprofile" >
+            <h3>Minha Conta</h3>
+            <div class="plk">
+                <a class="plink" id='text-profile'><img src="../icones/images/bottomProfile-red.svg" alt="">
+                    <form method="GET" action="back2_usuario_detalhe.php">
+                        <button id="text-profile" name="visualizar_usuario" class="btn4" type="submit">
+                            Dados
+                      </button>
+                    </form>
+                </a>
+            </div>
+            <h3>Restaurante</h3>
+            <div class="plk">
+                <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
+                    <form method="GET" action="back2_usuario_detalhe.php">
+                        <button id="text-profile" name="visualizar_restaurante" class="btn4" type="submit">
+                        Meu Estabelecimento
+                      </button>
+                    </form>
+                </a>
+                <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
+                <form method="GET" action="back2_usuario_detalhe.php">
+                        <button id="text-profile" name="restaurante_config" class="btn4" type="submit">
+                            Configurações
+                      </button>
+                    </form>
+                </a>
+                
+            </div>
+            <h3>Mais</h3>
+            <div class="plk">
+                <a class="plink" id='text-profile'><img src="../icones/images/pHelp.svg" alt="">
+                    <form method="GET" action="back2_usuario_detalhe.php">
+                        <button id="text-profile" name="usuario_config" class="btn4" type="submit">
+                            Configurações
+                      </button>
+                    </form>
+                </a>
+                <a class="plink" id='text-profile'><img src="../icones/images/pLogout.svg" alt="">
+                    <form method="GET" action="back2_usuario_detalhe.php">
+                        <button id="text-profile" name="visualizar" class="btn4" type="submit">
+                            Sair
+                      </button>
+                    </form>
+                </a>
+                
             </div>
         </div>
+    </div> 
+    </div>
+
+                    
+    </div>
+</div>
 </div>
 
 
@@ -205,11 +210,6 @@ include('session_start.php');
 	<!-- <div class="textoTela1">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vel viverra dolor. Donec eu pulvinar odio. Aenean quis metus vel justo iaculis maximus. Cras facilisis facilisis magna, id ullamcorper ante fringilla ut. Ut libero enim, blandit eget tortor vitae, cursus ultricies dui. Etiam eu metus consequat, vehicula nibh vitae, euismod magna. Aenean suscipit quam ipsum, quis fermentum nibh rutrum vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum urna eu elit porta, condimentum rutrum metus accumsan. Sed lacinia, quam non vehicula vehicula, nisl neque egestas ligula, blandit sodales eros dolor eget dui. Etiam ullamcorper quis metus et porta. Curabitur pulvinar turpis non dolor laoreet, ac condimentum metus efficitur. Nunc vehicula a purus accumsan congue. Etiam semper purus metus, vitae aliquet ante ornare sit amet. Nullam in massa id magna sollicitudin vestibulum.
 	</div> -->
-  <script>
-  $('.ui.rating')
-  .rating()
-;
-</script>
 	
 <footer class="footer">
 	<div class="container">

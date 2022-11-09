@@ -150,14 +150,14 @@ include('../backend/session_start.php');
                 var mais = $('.uk-navbar-container .uk-navbar-left form #aqui').val();
                 console.log(mais);
 
-                $.post("http://localhost/www/Oficial/frontend/funcoes.php", {plus : mais})
+                $.post("http://localhost/trivegano-main/frontend/funcoes.php", {plus : mais})
                 .done(function(data){
                     console.log('FOII');
                     return data;
                 });
 
                 /* $.ajax({
-                    url: "http://localhost/www/Oficial/frontend/funcoes.php",
+                    url: "http://localhost/trivegano-main/frontend/funcoes.php",
                     method: "POST",
                     data: JSON.stringify({ plus : _plus }),
                     //dataType: 'json',
@@ -192,7 +192,7 @@ include('../backend/session_start.php');
                     req = new ActiveXObject("Microsoft.XMLHTTP");
                     }
                     // Aqui vai o valor e o nome do campo que pediu a requisição.
-                    var url = "http://localhost/www/Oficial/frontend/funcoes.php";
+                    var url = "http://localhost/trivegano-main/frontend/funcoes.php";
                     // Chamada do método open para processar a requisição
                     req.open("POST", url, true);
                     req.setRequestHeader("Content-Type", "application/json");

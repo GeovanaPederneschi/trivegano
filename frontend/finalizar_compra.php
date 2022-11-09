@@ -481,12 +481,12 @@ include('../backend/session_start.php');
                     
                     
 
-                    <script>$('#modal-center8 .uk-modal-dialog .spacescroll .cart .ui #editar_pedido .ui input').blur(function(){
+                    <script>$('#modal-center8 .uk-modal-dialog .spacescroll .cart .ui #editar_pedido .ui #token').blur(function(){
                         var input = $(this).val();
                         console.log('bora ver');
                         console.log(input);
                         $.ajax({
-                            url:'http://localhost/www/Oficial/frontend/token.php',
+                            url:'http://localhost/trivegano-main/frontend/token.php',
                             method:'POST',
                             data:{token:input},
                             dataType:'json'
@@ -494,7 +494,9 @@ include('../backend/session_start.php');
 
                         if(result!='Nenhuma promoção correspondente'){
                             
-                             if(!typeof(result[0].valor_promocao)){
+                             /* Checking if the value of the variable result[0].valor_promocao is not a
+                             number. */
+                             if(result[0].valor_promocao){
                                  $('#modal-center8 .uk-modal-dialog .spacescroll  .cart .ui #editar_pedido .ui #token')
                                  .popup({
                                 position: 'top center',
@@ -621,15 +623,15 @@ include('../backend/session_start.php');
                                                 }
 
                                                 //verifica quais pertencem ao desconto
-                                                if(isset($_POST['token']) && $_POST['token']!='FIRST'){
+                                                if(isset($_POST['token']) && $_POST['token']!='FIRST' && $_POST['token']!='ACIMA50'){
                                                     $token = $_POST['token'];
                                                     $query=mysqli_query($con,"SELECT * FROM tb_promocao WHERE token_promocao = '$token';");
                                                     if($promocao=mysqli_fetch_array($query)){
         
                                                         
-        
                                                         
-                                                            $query=mysqli_query($con,"SELECT tb_categoria_id_categoria FROM tb_produto WHERE id_produto = $produto[0]");
+                                                        
+                                                            $query=mysqli_query($con,"SELECT tb_categoria_id_categoria FROM tb_produto WHERE id_produto = $produto[0] and tb_adm_fornecedor_tb_fornecedor_id_fornecedor='$promocao[7]';");
                                                             if($categoria = mysqli_fetch_array($query)){
                                                                 if($categoria[0]==$promocao[10]){
                                                                    $cat[$nomeSemE.$q]=$valor_item;
@@ -644,7 +646,7 @@ include('../backend/session_start.php');
                                                             
                                                     }
                                                 }
-                                                    
+                                               
                                                    
                                                 
 
@@ -755,17 +757,18 @@ include('../backend/session_start.php');
                                             Valor Total<span class="fr">R$ <?php echo number_format($_SESSION['valorcompra'],2,",",".");?></span>
                                         </div>
 
-                                        <?php 
-                                            if(isset($_POST['token'])&& $_POST['token']!='FIRST'){
+                                        <?php
+                                            unset($_SESSION['desconto']);
+                                            if(isset($_POST['token'])&& $_POST['token']!='FIRST' && $_POST['token']!='ACIMA50' ){
                                                
                                                     $token = $_POST['token'];
                                                     $query=mysqli_query($con,"SELECT * FROM tb_promocao WHERE token_promocao = '$token';");
                                                     if($promocao=mysqli_fetch_array($query)){
         
                                                         
-                                                            if($promocao[13]=='valor' && $_SESSION['valorcompra']>$promocao[14]){
+                                                            if($promocao[13]=='valor' && $_SESSION['valorcompra']>$promocao[14] && $token!='ACIMA50'){
         
-                                                                if(verificarCat($promocao,$con,$poduto)){
+                                                                
                                                                     if(isset($cat)){
                                                                         $soma=array_sum($cat);
                                                                         $_SESSION['desconto']=($promocao[9]*$soma)/100;
@@ -773,8 +776,10 @@ include('../backend/session_start.php');
                                                                         if(isset($neg)){
                                                                             $soma_n=array_sum($neg);
                                                                             $_SESSION['valorcompra'] =$novo+ $soma_n;
+                                                                            
                                                                         }else{
-                                                                            $_SESSION['valorcompra'] =$novo;
+                                                                            $_SESSION['valorcompra']=$novo;
+                                                                            echo $_SESSION['valorcompra'];
                                                                         }
                                                                     }
                                                                     elseif(isset($neg)){
@@ -783,11 +788,11 @@ include('../backend/session_start.php');
                                                                     }
                                                                     
                                                                     $_SESSION['id_promocao']=$promocao[0];
-
+                                                                    var_dump($cat);
                                                                     echo"<div>
-                                                                        Discount<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
+                                                                        Desconto<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
                                                                     </div>";
-                                                                }
+                                                                
                                                                 
                                                             }
         
@@ -822,7 +827,7 @@ include('../backend/session_start.php');
                                                                     
 
                                                                     echo"<div>
-                                                                        Discount<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
+                                                                        Desconto<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
                                                                     </div>";
 
                                                                 }
@@ -852,14 +857,56 @@ include('../backend/session_start.php');
                                                                 $_SESSION['id_promocao']=$promocao[0];
 
                                                                  echo"<div>
-                                                                     Discount<span class='fr'>R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
+                                                                     Desconto<span class='fr'>R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
                                                                  </div>";
                                                             }
                                                     }
                                                 
                                             }
+                                            elseif(isset($_POST['token'])  && $_POST['token']=='FIRST'){
+                                                $for= $_SESSION['cod_fornecedor'][0];
+                                                $query=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE tb_cliente_id_cliente='$_SESSION[codusuario]' 
+                                                and tb_fornecedor_id_fornecedor = '$for';");
+                                                
+                                                $row=mysqli_num_rows($query);
+                                                if($row<1){
+                                                    $query6=mysqli_query($con,"SELECT * FROM tb_promocao WHERE token_promocao='$_POST[token]';");
+                                                    if($pro=mysqli_fetch_array($query6)){
+                                                        $_SESSION['valorcompra'] = $_SESSION['valorcompra'] - $pro[3];
+                                                        $_SESSION['desconto'] = $pro[3];
+                                                        $_SESSION['id_promocao']=$promocao[0];
+                                                        echo"<div>
+                                                        Desconto<span class='fr'>R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
+                                                        </div>";
+                                                    }
+                                                    
+                                                }
+                                            }
+                                            elseif(isset($_POST['token']) && $_POST['token']=='ACIMA50' ){
+                                                
+                                                    $token = $_POST['token'];
+                                                    $query=mysqli_query($con,"SELECT * FROM tb_promocao WHERE token_promocao = '$token';");
+                                                    if($promocao=mysqli_fetch_array($query)){
+
+                                                        if($_SESSION['valorcompra']>$promocao[14]){
+                                                            $_SESSION['desconto']=($promocao[9]*$_SESSION['valorcompra'])/100;
+                                                            $novo=$_SESSION['valorcompra'] - (($promocao[9]*$_SESSION['valorcompra'])/100);
+
+                                                            $_SESSION['valorcompra']=$novo;
+                                                            $_SESSION['id_promocao']=$promocao[0];
+
+                                                            echo"<div>
+                                                                Desconto<span class='fr'>R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
+                                                            </div>";
+                                                        }
+
+                                                    }
+                                                
+                                            }
+                                                
+
                                             if(isset($_POST['adicional'])){
-                                                 $_SESSION['adicional'] = $_POST['adicional'];
+                                                 $_SESSION['adicional_pedido'] = $_POST['adicional'];
                                             }
                                            
                                             if(isset($_POST['observacao'])){

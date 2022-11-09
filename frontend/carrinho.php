@@ -168,7 +168,6 @@ function mostrarCarrinho($con){
             if($fornecedor=mysqli_fetch_row($query)){
                 $name=$produto[1];
                 
-                
                 if($quantidade_cod[$name] > 0){
                     include('funcoes.php');           
                     echo"<div class='uk-transition-toggle' id='mano'>";
