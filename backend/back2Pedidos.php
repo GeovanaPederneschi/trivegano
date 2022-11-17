@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano</title>
+  <link rel="stylesheet" href="style1.css">
+
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<!-- font -->
@@ -19,6 +21,9 @@
 	<!---------->
 
   <script src='../js/jquery-3.5.1.min.js'></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+
 
    <!-- SEMANTIC -->
    <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
@@ -122,7 +127,7 @@
                         
 <ul style="font-size: 60px; text-decoration-color:black;" class="uk-subnav uk-subnav-pill uk-flex-center"  uk-switcher="animation: uk-animation-fade">
   <li><a href="#">ACOMPANHAR</a></li>
-  <li><a href="#">COMUNICAÇÃO</a></li>
+  <li><a href="#">LOJA</a></li>
   
 </ul>
 
@@ -135,7 +140,7 @@
       mysqli_query($con,'SET character_set_connection=utf8');  
       mysqli_query($con,'SET character_set_client=utf8');  
       mysqli_query($con,'SET character_set_results=utf8'); 
-        include('visualizar_pedidos.php')
+        include('visualizar_pedidos2.php')
       ?>
       
 
@@ -171,7 +176,7 @@
   .rating()
 ;
 </script>
-<footer class="footer" style='margin-top:25%;'>
+<footer class="footer" style='top:75%; width:100%; position:fixed;'>
 	<div class="container">
 		<div class="row">
 

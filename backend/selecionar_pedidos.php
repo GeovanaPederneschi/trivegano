@@ -1,8 +1,20 @@
 <?php
 include('../cadastro/conexao.php');
 session_start();
-$query=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE status_venda='enviada' and tb_fornecedor_id_fornecedor=$_SESSION[codfornecedor];");
-while($venda=mysqli_fetch_array($query)){
+$query9=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE (status_venda='enviada' or status_venda='acaminho') and tb_fornecedor_id_fornecedor=$_SESSION[codfornecedor];");
+while($venda=mysqli_fetch_row($query9)){
+    date_default_timezone_set('Brazil/East');
+     $now=date('Y/m/d H:i:s');
+    //echo $now = str_replace("/",'-',$now);
+    $horario=date('Y/m/d H:i:s', strtotime($venda[2]));
+    if($horario==$now){
+        echo '<audio autoplay="autoplay" loop>
+        <source src="Bell01.mp3" type="audio/mp3" />
+        seu navegador não suporta HTML5
+        </audio>';
+        //echo "sim";
+    }
+    //  var_dump($query9);
 
     echo"
         <div class='ui segment uk-transition-toggle'>
@@ -10,7 +22,9 @@ while($venda=mysqli_fetch_array($query)){
         <div class='ui cards uk-transition-scale-up uk-transition-opaque'>
         <div class='card' style='width: 100%;'>
         <div class='content'>
-        <input type='hidden' value='$venda[0]'>
+        <form method='POST' action='back2_pedido_detalhe.php' id='form2'>
+        <input type='hidden' name='cod' value='$venda[0]'>
+        </form>
         <div>
     ";
     
@@ -48,19 +62,79 @@ while($venda=mysqli_fetch_array($query)){
     while($endereco= mysqli_fetch_array($query)){
        
     }
-    echo"</div>";
+    echo"</div></div>";
 
-     echo"   </div>
+    if($venda[6]=='enviada'){
+        echo"   
           <div class='extra content'>
             <div class='ui two buttons'>
-              <div class='ui basic green button'style='margin-right:1%;'>A CAMINHO</div>
+              <div class='ui basic green button'style='margin-right:1%;'>
+              <input type='hidden' value='$venda[0]'>A CAMINHO</div>
               <div class='ui basic red button'>NÃO ENTREGUE</div>
             </div>
           </div>
         </div>
-        </div>";
+        </div></div>";
+    }
+    elseif($venda[6]=='acaminho'){
+        echo"<div class='extra content'>
+        <h3 class='ui header'>
+        <i class='spinner loading icon'></i>
+            <div class='content'>A caminho </div>
+            </h3>
+        </div>
+        ";
+    }
+     
+
+    
 
     
 }
-    
+//echo"</div>";
+
+$row = mysqli_num_rows($query9);
+//echo $row;
+if($row<1){
+   ?>
+        <div class="ui segment" style='cursor:auto;'>
+                        <div class="grid-6" style='padding:10%;'>
+                          <div class="uk-flex uk-flex-center forgotIMG" style="padding: 5%;">
+                          <i class='massive icons'>
+                            <i class="shopping cart icon"></i>
+                            <i class="inverted corner shopping cart arrow down icon"></i>
+                          </i> 
+                          </div>
+                          <div class="welcome-head">
+                              <h3 class="uk-flex uk-flex-center">Nenhum Pedido</h3>
+                              <span class="caption">Você não possui pedidos em aberto no momento!</span>
+                              <span class="caption">Explore promoções e alcance mais clientes</span>
+                              <div class="ifield bottomPOP">
+                                <button style='cursor:pointer;' onClick="window.location.replace('http://localhost/trivegano-main/backend/back2Promocoes.php');" class="btn3"><span>PROMOÇÕES</span></button>
+                            </div>
+                          </div>  
+                          <div class="blank"></div>
+                        </div>
+        </div>
+            
+   <?php
+}
+
 ?>
+
+<script>
+   $(document).ready(function(){
+         $('#conteudo ul li .ui.segment .ui.cards .card .content').click(function(){
+        $(this).children().first().submit();
+        //UIkit.modal('#modal-center1').show();
+        });
+        $('#conteudo ul li .ui.segment .ui.cards .card .extra .two .green').click(function(){
+            var cod = $(this).children().first().val();
+            $.ajax({url:'caminho.php', method:'POST', data:{codi:cod}});
+            console.log('ae');
+        })
+    });
+</script>
+
+
+

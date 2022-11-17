@@ -5,15 +5,15 @@
 </style>
 <?php
 
-$query=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE status_venda='enviada' and tb_fornecedor_id_fornecedor=$_SESSION[codfornecedor];");
-while($venda=mysqli_fetch_array($query)){
-    // var_dump($venda);
+$query9=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE status_venda='enviada' and tb_fornecedor_id_fornecedor=$_SESSION[codfornecedor];");
+while($venda=mysqli_fetch_row($query9)){
+    //  var_dump($query9);
 
     echo"
-        <div class='ui segment uk-transition-toggle'>
+        <div class='ui segment uk-transition-toggle' style='padding:2%;'>
         
         <div class='ui cards uk-transition-scale-up uk-transition-opaque'>
-        <div class='card' style='width: 100%;'>
+        <div class='card' style='width: 100%; padding:1%;'>
         <div class='content'>
         <input type='hidden' value='$venda[0]'>
         <div>
@@ -48,7 +48,7 @@ while($venda=mysqli_fetch_array($query)){
         }
     }
 
-    echo"<div class='description'>R$ ".number_format($venda[1],2,",",".");
+    echo"<div class='description' style='padding:1%;'>R$ ".number_format($venda[1],2,",",".");
     $query=mysqli_query($con,"SELECT * FROM tb_cliente WHERE id_cliente=$venda[9]");
     while($endereco= mysqli_fetch_array($query)){
        
@@ -63,11 +63,35 @@ while($venda=mysqli_fetch_array($query)){
             </div>
           </div>
         </div>
-        </div>";
+        </div></div>";
 
     
 }
-    
+//echo"</div>";
+
+$row = mysqli_num_rows($query9);
+//echo $row;
+if($row<1){
+   ?>
+        <div class="ui segment">
+                        <div class="grid-6">
+                          <div class="uk-flex uk-flex-center forgotIMG" style="padding: 10%;">
+                          <i class='massive icons'>
+                            <i class="shopping cart icon"></i>
+                            <i class="inverted corner shopping cart arrow down icon"></i>
+                          </i> 
+                          </div>
+                          <div class="welcome-head">
+                              <h3 class="uk-flex uk-flex-center">Nenhum Pedido</h3>
+                              <span class="caption">Você não possui pedidos em aberto no momento!</span>
+                          </div>  
+                          <div class="blank"></div>
+                        </div>
+        </div>
+            
+   <?php
+}
+
 ?>
 
 <div id="modal-center1" class="uk-flex-top" uk-modal>

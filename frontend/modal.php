@@ -154,7 +154,7 @@
             	<div class="ifield MR">
                 <img src="../icones/images/Nounc.svg" alt="">
                 <!-- <label>Nome do Titular</label> -->
-                <input  type="text" class="input" placeholder="Senha" name='senha' required>
+                <input  type="password" class="input" placeholder="Senha" name='senha' required>
               </div>
               <div class="ifield MR">
                 <button class="btn3"><span>PAGAR</span></button>
@@ -177,12 +177,9 @@
                 <div class="welcome-head noPad">
                     <span class="welcome-head-head">Pedido Realizado</span>
                     <span class="caption">Acompanhe seu pedido e aproveite!</span>
-                </div>  
-                <div class="popupLink uk-flex uk-flex-center" style="padding-top:30px;">
-                    <a href="#">Ver pedidos realizados</a>
                 </div>
                 <div class="ifield bottomPOP">
-                    <button class="btn3"><span>ACOMPANHAR PEDIDO</span></button>
+                    <button onClick="window.location.replace('http://localhost/trivegano-main/backend/back3.php');" class="btn3"><span>ACOMPANHAR PEDIDO</span></button>
                     </div>
             </div>
         </div>

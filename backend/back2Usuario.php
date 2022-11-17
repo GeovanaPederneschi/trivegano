@@ -187,12 +187,10 @@
                       </button>
                     </form>
                 </a>
-                <a class="plink" id='text-profile'><img src="../icones/images/pLogout.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
-                        <button id="text-profile" name="visualizar" class="btn4" type="submit">
+                <a class="plink sair" id='text-profile'><img src="../icones/images/pLogout.svg" alt="">
+                        <button id="text-profile" class="btn4" type="button">
                             Sair
                       </button>
-                    </form>
                 </a>
                 
             </div>
@@ -204,7 +202,12 @@
     </div>
 </div>
 </div>
-
+<script>
+    $('#conteudo .spacescroll .cover .myprofile .plk .sair ').click(function(){
+        console.log('pegou');
+        window.location.replace('http://localhost/trivegano-main/backend/sair.php');
+    })
+</script>
 
 
 	<!-- <div class="textoTela1">

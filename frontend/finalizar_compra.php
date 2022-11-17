@@ -1,5 +1,4 @@
-<?php
-include('../backend/session_start.php');
+<?php include('../backend/session_start.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -411,8 +410,8 @@ include('../backend/session_start.php');
                                                                                        
                                                                                         
                                                                                             if($adicional[$m]==$adicionais[0]){
-                                                                                                
-                                                                                                echo"<input type='checkbox' value='$adicionais[0]' $check name='adicional[$name][$adicionais[0]]'>";
+                                                                                                $nome=$name.'1';
+                                                                                                echo"<input type='checkbox' value='$adicionais[0]' $check name='adicional[$nome][$adicionais[0]]'>";
                                                                                             }
                                                                                            
                                                                                         
@@ -421,7 +420,8 @@ include('../backend/session_start.php');
                                                                                     
                                                                                 }
                                                                                 else{
-                                                                                    $nome=$name."1";
+                                                                                    $nome=$name.'1';
+    
                                                                                     echo"<input type='checkbox' value='$adicionais[0]' name='adicional[$nome][$adicionais[0]]'>";
                                                                                 }
                                                                                             
@@ -576,7 +576,7 @@ include('../backend/session_start.php');
                             
                         <div class="spacescroll" style='padding:0;'>
                         <img style="z-index: -1;" src="../icones/images/accessBase.svg" alt="" class="base">
-                <img src="../icones/images/clipart.svg" alt="" class="clipart">
+                        <img src="../icones/images/clipart.svg" alt="" class="clipart">
                                 
                                 <div class="ui piled segment cart">
                                 <div class="oBreif">
@@ -609,7 +609,7 @@ include('../backend/session_start.php');
                                                 //echo $nomeSemE.$q;
 
                                                 //verificando se o produto tem adicional e atribuindo eles ao valor final
-                                                if(!empty($_POST['adicional'][$nomeSemE.$q]) && $quant_prod>1){
+                                                if(!empty($_POST['adicional'][$nomeSemE.$q])){
                                                     $quant=count($_POST['adicional'][$nomeSemE.$q]);
                                                     //echo $quant;
                                                     $adicional=$_POST['adicional'][$nomeSemE.$q];
@@ -696,9 +696,9 @@ include('../backend/session_start.php');
                                                                         echo"</span>
                                                                     </div>";
                                                                 }
-                                                                elseif(isset($_POST['adicional'][$nomeSemE])){
-                                                                    $quant=count($_POST['adicional'][$nomeSemE]);
-                                                                    $adicional=$_POST['adicional'][$nomeSemE];
+                                                                elseif(isset($_POST['adicional'][$nomeSemE.'1'])){
+                                                                    $quant=count($_POST['adicional'][$nomeSemE.'1']);
+                                                                    $adicional=$_POST['adicional'][$nomeSemE.'1'];
                                                                     foreach($adicional as $a){
                                                                         
                                                                         $comando="SELECT * FROM `tb_produtos_adicionais` WHERE `id_adicional`= '$a';";
@@ -874,7 +874,7 @@ include('../backend/session_start.php');
                                                     if($pro=mysqli_fetch_array($query6)){
                                                         $_SESSION['valorcompra'] = $_SESSION['valorcompra'] - $pro[3];
                                                         $_SESSION['desconto'] = $pro[3];
-                                                        $_SESSION['id_promocao']=$promocao[0];
+                                                        $_SESSION['id_promocao']=$pro[0];
                                                         echo"<div>
                                                         Desconto<span class='fr'>R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
                                                         </div>";
@@ -914,7 +914,7 @@ include('../backend/session_start.php');
                                             }
                                             
 
-                                            //var_dump($_SESSION);
+                                            var_dump($_POST);
                                         ?>
 
                                        

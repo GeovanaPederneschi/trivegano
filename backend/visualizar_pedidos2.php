@@ -20,14 +20,13 @@
 <script>
     var cont = setInterval(function(){
         $('#conteudo ul li .pedidos').load('selecionar_pedidos.php');
-    },1000);
+    },500);
     
 
-    $('#conteudo ul li .pedidos .ui.segment .ui.cards .card .content').click(function(){
-        var cod = $(this).children().first().val();
-        UIkit.modal('#modal-center1').show();
-        console.log(cod);
-    })
+    // $('#conteudo ul li .pedidos .ui.segment .ui.cards .card .content').click(function(){
+    //     var cod = $(this).children().first().val();
+    //     UIkit.modal('#modal-center1').show();
+    //     console.log(cod);
+    // })
 </script>
-            
-          
+

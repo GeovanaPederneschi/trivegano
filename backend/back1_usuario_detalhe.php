@@ -218,24 +218,6 @@ include_once('session_start.php');
                     </form>
                 </a>
             </div>
-            <h3>Restaurante</h3>
-            <div class="plk">
-                <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
-                    <form method="GET" action="back1_usuario_detalhe.php">
-                        <button id="text-profile" name="visualizar_restaurante" class="btn4" type="submit">
-                        Meu Estabelecimento
-                      </button>
-                    </form>
-                </a>
-                <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
-                <form method="GET" action="back1_usuario_detalhe.php">
-                        <button id="text-profile" name="restaurante_configuracao" class="btn4" type="submit">
-                            Configurações
-                      </button>
-                    </form>
-                </a>
-                
-            </div>
             <h3>Mais</h3>
             <div class="plk">
                 <a class="plink" id='text-profile'><img src="../icones/images/pHelp.svg" alt="">
@@ -245,12 +227,10 @@ include_once('session_start.php');
                       </button>
                     </form>
                 </a>
-                <a class="plink" id='text-profile'><img src="../icones/images/pLogout.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
-                        <button id="text-profile" name="visualizar" class="btn4" type="submit">
+                <a class="plink sair" id='text-profile'><img src="../icones/images/pLogout.svg" alt="">
+                        <button id="text-profile" class="btn4" type="button">
                             Sair
                       </button>
-                    </form>
                 </a>
                 
             </div>
@@ -262,7 +242,12 @@ include_once('session_start.php');
     </div>
 </div>
 </div>
-
+<script>
+    $('#conteudo .spacescroll .cover .myprofile .plk .sair ').click(function(){
+        console.log('pegou');
+        window.location.replace('http://localhost/trivegano-main/backend/sair.php');
+    })
+</script>
 
 
 	<!-- <div class="textoTela1">

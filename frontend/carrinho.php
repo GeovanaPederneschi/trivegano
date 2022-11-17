@@ -184,7 +184,6 @@ function mostrarCarrinho($con){
                          echo"<div style='margin-left: 9%;'><span>";
 
                         
-                        //VER DEPOIS QUANDO FOREM DIFERENTES E SE O USUARIO CONSEGUE CHEGAR AQUI
                         $quant=count($_SESSION['adicional'][$produto[1]]);
                         $adicional=$_SESSION['adicional'][$produto[1]];
                         for($a=0;$a<$quant;$a++){
@@ -270,7 +269,7 @@ function mostrarCarrinho($con){
     } 
     //var_dump($_SESSION['quant_prod_cod']);
     if($_SESSION['carr_quant_prod']>0){
-         echo"R$: ".$_SESSION['valorcompra'];
+         echo"R$: ".number_format($_SESSION['valorcompra'],2,",",".");
         echo"
             <form class='uk-flex uk-flex-center' action='finalizar_compra.php'>
             <button class='botao third ' type='button'>CONTINUAR A COMPRA</button>

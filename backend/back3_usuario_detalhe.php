@@ -76,26 +76,6 @@ include_once('session_start.php');
             
             
           }
-         
-          if(array_key_exists('visualizar_restaurante', $_GET)){
-            $cod=$_SESSION['codfornecedor'];
-            echo"
-            <script>
-            UIkit.offcanvas('.push').show();
-            </script>
-            ";
-            // visualizarRestaurante($cod);
-          }
-
-          if(array_key_exists('restaurante_config', $_GET)){
-            $cod=$_SESSION['codfornecedor'];
-            echo"
-            <script>
-            UIkit.offcanvas('.push').show();
-            </script>
-            ";
-            // configRestaurante($cod);
-          }
 
           if(array_key_exists('usuario_config', $_GET)){
             $cod=$_SESSION['codusuario'];
@@ -120,14 +100,14 @@ include_once('session_start.php');
                 <?php
                 //require "cadastro/doLogin.php";
                 include "../cadastro/conexao.php";
-                $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
+                $resultado=mysqli_query($con,"select * from tb_cliente where id_cliente='$_SESSION[codusuario]'");
                 if($r = mysqli_fetch_array($resultado)){
                 
                     echo"
-                    <form method='POST' action='back2Usuario.php'>
+                    <form method='POST' action='back3Usuario.php'>
                     <button id='btn-clientes' type='submit' class='btn item'>
-                         <div class='ui tiny image'>
-                        <img src='../trivegano/usuarios/$r[6]'>
+                        <div class='ui tiny image'>
+                        <img src='../trivegano/usuarios/cliente/$r[10]'>
                         </div>
                         <br><br>
                         <div class='content'>
@@ -139,7 +119,7 @@ include_once('session_start.php');
                         </div>
                     </button>
                     </form>
-                       
+                      
                     ";
 
                 }
@@ -148,34 +128,15 @@ include_once('session_start.php');
             </div>
             <br><br>
             <div class="uk-text-large">
-                     <form method="POST" action="back2.php">
-                      <button id="btn-clientes" type ="submit" class="btn item">
-                            Produtos
-                      </button>
-                      </form>
-                      <form method="POST" action="back2Pedidos.php">
-                        <button id="btn-clientes" type="submit" class="btn item">
+                    <form method="POST" action="back3.php">
+                        <button id="btn-clientes" class=" item btn">
                             Pedidos
                       </button>
-                      </form>
-                      <form method="POST"  action="back2Vendas.php">
-                        <button id="btn-clientes" type="submit" class="btn item">
-                            Vendas
-                      </button>
-                      </form>
-                      <form method="POST" action="back2Clientes.php">
-                        <button id="btn-clientes" type="submit" class="btn item">
-                            Clientes
-                      </button>
-                      </form>
-                      <form method="POST" action="back2Suporte.php">
+                    </form>
+                     
+                      <form method="POST"  action="back1Guia.php">
                         <button id="btn-clientes" type="submit" class="btn item">
                             Suporte
-                      </button>
-                      </form>
-                      <form method="POST" action="back2Promocoes.php">
-                        <button id="btn-clientes" type="submit" class="btn item">
-                            Promoções
                       </button>
                       </form>
                     </div>
@@ -196,17 +157,12 @@ include_once('session_start.php');
         <img src="images/clipart.svg" alt="" class="clipart">
         <div class="prDetail">
         <?php
-        $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
+        $resultado=mysqli_query($con,"select * from tb_cliente where id_cliente='$_SESSION[codusuario]'");
         if($r = mysqli_fetch_array($resultado)){
-            echo"<div class='image'><img src='../trivegano/usuarios/$r[6]' alt=''>
+            echo"<div class='image'><img src='../trivegano/usuarios/cliente/$r[10]' alt=''>
             <button class='edit filterICN'>Edit</button></div>
             <div class='name'>".ucfirst($r[1])."</div>
-            <div class='ep'>$r[3]</div>";
-            $comando="SELECT `nome_fantasia_fornecedor`FROM `tb_fornecedor` WHERE `id_fornecedor`='$r[5]';";
-            $query=mysqli_query($con,$comando);
-            if($fornecedor=mysqli_fetch_row($query)){
-                echo"<div class='ad'>".ucfirst($fornecedor[0])."</div>";
-            }
+            <div class='ep'>$r[5]</div>";
         }
         ?>
         </div>
@@ -216,35 +172,17 @@ include_once('session_start.php');
             <h3>Minha Conta</h3>
             <div class="plk">
                 <a class="plink" id='text-profile'><img src="../icones/images/bottomProfile-red.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
+                    <form method="GET" action="back3_usuario_detalhe.php">
                         <button id="text-profile" name="visualizar_usuario" class="btn4" type="submit">
                             Dados
                       </button>
                     </form>
                 </a>
             </div>
-            <h3>Restaurante</h3>
-            <div class="plk">
-                <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
-                        <button id="text-profile" name="visualizar_restaurante" class="btn4" type="submit">
-                        Meu Estabelecimento
-                      </button>
-                    </form>
-                </a>
-                <a class="plink" id='text-profile'><img src="../icones/images/pBell.svg" alt="">
-                <form method="GET" action="back2_usuario_detalhe.php">
-                        <button id="text-profile" name="restaurante_configuracao" class="btn4" type="submit">
-                            Configurações
-                      </button>
-                    </form>
-                </a>
-                
-            </div>
             <h3>Mais</h3>
             <div class="plk">
                 <a class="plink" id='text-profile'><img src="../icones/images/pHelp.svg" alt="">
-                    <form method="GET" action="back2_usuario_detalhe.php">
+                    <form method="GET" action="back3_usuario_detalhe.php">
                         <button id="text-profile" name="usuario_configuracao" class="btn4" type="submit">
                             Configurações
                       </button>
@@ -271,6 +209,7 @@ include_once('session_start.php');
         window.location.replace('http://localhost/trivegano-main/backend/sair.php');
     })
 </script>
+
 
 
 	<!-- <div class="textoTela1">

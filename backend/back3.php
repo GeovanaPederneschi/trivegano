@@ -22,6 +22,8 @@ include_once('session_start.php');
 	<!---------->
   
   <script src='../js/jquery-3.5.1.min.js'></script>
+
+  
   
   <!-- SEMANTIC -->
   <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
@@ -60,7 +62,7 @@ include_once('session_start.php');
                 
                             
                             echo"
-                            <form method='POST' action='back1Usuario.php'>
+                            <form method='POST' action='back3Usuario.php'>
                             <button id='btn-clientes' type='submit' class='btn item'>
                                 <div class='ui tiny image'>
                                 <img src='../trivegano/usuarios/cliente/$r[10]'>
@@ -105,140 +107,8 @@ include_once('session_start.php');
 </ul>
 
 <ul class="uk-switcher uk-margin">
-    <li>
-
-      <!-- VISUALIZAR RECEITAS -->
-      <?php
-      mysqli_query($con,"SET NAMES 'utf8'");  
-      mysqli_query($con,'SET character_set_connection=utf8');  
-      mysqli_query($con,'SET character_set_client=utf8');  
-      mysqli_query($con,'SET character_set_results=utf8'); 
-        //include('visualizar_receita.php')
-        
-      ?>
-
-
-
-    <div class='ui segment'>
-    <div class="head" style="position: relative;">
-        <!-- <a href="orderList.html"><img src="../icones/images/back-black.svg" class="back" alt=""></a> -->
-        <div class="text">
-            Pedido Status
-        </div>
-        <!-- <div class="notification">
-            <img src="../icones/images/notificationBell.svg" alt="">
-            <span class="digit">2</span>
-        </div> -->
-    </div>
-        <div class="spacescroll">
-            <div class="orderStatus">
-                <div class="oBreif">
-                  <?php $query=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE status_venda='enviada' and tb_cliente_id_cliente=$_SESSION[codusuario]");
-                    if($pedido=mysqli_fetch_array($query)){
-                      
-                     echo"#".$pedido[0];
-                      echo'<span class="caption">'.date('Y/m/d H:i', strtotime($pedido[2])).'</span>';
-                  ?>
-                    
-                    
-                </div>
-                <div class="blankShort"></div>
-                <div class="steps pr active">
-                    <img src="../icones/images/O1.svg" class="normal" alt="">
-                    <img src="../icones/images/AO1.svg" class="active" alt="">
-                    Pedido Recebido
-                    <span><?php echo date('H:i', strtotime($pedido[2]));?></span>
-                </div>
-                <div class="steps pr">
-                    <img src="../icones/images/O2.svg" class="normal" alt="">
-                    <img src="../icones/images/AO2.svg" class="active" alt="">
-                    A caminho
-                    <span><?php $duracao='00:30:00'; $v = explode(':', $duracao); 
-                    echo $caminho = date('H:i', strtotime("{$pedido[2]} + {$v[0]} hours  {$v[1]} minutes  {$v[2]} seconds"));?></span>
-                </div>
-                <div class="steps NM">
-                    <img src="../icones/images/O3.svg" class="normal" alt="">
-                    <img src="../icones/images/AO3.svg" class="active" alt="">
-                    Entregue
-                    <span><?php $duracao=gmdate("H:i:s", $_SESSION['dist_seg']); $v = explode(':', $duracao); 
-                    echo date('H:i', strtotime("{$caminho} + {$v[0]} hours  {$v[1]} minutes  {$v[2]} seconds"));?></span>
-                </div>
-            </div>
-            <div class="blank"></div>
-            <div class="centerLinker">
-                <a id='modal-4'>Acompanhar Pedido</a>
-            </div>
-            <div class="ifield PD">
-                <button class="btn3" ><span>CONFIRMAR ENTREGA</span></button>
-            </div>
-        </div>
-    </div>
-
-              <?php }?>
-              
-              <div id="modal-center14" class="uk-flex-top" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        <div class="head">
-        <!-- <a href="orderStatus.html"><img src="../icones/images/back-black.svg" class="back" alt=""></a> -->
-        <div class="text">
-            Acompanhar Seu Pedido
-        </div>
-        
-    </div>
-
-
-        <img src="../icones/images/mapbase.svg" class="mapbase" alt="">
-        <div class="spacescroll trackingOrder">
-           <div class="trackOImg">
-               <img src="../icones/images/TrackingB.svg" alt="">
-           </div>
-           <div class="delP">
-            <div class="delPin">
-                <div class="calls fl">
-                    <img src="../icones/images/cTime.svg" alt="">
-                    <?php $duracao=gmdate("H:i:s", $_SESSION['dist_seg']); $v = explode(':', $duracao); 
-                    echo date('H:i', strtotime("{$caminho} + {$v[0]} hours  {$v[1]} minutes  {$v[2]} seconds"));?> <span>Hora da Entrega</span>
-                </div>
-                <div class="calls fl">
-                    <img src="../icones/images/cAddress.svg" alt="">
-                    <?php echo utf8_encode ($_COOKIE['endereco']);?><span>Lugar da Entrega</span>
-                </div>
-                <div class="clr"></div>
-                <div class="pdetail uk-transition-toggle">
-                  
-                    <img src="../icones/images/dp.svg" class="person" alt="">
-                    
-                    <?php $query=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE status_venda='enviada' and tb_cliente_id_cliente=$_SESSION[codusuario]");
-                    if($pedido=mysqli_fetch_array($query)){
-                      $query=mysqli_query($con,"SELECT * FROM tb_fornecedor WHERE id_fornecedor=$pedido[11]");
-                        if($fornecedor=mysqli_fetch_array($query)){
-                          echo"<img uk-tooltip='$fornecedor[5]' style='cursor:pointer;' src='../icones/images/callIcon.svg' class='call' alt=''>";
-                          echo"$fornecedor[7] <span>Estabelecimento</span>";
-                          echo"<input type='hidden' value=$fornecedor[5]>";
-                        }
-                    }?>
-                    
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-<script>
-                $('#conteudo ul li .ui .spacescroll .centerLinker #modal-4').click(function(){
-                  UIkit.modal("#modal-center14").show();
-                  console.log('FOI');
-                });
-                $('#modal-center14 .uk-modal-dialog .spacescroll .delPin .pdetail .call').click(function(){
-                  console.log('foi');
-                  var  num = $('#modal-center14 .uk-modal-dialog .spacescroll .delPin .pdetail input').val();
-                  navigator.clipboard.writeText(num);
-                  UIkit.notification({message: '<span uk-icon=\'icon: copy\'></span> Numero de Telefone Copiado', status: 'danger',pos: 'top-right'});
-                })
-              </script>
+  <!-- ACOMPANHAR PEDIDO -->
+    <li class='acompanhar'>                 
     </li>
 
     <li>
@@ -249,16 +119,7 @@ include_once('session_start.php');
     </li>
 
 
-    <li>
-   <!--  <div class="outercube cube">
-            <div class="innerCube cube">
-              <div class="innerCube2 cube"></div>
-            </div>
-    </div> -->
-        <?php
-        //include('desempenho_receita.php')
-        ?>
-    </li>
+
 </ul>
 
                     
@@ -270,6 +131,12 @@ include_once('session_start.php');
   $('.ui.rating')
   .rating()
 ;
+
+    var cont = setInterval(function(){
+        $('#conteudo ul .acompanhar').load('visualizar_pedidos_cliente.php');
+    },500);
+    
+
 </script>
 
 <footer class="footer">
