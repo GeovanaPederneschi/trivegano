@@ -35,8 +35,8 @@ validaSenha($senha,$conf_senha) &&validaUsuario($usuario) && validaCpf($cpf))
             //echo"$data";
             $sql = "INSERT INTO tb_cliente (`id_cliente`, `nome_cliente`, `dat_nasc_cliente`, `cpf_cliente`, 
             `telefone_cliente`, `email_cliente`, `senha_cliente`, `status_cliente`, `dat_cadastro_cliente`, 
-            `usuario_cliente`) VALUES (NULL, '$nome', '$dat_nas', '$cpf', '$telefone', 
-            '$email', '$senha', 'ativo', '$now', '$usuario')";
+            `usuario_cliente`,`foto`) VALUES (NULL, '$nome', '$dat_nas', '$cpf', '$telefone', 
+            '$email', '$senha', 'ativo', '$now', '$usuario','usuario.png')";
             $result=mysqli_query($con,$sql);
             $sql="select * from tb_cliente where cpf_cliente='$cpf'";
             $result=mysqli_query($con,$sql);

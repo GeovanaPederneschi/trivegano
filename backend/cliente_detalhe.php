@@ -6,7 +6,7 @@ include_once('session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<!-- font -->
@@ -80,7 +80,10 @@ include_once('session_start.php');
                         <?php
                         //require "cadastro/doLogin.php";
                         
-                        include "../cadastro/conexao.php";
+                        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
                         mysqli_query($con,'SET character_set_client=utf8');  
@@ -89,18 +92,24 @@ include_once('session_start.php');
                         $resultado=mysqli_query($con,"select * from tb_usuario_adm where id_usuario_adm='$_SESSION[codusuario]'");
                         if($r = mysqli_fetch_array($resultado)){
                 
-                            echo"
-                                <div class='ui tiny image'>
-                                <img src='../trivegano/usuarios/$r[5]'>
-                                </div>
-                                <br><br>
-                                <div class='content'>
-                                <div class='header'>$r[1]</div>
-                                <div class='description'>
-                                    <p></p>
-                                </div>
-                                </div>
-                            ";
+                          echo"
+                          <form method='POST' action='back1Usuario.php'>
+                          <button id='btn-clientes' type='submit' class='btn item'>
+                              <div class='ui tiny image'>
+                              <img src='../trivegano/usuarios/$r[5]'>
+                              </div>
+                              <br><br>
+                              <div class='content'>
+                              <div class='header'>".ucfirst($r[1]); 
+                              echo "</div>
+                              <div class='description'>
+                                  <p></p>
+                              </div>
+                              </div>
+                          </button>
+                          </form>
+                            
+                          ";
 
                         }
                         ?>           
@@ -132,6 +141,81 @@ include_once('session_start.php');
                       </form>
                     </div>
             </div>
+
+            <nav class="uk-navbar" id='menu' uk-navbar>
+              <div class="uk-navbar-left">
+                  <a class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon href="#"></a>
+                  <div class="uk-navbar-dropdown">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                          <li style='margin:4%;'><a>
+                                <form method='POST' action='back2Usuario.php'>
+                                  <button id='btn-clientes' type='submit' class='btn6'>
+                                <?php
+                              
+                              
+                                  include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
+
+                                  $resultado=mysqli_query($con,"SELECT * FROM tb_usuario_adm WHERE id_usuario_adm='$_SESSION[codusuario]';");
+                                  if($r = mysqli_fetch_array($resultado)){
+                          
+                                      
+                                      echo"
+                                      <img class='ui avatar image' src='../trivegano/usuarios/$r[5]'>
+                                      <span>".ucfirst($r[1])."</span>
+                                      ";
+
+                                  }
+                              ?>    
+                                </button>
+                                  </form>
+                          </a></li>
+                         
+                          <li style='margin:4%;'><a>
+                          <form method="POST" action="back1.php">
+                            <button id="btn-clientes" type='submit' class="btn6">
+                                    Receitas
+                            </button>
+                            </form>
+                          </a></li>
+                          
+                          <li style='margin:4%;'><a >
+                            <form method="POST" action="back1Guia.php">
+                            <button class="btn6">
+                                    Guia
+                            </button>
+                            </form>
+                          </a></li>
+
+                          <li style='margin:4%;'><a id="ativo">
+                          <form method="POST"  action="back1Clientes.php">
+                                <button type="submit" class="btn6">
+                                    Clientes
+                            </button>
+                            </form>
+                           </a></li>
+
+                           <li style='margin:4%;'><a>
+                           <form method="POST" action="back1Validacoes.php">
+                                <button type="submit" class="btn6">
+                                    Validações
+                            </button>
+                            </form>
+                           </a></li>
+
+                           <li style='margin:4%;'><a>
+                           <form method="POST" action="back1Promocoes.php">
+                                <button type="submit" class="btn6">
+                                    Promoções
+                            </button>
+                            </form>
+                           </a></li>
+                      </ul>
+                  </div>
+              </div>
+            </nav>
         </div>
     
 

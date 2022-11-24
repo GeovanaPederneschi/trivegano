@@ -18,7 +18,7 @@ if(validaNomeFantasia($nome) && validaCnpj($cnpj) && validaEmailRest($email,$con
     $resultado=mysqli_query($con,"INSERT INTO `$campo[tabela]` (`id_fornecedor`, `razao_fornecedor`, `endereco_fornecedor`, 
     `cnpj_fornecedor`, `email_fornecedor`, `telefone_fornecedor`, `site_fornecedor`, `nome_fantasia_fornecedor`, 
     `status_fornecedor`) VALUES (NULL, '$razao', NULL, '$cnpj', '$email', '$telefone', NULL, '$nome', 'avaliando')");
-    header('Location: acompanhe.html');
+    header('Location: acompanhe.php');
 }
 else{
     if($SEESION['erro']=true){

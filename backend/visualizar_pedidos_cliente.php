@@ -1,6 +1,9 @@
-<?php include('../cadastro/conexao.php');
+<?php include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
 session_start();?>
-<div class='ui segment'>
+<div class='ui segment' style='margin-bottom:2%;'>
             <div class="head" style="position: relative;">
                 <!-- <a href="orderList.html"><img src="../icones/images/back-black.svg" class="back" alt=""></a> -->
                 <div class="text">
@@ -57,11 +60,12 @@ session_start();?>
                      $apiKey = 'AIzaSyBzQCRKSKFi7AwHMynJuFb_aa4NH7l6-qM';
                  
  
-                         $address = file_get_contents('https://maps.googleapis.com/maps/api/distancematrix/json?origins='.$fornecedor[12].'&destinations='.urlencode($pedido[3]).'&departure_time=now&key='.$apiKey);
-                         $distance = json_decode($address);
+                         $address = file_get_contents('https://maps.googleapis.com/maps/api/distancematrix/json?origins='.$fornecedor[12].'&destinations='.rawurlencode($pedido[12]).'&departure_time=now&key='.$apiKey);
+                         $distance = json_decode($address); //echo rawurlencode($pedido[3]);
                          if($distance->status == 'OK'  && $distance->rows[0]->elements[0]->status == 'OK'){
                             
                              $dist = $distance->rows[0]->elements[0]->duration_in_traffic->value;
+                            
                          }
                     }                                       
                                                           
@@ -142,7 +146,7 @@ session_start();?>
                             if($pedido=mysqli_fetch_array($query)){
                               $query=mysqli_query($con,"SELECT * FROM tb_fornecedor WHERE id_fornecedor=$pedido[11]");
                                 if($fornecedor=mysqli_fetch_array($query)){
-                                  echo"<img uk-tooltip='$fornecedor[5]' style='cursor:pointer;' src='../icones/images/callIcon.svg' class='call' alt=''>";
+                                  echo"<img uk-tooltip='$fornecedor[5]' style='cursor:pointer;' src='../icones/images/callIcon.svg' class='call'>";
                                   echo"$fornecedor[7] <span>Estabelecimento</span>";
                                   echo"<input type='hidden' value=$fornecedor[5]>";
                                 }
@@ -159,16 +163,19 @@ session_start();?>
                           UIkit.modal("#modal-center14").show();
                           console.log('FOI');
                         });
-                        $('#modal-center14 .uk-modal-dialog .spacescroll .delPin .pdetail .call').click(function(){
-                          console.log('foi');
-                          var  num = $('#modal-center14 .uk-modal-dialog .spacescroll .delPin .pdetail input').val();
-                          navigator.clipboard.writeText(num);
-                          UIkit.notification({message: '<span uk-icon=\'icon: copy\'></span> Numero de Telefone Copiado', status: 'danger',pos: 'top-right'});
-                        })
+                        $('#modal-center14 .uk-modal-dialog .spacescroll .delP .delPin .pdetail .call').click(function(){
+                            if ( $('.uk-notification').length == 0) { 
+                            console.log('foi');
+                            var  num = $('#modal-center14 .uk-modal-dialog .spacescroll .delPin .pdetail input').val();
+                            navigator.clipboard.writeText(num);
+                            UIkit.notification({message: '<span uk-icon=\'icon: copy\'></span> Numero de Telefone Copiado', status: 'danger',pos: 'top-right'});
+                            }
+                           
+                        });
                         $('#conteudo ul li .ui .spacescroll .ifield .btn3').click(function(){
                             var cod = $(this).children().first().val();
                             $.ajax({url:'finalizada.php', method:'POST', data:{codi:cod}});
                             console.log(cod);
                             
-                        })
+                        });
                       </script>

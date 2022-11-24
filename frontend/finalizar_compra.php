@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 
     <link rel="stylesheet" href="../cadastro/style.css">
 	<link rel="stylesheet" href="../frontend/css/style.css">
@@ -70,7 +70,10 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
                 <?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
                     //     $cod = $_SESSION['cod_fornecedor'][0];
                     // $query=mysqli_query($con,"SELECT * FROM tb_usa WHERE id_fornecedor = $cod");
@@ -114,7 +117,10 @@
                 
                 <div class="cart">
                     <div class="oBreif">
-                        <?php include('../cadastro/conexao.php'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
+                        <?php include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
                         if($id=mysqli_fetch_array($query)){ $num=$id[0]+1; echo "#".$num;}?>
                         <!-- BOTAR EM PT DEPOIS -->
                         <span class="caption"><?php date_default_timezone_set('Brazil/East'); $today = date("j F \à\s g:i a"); echo $today;?></span>
@@ -496,7 +502,8 @@
                             
                              /* Checking if the value of the variable result[0].valor_promocao is not a
                              number. */
-                             if(result[0].valor_promocao){
+                             var valor = result[0].valor_promocao;
+                             if(valor){
                                  $('#modal-center8 .uk-modal-dialog .spacescroll  .cart .ui #editar_pedido .ui #token')
                                  .popup({
                                 position: 'top center',
@@ -580,7 +587,10 @@
                                 
                                 <div class="ui piled segment cart">
                                 <div class="oBreif">
-                                    <?php include('../cadastro/conexao.php'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
+                                    <?php include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
                                     if($id=mysqli_fetch_array($query)){ $num=$id[0]+1; echo "#".$num;}?>
                                     <!-- BOTAR EM PT DEPOIS -->
                                     <span class="caption"><?php date_default_timezone_set('Brazil/East'); $today = date("j F \à\s g:i a"); echo $today;?></span>
@@ -788,10 +798,11 @@
                                                                     }
                                                                     
                                                                     $_SESSION['id_promocao']=$promocao[0];
-                                                                    var_dump($cat);
-                                                                    echo"<div>
+                                                                    if(!empty($_SESSION['desconto'])){
+                                                                        echo"<div>
                                                                         Desconto<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
                                                                     </div>";
+                                                                    }
                                                                 
                                                                 
                                                             }
@@ -825,10 +836,12 @@
                                                                     
                                                                         $_SESSION['id_promocao']=$promocao[0];
                                                                     
-
-                                                                    echo"<div>
+                                                                    if(!empty($_SESSION['desconto'])){
+                                                                        echo"<div>
                                                                         Desconto<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
                                                                     </div>";
+                                                                    }
+                                                                    
 
                                                                 }
                                                                
@@ -856,9 +869,11 @@
 
                                                                 $_SESSION['id_promocao']=$promocao[0];
 
-                                                                 echo"<div>
-                                                                     Desconto<span class='fr'>R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
-                                                                 </div>";
+                                                                if(!empty($_SESSION['desconto'])){
+                                                                    echo"<div>
+                                                                    Desconto<span class='fr'> R$ ".number_format($_SESSION['desconto'],2,",",".")."</span>
+                                                                </div>";
+                                                                }
                                                             }
                                                     }
                                                 
@@ -914,7 +929,7 @@
                                             }
                                             
 
-                                            var_dump($_POST);
+                                            //var_dump($_POST);
                                         ?>
 
                                        

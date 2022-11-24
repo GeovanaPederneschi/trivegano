@@ -4,7 +4,10 @@
 
 
             //SESSION_START();
-            include "../cadastro/conexao.php";
+            include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
             /* puxar o cod da receita e salvar em var */
             $codx=$cod;
 
@@ -113,8 +116,8 @@
               <label style="color: white;">Ceo da Receita</label>
               <input type="text" name="ceo" value="<?php echo $produto[5];?>">
               </div>
-                  <input type="submit"  value="Editar">
-                  <input type="reset" value="limpar">
+                  <input  class='ui inverted red button' type="submit"  value="Editar">
+                  <input class='ui inverted yellow button' type="reset" value="Limpar">
               </form>
       <?php
 
@@ -129,7 +132,10 @@
 
 
         //SESSION_START();
-        include "../cadastro/conexao.php";
+        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
         /* puxar o cod do clinete e salvar em var */
         $codx=$cod;
 
@@ -194,7 +200,10 @@
 
 
         //SESSION_START();
-        include "../cadastro/conexao.php";
+        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
         /* puxar o cod do clinete e salvar em var */
         $codx=$cod;
 
@@ -247,13 +256,13 @@
 
                     $comando="SELECT * FROM `tb_produtos_adicionais` WHERE `tb_produto_id_produto`= '$codx';";
                     if($query=mysqli_query($con,$comando)){
-                        echo "<div class='uk-width-1-3@m uk-grid-column-large' style='margin:2%;padding-left:6%;' ";
+                        echo "<div class='uk-width-1-3@m uk-grid-column-large' style='margin:2%;margin-top:4%;padding-left:6%;' ";
                     echo"<h2 class='ui center aligned icon header'>
                     <i style='font-size:30px'class='circular adjust icon'></i>
                     Adicionais
                     </h2>";
                     echo "";
-                    echo"<ul  uk-accordion='multiple: true' >";
+                    echo"<ul  class='uk-width-2-4' uk-accordion='multiple: true' style='padding:0;'>";
                     }
                     
                     
@@ -261,17 +270,17 @@
                         echo"
                                     <li>
                                         <a class='uk-accordion-title ' href='#'>$adicionais[1]</a>
-                                        <div class='uk-accordion-content uk-grid uk-grid-large' >
+                                        <div class='uk-accordion-content uk-grid uk-grid-small' >
                                         <div class='uk-width-1-2'>
                                         <br>
                                         <img class='ui avatar image' src='../trivegano/adicionais/$adicionais[8]'>
                                         <span>R$ $adicionais[2]</span>
                                         </div>
                                         
-                                        <div class='uk-width-1-2' style='padding-left:37%;'>
+                                        <div class='uk-width-1-2' style='padding-left:30%;'>
                                         <br>
-                                            <div style='margin-lft:2%;' class='ui toggle checkbox '>
-                                            <input type='checkbox' value='$adicionais[0]' name='adicional[]'>
+                                            <div style='margin-left:0;' class='ui toggle checkbox '>
+                                            <input type='checkbox' value='$adicionais[0]' checked='checked' name='adicional[]'>
                                             <label></label>
                                             </div>
                                         </div>
@@ -332,8 +341,8 @@
                 <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit; color: white;">Descrição Produto</font></font></label>
                 <textarea type="text" name="ingredientes"> <?php echo $produto[3];?> </textarea>
                 </div>
-                    <input type="submit"  value="Editar">
-                    <input type="reset" value="limpar">
+                <input  class='ui inverted red button' type="submit"  value="Editar">
+                  <input class='ui inverted yellow button' type="reset" value="Limpar">
                 </form>
         <?php
   
@@ -350,7 +359,10 @@
 
 
         //SESSION_START();
-        include "../cadastro/conexao.php";
+        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
         /* puxar o cod do clinete e salvar em var */
         //$codx=$cod;
 
@@ -372,7 +384,14 @@
                     style='margin-left:3%; margin-right:3%;margin-bottom:2%;'>   ";
                     echo"    <div>";
                     echo"       <div class ='uk-width-2xlarge'>";
-                    echo"       <img  widht=825 height=550 src=../trivegano/usuarios/$registro[$foto]> <br><br>";
+                    if($foto==10){
+                    echo"       <img  widht=825 height=550 src=../trivegano/usuarios/cliente/$registro[$foto]> <br><br>";
+                      
+                    }
+                    else{
+                        echo"       <img  widht=825 height=550 src=../trivegano/usuarios/$registro[$foto]> <br><br>";
+
+                    }
                     echo"       </div>";
                     echo"    </div>";
                     echo"    <div class=''>";
@@ -380,12 +399,31 @@
                     echo"            <h1>".ucfirst($registro[1])."</h1>";
                     echo"        </div>";
                     echo"   	 <div class=''>";
+                    if($tabela=="tb_adm_fornecedor"){
                     echo"			    <span class='uk-label uk-text-center uk-label-danger'>";
                     echo"            		ADIMINISTRADOR";
                     echo"				</span>";
                     echo"			    <span class='uk-label uk-text-center uk-label-warning'>";
                     echo"            		FORNECEDOR";
                     echo"				</span>";
+                    }
+                    elseif($tabela=='tb_usuario_adm'){
+                        echo"			    <span class='uk-label uk-text-center uk-label-danger'>";
+                        echo"            		ADIMINISTRADOR";
+                        echo"				</span>";
+                        echo"			    <span class='uk-label uk-text-center uk-label-warning'>";
+                        echo"            		TRIVEGANO";
+                        echo"				</span>";    
+                    }
+                    else{
+                        echo"			    <span class='uk-label uk-text-center uk-label-danger'>";
+                        echo"            		CLIENTE";
+                        echo"				</span>";
+                        echo"			    <span class='uk-label uk-text-center uk-label-warning'>";
+                        echo"            		USUÁRIO";
+                        echo"				</span>";
+                    }
+                    
                     echo"     	 </div>";
                     echo"    </div>";
                     echo"  </div>";
@@ -403,6 +441,19 @@
                             </div>       
                                     
                                     ";
+                                    echo"<br>
+                                    <div uk-grid>
+                                            <div class='uk-widht-1-2' style='padding-top:2%;'>
+                                           Senha:    ********
+                                            </div>
+                                            <div class='uk-widht-1-2'>
+                                                <button uk-toggle='target: #modal-center' style='border:none;' id='editar'  type='button'>
+                                                <label for='codxv' id='editar'><i style='font-size:25px'class='circular pencil alternate icon'></i></label>
+                                                </button>
+                                            </div>
+                                    </div>       
+                                            
+                                            ";
                     $comando="SELECT `nome_fantasia_fornecedor`FROM `tb_fornecedor` WHERE `id_fornecedor`='$registro[5]';";
                     $query=mysqli_query($con,$comando);
                     if($fornecedor=mysqli_fetch_row($query)){
@@ -433,11 +484,11 @@
                             <div class='uk-modal-header'>
                                 <h2 class='uk-modal-title'>Editar</h2>
                             </div>
-                            <form method='POST' action='back2_usuario_detalhe'>
+                            <form method='POST' action='back2_usuario_detalhe.php'>
                             <div class='uk-margin'>
                                 <label class='uk-form-label' for='form-stacked-text'>Email</label>
                                 <div class='uk-form-controls'>
-                                    <input class='uk-input' name='email' value='$registro[3]' id='form-stacked-text' type='text' >
+                                    <input class='uk-input' name='email' value='$registro[$email]' id='form-stacked-text' type='text' >
                                 </div>
                             </div>
 

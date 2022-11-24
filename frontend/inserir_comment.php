@@ -10,7 +10,7 @@
    $pdo = new PDO('mysql:host=localhost; dbname=trivegano;','root','');
 
    $smt = $pdo->prepare("INSERT INTO tb_comentario (comentario, tb_guia_id_guia, tb_cliente_id_cliente, data_coment, foto_usuario, nome_usuario)
-    VALUES (':co', ':id_g', ':id_c', ':dat', ':fot', ':nome');");
+    VALUES (:co, :id_g, :id_c, :dat, :fot, :nome);");
 
    session_start();
    $smt->bindValue(':co',$comment);

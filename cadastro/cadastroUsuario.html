@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano - Login</title>
-	<link rel="stylesheet" href="style.css">
+	<title>Trivegano - Login</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	<link rel="stylesheet" href="../frontend/css/style.css">
+	<link rel="stylesheet" href="style.css">
+
 <!--============================================================================-->	
 <!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
 
@@ -30,16 +31,15 @@
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 </head>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../frontend/js/script.js"></script>
-<script src="../bootstrap5/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script  src="../frontend/js/script.js"></script>
+<!-- <script src="../bootstrap5/js/bootstrap.bundle.min.js"></script> -->
 <body>
 	<header>
 		<div class="logo">
 			 <a href="../../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
+			<ul class="items">
 				<li><a href="../../index.php">Home</a></li>
 				<li><a href="../frontend/faq.php">FAQ</a></li>
 				<li><a href="../frontend/menu.php">Menu</a></li>
@@ -56,12 +56,11 @@
 		</div>
 	</header>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-color: #dfc4a6; padding-top: 80px; /* justify-content: right; padding-right: 20px; */">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="min-height: 700px; min-width: 700px;">
-				<form class="login100-form validate-form" name="cadastroUsuario" data-viacep method="get" action=".">
+				<form class="login100-form validate-form" name="cadastroUsuario" data-viacep method="POST" action="doCadastroUsuario1.php">
 					<span class="login100-form-title p-b-49">
 						<i class="fa fa-user-circle-o"></i>
 					 </span>
@@ -136,19 +135,18 @@
 					<div style="margin-left: 0;" uk-grid>
 						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
 							<span class="label-input100">Logradouro</span>
-							<input class="input100" type="text" name="rua" placeholder="Digite o logradouro" data-viacep-endereco required>
+							<input class="input100" type="text" name="rua" style="padding-left:2px;" placeholder="Digite a rua" data-viacep-endereco required>
 							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 	
 
-						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class="label-input100">Bairro</span>
-							<input class="input100" type="text" name="bairro" placeholder="Digite o logradouro" data-viacep-bairro required>
+							<input class="input100" type="text" name="bairro" placeholder="Digite o bairro" data-viacep-bairro required>
 							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 						
 					</div>
-					<hr style="margin-top: 0; margin-bottom: 23px;" >
 
 					<div style="margin-left: 0;" uk-grid>
 						<div class="wrap-input100-grid validate-input" data-validate = "Cidade inválida">
@@ -157,10 +155,10 @@
 							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 
-						<div style='margin-left: 0;' class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class='label-input100' for="estado">Estado</span>
 							<select id="estado" name="estado" class="input100" data-viacep-estado style='border:none; padding: 0 7px 0 15px;' aria-placeholder="Selecione" data-viacep-estado>
-								
+								<option value="">Selecione</option>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
 								<option value="AP">Amapá</option>
@@ -193,7 +191,6 @@
 						</div>
 						
 					</div>
-					<hr style="margin-top: 0; margin-bottom: 23px;" >
 					
 					<div style="margin-left: 0;" uk-grid>
 						<div style='margin-left: 2%;' class="wrap-input100-grid validate-input" data-validate = "Numero inválido">
@@ -201,14 +198,13 @@
 							<input class="input100" type="text" name="numero" placeholder="Digite o numero"  required>
 							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
-						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class="label-input100">Completo</span>
-							<input class="input100" type="text" name="complemento" placeholder="Digite o logradouro" >
+							<input class="input100" type="text" name="complemento" style='font-size: 15px;padding-left: 1px;'placeholder="Digite o complemento" >
 							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 						
 					</div>
-					<hr style="margin-top: 0; margin-bottom: 23px;" >
 
                    <!--  <div class="text-right p-t-8 p-b-31">
 						<a href="#" style="text-decoration: underline;">

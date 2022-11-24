@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	<script src='../js/jquery-3.5.1.min.js'></script>
     <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
 
@@ -35,7 +35,10 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
 
@@ -102,7 +105,7 @@
 	</div>
 
 	<div >
-		<div class="uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200" style="background-image: url('../trivegano/vegetables-752153.jpg'); margin-bottom:1%; width: 100%;">
+		<div class="uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200" style="background-image: url('../trivegano/vegetables-752153.jpg');width: 100%;">
 			<div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">
 				<h1>TriVegano</h1>
 				<p>Desenvolvimento, Disposição e Sustentabilidade</p>

@@ -13,28 +13,45 @@ if($status==true){
     //header('Location: finalizar_compra.php');
     
 
-    include('../cadastro/conexao.php');
+    include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
     session_start();
-    
-    if(isset($_SESSION['id_promocao'])){
-        $cod=$_SESSION['cod_fornecedor'][0];
+    $cod=$_SESSION['cod_fornecedor'][0];
         date_default_timezone_set('Brazil/East');
-        $now=date('Y/m/d H:i:s');
+        $now=date('Y-m-d H:i:s');
+    
+    if(isset($_SESSION['id_promocao']) && isset($_SESSION['desconto'])){
         
-        $comando="INSERT INTO `tb_pedido_venda`(`id_venda`, `valor_venda`, `data_venda`, 
-        `endereco_venda`, `condicao_venda`, `desconto_venda`, `status_venda`, `valor_frete_venda`, `empresa_entrega_venda`, 
-        `tb_cliente_id_cliente`, `id_promocao`,`tb_fornecedor_id_fornecedor`) 
+        
+        $comando="INSERT INTO `tb_pedido_venda`(`id_venda`, `valor_venda`, `data_venda`, `endereco_venda`, `condicao_venda`, `desconto_venda`, `status_venda`, 
+        `valor_frete_venda`, `empresa_entrega_venda`, `tb_cliente_id_cliente`, `id_promocao`, `tb_fornecedor_id_fornecedor`, `cep_venda`) 
         VALUES (NULL, $_SESSION[valorcompra], '$now', '".utf8_encode($_COOKIE['endereco'])."','debito',$_SESSION[desconto],'enviada',
-        '0.00','propia','$_SESSION[codusuario]','$_SESSION[id_promocao]','$cod');";
+        '0.00','propia','$_SESSION[codusuario]','$_SESSION[id_promocao]','$cod','$_COOKIE[cep]');";
         $query=mysqli_query($con,$comando);
+        // echo $now;
+        // echo'<br>';
+        // echo utf8_encode($_COOKIE['endereco']);
+        // echo'<br>';
+        // echo $_SESSION['desconto'];
+        // echo'<br>';
+        // echo $_SESSION['codusuario'];
+        // echo'<br>';
+        // echo $_SESSION['id_promocao'];
+        // echo'<br>';
+        // echo $cod;
+        // echo'<br>';
+        // echo $_COOKIE['cep'];
+        // echo'<br>';
         
     }
     else{
-        $comando="INSERT INTO `tb_pedido_venda`(`id_venda`, `valor_venda`, `data_venda`,
-        `endereco_venda`, `condicao_venda`, `status_venda`, `valor_frete_venda`, `empresa_entrega_venda`,
-         `tb_cliente_id_cliente`, `tb_fornecedor_id_fornecedor`) 
-       VALUES (NULL, '$_SESSION[compravenda]', $now, '".utf8_encode($_COOKIE['endereco'])."','debito','enviada',
-       '0.00','propia','$_SESSION[codusuario]','$cod');";
+        $comando="INSERT INTO `tb_pedido_venda`(`id_venda`, `valor_venda`, `data_venda`, 
+        `endereco_venda`, `condicao_venda`, `status_venda`, `valor_frete_venda`, `empresa_entrega_venda`, 
+        `tb_cliente_id_cliente`, `tb_fornecedor_id_fornecedor`,`cep_venda`) 
+        VALUES (NULL, $_SESSION[valorcompra], '$now', '".utf8_encode($_COOKIE['endereco'])."','debito','enviada',
+        '0.00','propia','$_SESSION[codusuario]','$cod','$_COOKIE[cep]');";
         $query=mysqli_query($con,$comando);
     }
 
@@ -107,6 +124,7 @@ if($status==true){
 
     } else {
         echo 'lascou';
+        var_dump($query);
     }
    
             
@@ -118,7 +136,7 @@ if($status==true){
     unset($_SESSION['pedido']);
     
     
-    // echo"<script>window.location.replace('http://localhost/trivegano-main/frontend/menu.php');</script>";
+    echo"<script>window.location.replace('http://localhost/trivegano-main/frontend/menu.php');</script>";
 }
 
 

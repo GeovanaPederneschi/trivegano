@@ -6,7 +6,7 @@ include_once('session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
      <link rel="stylesheet" href="style1.css">
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
@@ -71,7 +71,7 @@ include_once('session_start.php');
             console.log(ferrou);
             </script>
             ";
-             visualizarUsuario($cod,'tb_adm_fornecedor','id_adm_fornecedor','6','3');
+             visualizarUsuario($cod,'tb_cliente','id_cliente','10','5');
            
             
             
@@ -99,7 +99,10 @@ include_once('session_start.php');
             <div class="item " id="avatar">
                 <?php
                 //require "cadastro/doLogin.php";
-                include "../cadastro/conexao.php";
+                include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 $resultado=mysqli_query($con,"select * from tb_cliente where id_cliente='$_SESSION[codusuario]'");
                 if($r = mysqli_fetch_array($resultado)){
                 
@@ -146,7 +149,7 @@ include_once('session_start.php');
     <div class="uk-margin-medium-top" id="conteudo">
                         
     <div class="head transparent">
-      <div class="text white" style="padding-left:20%;">Perfil</div>
+      <!--<div class="text white" style="padding-left:20%;">Perfil</div>-->
       <div class="notification">
         <img src="../icones/images/notificationBellW.svg" alt="">
         <span class="digit white">2</span>

@@ -10,11 +10,17 @@
     </div>
   </div>
 </div> 
+
+<style>
+  label{
+    cursor: pointer;
+  }
+</style>
       <table class="ui celled padded table" id="visualizarLista">
         <thead>
           <tr>
           <th>Titulo</th>
-          <th>Efficacy</th>
+          <th>Avaliação</th>
           <th>Data</th>
           <th> Ver mais </th>
           <th> Editar </th>
@@ -77,7 +83,7 @@
                       $receita[1]
                     </td>
                     <td>
-                      <div class='ui star rating' data-rating='3' data-max-rating='3'></div>
+                      <div class='ui star rating' data-rating='5' data-max-rating='5'></div>
                     </td>
                     <td class='right aligned'>
                       $receita[6]

@@ -61,4 +61,8 @@
           <input type="text" name="ceo" placeholder="#ramo;#ramo2">
         </div>
         <button class="uk-button uk-button-secondary uk-width-1-1" name="submit" type="submit">Submit</button>
-</form>            
+</form>
+
+<script>
+  //$('#grid').css('height','170%');
+</script>

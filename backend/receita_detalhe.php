@@ -6,7 +6,7 @@ include_once('session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<!-- font -->
@@ -20,8 +20,13 @@ include_once('session_start.php');
     <script src="../js/uikit.min.js"></script>
     <script src="../js/uikit-icons.min.js"></script>
 	<!---------->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-	<link rel="stylesheet" href="../frontend/css/style.css">
+  <script src='../js/jquery-3.5.1.min.js'></script>
+
+   <!-- SEMANTIC -->
+   <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
+  <script src="../css/semantic/semantic.min.js"></script>
+  
+  <link rel="stylesheet" href="../frontend/css/style.css">
   <link rel="stylesheet" href="style.css">
   
 
@@ -87,11 +92,15 @@ include_once('session_start.php');
 <div uk-grid>
         <div class="uk-width-1-5@m">
             <div class="uk-position-left ui secondary vertical pointing menu" id="grid">
+                <div uk-sticky='position:top;end:true;'>
                     <div class="item " id="avatar">
                     <?php
                         //require "cadastro/doLogin.php";
                         
-                        include "../cadastro/conexao.php";
+                        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
                         mysqli_query($con,'SET character_set_client=utf8');  
@@ -149,6 +158,7 @@ include_once('session_start.php');
                       </button>
                       </form>
                     </div>
+                </div>
             </div>
         </div>
     
@@ -157,9 +167,9 @@ include_once('session_start.php');
     <div class="uk-margin-medium-top" id="conteudo">
                         
 <ul style="font-size: 60px; text-decoration-color:black;" class="uk-subnav uk-subnav-pill uk-flex-center"  uk-switcher="animation: uk-animation-fade">
-  <li><a href="#">VISUALIZAR</a></li>
-  <li><a href="#">INSERIR</a></li>
-  <li><a href="#">DESEMPENHO</a></li>
+  <li><a class='visualizar' href="#">VISUALIZAR</a></li>
+  <li><a class='inserir' href="#">INSERIR</a></li>
+  <li><a class='desempenho' href="#">DESEMPENHO</a></li>
 </ul>
 
 <ul class="uk-switcher uk-margin">
@@ -192,6 +202,25 @@ include_once('session_start.php');
             </div>
         </div>
 </div>
+
+<script>
+  $('.ui.rating')
+  .rating('disable')
+;
+$('#conteudo .uk-subnav li .inserir').on('click', function(){
+  $('.uk-grid div #grid').css('height','150%');
+});
+$('#conteudo .uk-subnav li .visualizar').on('click', function(){
+  $('.uk-grid div #grid').css('height','auto');
+  console.log('foi');
+});
+$('#conteudo .uk-subnav li .desempenho').on('click', function(){
+  $('.uk-grid div #grid').css('height','auto');
+  console.log('foi');
+});
+
+</script>
+
 <footer class="footer">
 	<div class="container">
 		<div class="row">

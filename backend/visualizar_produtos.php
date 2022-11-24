@@ -11,12 +11,18 @@
     </div>
   </div>
 </div> 
+<style>
+  label{
+    cursor: pointer;
+  }
+</style>
+
       <table class="ui celled padded table" id="visualizarLista">
         <thead>
           <tr>
           <th>Produto</th>
-          <th>Efficacy</th>
-          <th>Data</th>
+          <th>Avaliação</th>
+          <th>Disponível</th>
           <th>Categoria</th>
           <th> Ver mais </th>
           <th> Editar </th>
@@ -81,11 +87,16 @@
                     <td class='single line'>
                       $produto[1]
                     </td>
-                    <td>
-                      <div class='ui star rating' data-rating='3' data-max-rating='3'></div>
+                    <td class='center aligned'>
+                      <div class='ui star rating' data-rating='5' data-max-rating='5'></div>
                     </td>
-                    <td class='right aligned'>
-                      DATA
+                    <td class='center aligned'>
+                    <div class='ui segment'>
+                      <div class='ui fitted slider checkbox'>
+                        <input type='checkbox' checked='checked'>
+                        <label></label>
+                      </div>
+                    </div>         
                     </td>";
                     $query=mysqli_query($con,"SELECT `descricao_categoria` FROM `tb_categoria` WHERE `id_categoria`='$produto[6]';");
                     if($categoria=mysqli_fetch_row($query)){

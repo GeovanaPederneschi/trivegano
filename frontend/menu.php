@@ -6,7 +6,7 @@ include('../backend/session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>    
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>    
     <link rel="stylesheet" href="../cadastro/style.css">
     <link rel="stylesheet" href="../backend/style1.css">
 	
@@ -50,7 +50,10 @@ include('../backend/session_start.php');
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
 
                         echo"<li><a href='../backend/back3.php'><span style='font-size:15px;' uk-icon='icon: user;ratio: 1.5'></span></i></a></li>";
@@ -298,7 +301,10 @@ include('../backend/session_start.php');
                 <div class="sAddress">
                     <ul>
                         <?php
-                            include('../cadastro/conexao.php');
+                            include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                             $query = mysqli_query($con, "SELECT * FROM tb_endereco_cliente WHERE tb_cliente_id_cliente = '$_SESSION[codusuario]';");
                             while($endereco = mysqli_fetch_array($query)){
 
@@ -381,7 +387,10 @@ include('../backend/session_start.php');
             <button class="uk-offcanvas-close" type="button" uk-close></button>
 
                 <?php
-                    include('../cadastro/conexao.php');
+                    include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                     include('carrinho.php');
 
                 if(array_key_exists('compra', $_POST)) {
@@ -462,7 +471,10 @@ include('../backend/session_start.php');
     <h1 class="uk-heading-line uk-text-center"><span>FILTROS</span></h1>
     <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m uk-child-width-1-5@m uk-child-width-1-6@m uk-grid">
             <?php
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 mysqli_query($con,"SET NAMES 'utf8'");  
                 mysqli_query($con,'SET character_set_connection=utf8');  
                 mysqli_query($con,'SET character_set_client=utf8');  
@@ -507,7 +519,10 @@ include('../backend/session_start.php');
     <h1 class="uk-heading-line uk-text-center"><span>Restaurantes</span></h1>
     
             <?php
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 $comando= "select * from tb_fornecedor;";
                 $resulta = mysqli_query($con,$comando);
                 echo"<ul class=' uk-grid-column-small uk-grid-row-large uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m uk-child-width-1-5@m' uk-grid>";
@@ -556,7 +571,10 @@ include('../backend/session_start.php');
         <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-height-small uk-grid-small">
             <?php
 
-            include('../cadastro/conexao.php');
+            include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
             mysqli_query($con,"SET NAMES 'utf8'");  
             mysqli_query($con,'SET character_set_connection=utf8');  
             mysqli_query($con,'SET character_set_client=utf8');  
@@ -596,7 +614,10 @@ include('../backend/session_start.php');
     <h1 class="uk-heading-line uk-text-center"><span>Nossas Receitas</span></h1>
     <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m uk-child-width-1-5@m  uk-child-width-1-6@m uk-child-width-1-7@m uk-grid">
             <?php
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 mysqli_query($con,"SET NAMES 'utf8'");  
                 mysqli_query($con,'SET character_set_connection=utf8');  
                 mysqli_query($con,'SET character_set_client=utf8');  
@@ -652,7 +673,10 @@ include('../backend/session_start.php');
 
             <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
                     <?php
-                        include "../cadastro/conexao.php";
+                        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
                         mysqli_query($con,'SET character_set_client=utf8');  

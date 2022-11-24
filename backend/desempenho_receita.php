@@ -11,7 +11,10 @@
       // draws it.
 </script>
       <?php
-        include('../cadastro/conexao.php');
+        include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
         $all=mysqli_query($con,"SELECT * FROM `tb_receitas` WHERE `tb_usuario_adm_id_usuario_adm` = '1';");
         $ana=0;
         while($todas=mysqli_fetch_row($all)){

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	
     <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
@@ -41,7 +41,10 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
 
@@ -161,10 +164,13 @@
             <h1 class="uk-heading-line uk-text-center"><span>Adicionados Recentementes</span></h1>
             <div class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1">
 
-            <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+            <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@m uk-grid">
                     <?php
                     
-                        include "../cadastro/conexao.php";
+                        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
                         mysqli_query($con,'SET character_set_client=utf8');  
@@ -242,13 +248,16 @@
 
         <!-- ROLAGEM COM GUIAS MAIS VISTAS -->
 
-        <div class="uk-slider-container-offset"   style="margin-left:3%; margin-right:3%; margin-bottom:4%;" uk-slider autoplay="autoplay-interval:4000;">
+        <div class="uk-slider-container-offset"   style="margin-left:3%; margin-right:3%; margin-bottom:4%;" uk-slider autoplay="autoplay-interval:3000;">
             <h1 class="uk-heading-line uk-text-center"><span>Guias Bem Avaliadas</span></h1>
             <div class="uk-position-relative uk-visible-toggle uk-light " tabindex="-1">
 
-            <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+            <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@m uk-grid" >
                     <?php
-                        include "../cadastro/conexao.php";
+                        include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
                         mysqli_query($con,'SET character_set_client=utf8');  
@@ -320,7 +329,10 @@
             <h1 class="uk-heading-line uk-text-center"><span>Nossas Receitas</span></h1>
             <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m uk-child-width-1-5@m  uk-child-width-1-6@m uk-child-width-1-7@m uk-grid">
                     <?php
-                        include('../cadastro/conexao.php');
+                        include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                         mysqli_query($con,"SET NAMES 'utf8'");  
                         mysqli_query($con,'SET character_set_connection=utf8');  
                         mysqli_query($con,'SET character_set_client=utf8');  
@@ -402,39 +414,49 @@
         </div>
          <!-- ROLAGEM DE PROMOCOES -->
  
-         <div id="promocao" uk-slider  autoplay attoplay-interval="3500">
+         <div id="box_promocao" uk-slider style="margin: 1%;" autoplay attoplay-interval="3500" style='cursor:auto;'>
 
-            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
 
-                <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@s">
-                    <li>
-                        <img src="../trivegano/first_promocao.png" width="500" alt="">
-                    </li>
-                    <li>
-                        <img src="../trivegano/acima4_promocao.png" width="500" alt="">
-                    </li>
-                    <li>
-                        <img src="../trivegano/acima50_promocao.png" width="500" alt="">
-                    </li>
-                    <li>
-                        <img src="../trivegano/verao_st_promocao.png" width="500" alt="">
-                    </li>
-                    <li>
-                        <img src="../trivegano/molde_imagem_promocao.jpg" width="500" alt="">
-                    </li>
-                    <li>
-                        <img src="../trivegano/molde_imagem_promocao.jpg" width="500" alt="">
-                    </li>
-                    
-                </ul>
+        <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@s" uk-grid>
+            <?php
 
-                <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-                <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+            include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
+            mysqli_query($con,"SET NAMES 'utf8'");  
+            mysqli_query($con,'SET character_set_connection=utf8');  
+            mysqli_query($con,'SET character_set_client=utf8');  
+            mysqli_query($con,'SET character_set_results=utf8'); 
+            $query=mysqli_query($con,"SELECT * FROM tb_promocao WHERE status_promocao='ativo';");
 
-            </div>
+            while($promocao = mysqli_fetch_array($query)){
+                echo"<li class='uk-transition-toggle'>
+                <input type='hidden' name='token' id='token' value='$promocao[1]'>
+                    <img  class='uk-transition-scale-up uk-transition-opaque' src='../trivegano/promocao/$promocao[11]' width='400' alt=''>
+                </li>";
+            }
 
-        </div>
+            ?>
+            
+        </ul>
 
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
+
+    </div>
+    
+   <script>$(' #box_promocao .uk-position-relative .uk-slider-items .uk-transition-toggle').click(function(){
+        console.log('aii');
+        var token = $(this).children().first().val();
+        console.log(token);
+        //token.setSelectionRange(0,99999)
+        navigator.clipboard.writeText(token);
+        UIkit.notification({message: '<span uk-icon=\'icon: copy\'></span> Token Copiado', status: 'danger',pos: 'top-right'});
+   })</script>
+
+</div>
         
         <div  class="uk-flex uk-flex-center">
             <img style="margin-top:10%;margin-bottom:10%;" src="../trivegano/Foodies_-_Food_Delivery_1-removebg-preview.png" alt="">
@@ -453,15 +475,33 @@
   <div class="ui left icon action input">
     <i class="search icon"></i>
     <input type="text" placeholder="@" style='width:10%;'>
-    <div class="ui blue submit button">ASSINE</div>
+    <div class="ui orange submit button">ASSINE</div>
   </div>
   <div class="ui horizontal divider">Ou </div>
   <!-- <div class="ui teal labeled icon button">Create New Order <i class="add icon"></i> </div> -->
   <button class="ui instagram red button"><i class="instagram icon"></i> Instagram </button>
 </div>
+
+<div  class="uk-flex uk-flex-center">
+            <img style="margin-top:10%;margin-bottom:10%;" src="../trivegano/reading.png" alt="">
+        </div>
+
+<div class="ui circular segment">
+  <h2 class="ui header">Aproveite!<div class="sub header"></div>
+  </h2>
+</div>
+<div class="ui inverted circular segment">
+  <h2 class="ui inverted header"> <div class="sub header"></div>
+  </h2>
+</div>
+<div  class="uk-flex uk-flex-center">
+            <img style="margin-top:10%;margin-bottom:10%;" src="../trivegano/information_online.png" alt="">
+        </div>
+
     </div>
 
 </div>
+
 
 
 

@@ -1,11 +1,11 @@
 
 console.log('MEU DEUS');
- $('.div .ui.comments #form1 button').click(function(){
+ $('.div .ui.comments #form1 button').one("click",function(){
     console.log('pegou');
 
     $('.div .ui.comments #form1').submit(function(e){
         e.preventDefault();
-        console.log('AII');
+        console.log('INSERIU');
 
         var _comment = $('#comment').val();
         var _cod = $('#cod').val();
@@ -17,8 +17,6 @@ console.log('MEU DEUS');
             method: 'POST',
             data:{comment:_comment,cod:_cod},
             dataType:'json'
-            
-            
         }).done(function(result){
             $('#comment').val('');
             console.log(result);

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
      <link rel="stylesheet" href="style1.css">
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
@@ -61,7 +61,10 @@
                 <?php
                 //require "cadastro/doLogin.php";
                 session_start();
-                include "../cadastro/conexao.php";
+                include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 $resultado=mysqli_query($con,"select * from tb_cliente where id_cliente='$_SESSION[codusuario]'");
                 if($r = mysqli_fetch_array($resultado)){
                 
@@ -103,12 +106,62 @@
                       </form>
                     </div>
     </div>
+    <nav class="uk-navbar" id='menu' uk-navbar>
+              <div class="uk-navbar-left">
+                  <a class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon href="#"></a>
+                  <div class="uk-navbar-dropdown">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                          <li style='margin:4%;'><a id="ativo">
+                                <form method='POST' action='back3Usuario.php'>
+                                  <button id='btn-clientes' type='submit' class='btn6'>
+                                <?php
+                              
+                              
+                                  include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
+
+                                  $resultado=mysqli_query($con,"SELECT * FROM tb_cliente WHERE id_cliente='$_SESSION[codusuario]';");
+                                  if($r = mysqli_fetch_array($resultado)){
+                          
+                                      
+                                      echo"
+                                      <img class='ui avatar image' src='../trivegano/usuarios/cliente/$r[10]'>
+                                      <span>".ucfirst($r[1])."</span>
+                                      ";
+
+                                  }
+                              ?>    
+                                </button>
+                                  </form>
+                          </a></li>
+                         
+                          <li style='margin:4%;'><a>
+                            <form method="POST" action="back3.php">
+                            <button class="btn6">
+                              Pedidos
+                            </button>
+                            </form>
+                          </a></li>
+                          
+                          <li style='margin:4%;'><a>
+                            <form method="POST"  action="back3Suporte.php">
+                            <button type="submit" class="btn6">
+                              Suporte
+                            </button>
+                            </form>
+                          </a></li>
+                      </ul>
+                  </div>
+              </div>
+            </nav>
 </div>
-<div class="uk-width-4-5@m">
+<div class="uk-width-4-5@m" id='cont'>
     <div class="uk-margin-medium-top" id="conteudo">
                         
     <div class="head transparent">
-      <div class="text white" style="padding-left:20%;">Perfil</div>
+      <!-- <div class="text white" style="padding-left:20%;">Perfil</div>-->
       <div class="notification">
         <img src="../icones/images/notificationBellW.svg" alt="">
         <span class="digit white">2</span>

@@ -6,7 +6,7 @@ include('../backend/session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano - Login</title>
+	<title>Trivegano - Login</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	
     <link rel="stylesheet" href="../backend/style1.css">
 
@@ -51,7 +51,10 @@ include('../backend/session_start.php');
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
 
@@ -92,7 +95,10 @@ include('../backend/session_start.php');
                 
                 <div class="cart">
                     <div class="oBreif">
-                        <?php include('../cadastro/conexao.php'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
+                        <?php include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8'); $query=mysqli_query($con,"SELECT MAX(id_venda) FROM tb_pedido_venda;");
                         if($id=mysqli_fetch_array($query)){ $num=$id[0]+1; echo "#".$num;}?>
                         <!-- BOTAR EM PT DEPOIS -->
                         <span class="caption"><?php date_default_timezone_set('Brazil/East'); $today = date("j F \à\s g:i a"); echo $today;?></span>

@@ -36,43 +36,6 @@
                                 $result=array_merge($_SESSION['adicional'.$produto[0]],array($nome=>$adicional));
                                 $_SESSION['adicional'.$produto[0]]=$result;
                             }
-                       /*  }
-                        else{
-
-                            $nome=$name.$z;
-                            $result=array_merge($_SESSION['adicional_quant'],array($nome=>$adicional));
-                            $_SESSION['adicional_quant']=$result;
-
-                        }  */
-
-
-                       /*  if($z==1 && !isset($_SESSION['adicional_item'])){
-                            
-                            //$_SESSION['ras']=array($adicional[$produto[0]]);
-                            $nome=$name.$z;
-                            $name_=str_replace(" ","",$name);
-                            $result=array($nome=>$adicional);
-
-                            $_SESSION['adicional_quant']=array($name_=>$result);
-                        }
-                        else{
-                            $nome=$name.$z;
-                            $name_=str_replace(" ","",$name);
-                            
-
-                            if(!isset($_SESSION['adicional_item'][$name])){
-                                
-                                $result=array_merge($_SESSION['adicional_quant'],array($name_=>array($nome=>$adicional)));
-                                $_SESSION['adicional_quant']=$result;
-                            }
-                            else{
-                                $result=array_merge($_SESSION['adicional_quant'],array($name=>array($nome=>$adicional)));
-                                echo $result;
-                                $_SESSION['adicional_quant']=$result;
-                            }
-                            
-                            
-                        } */
                             
                         
                     }

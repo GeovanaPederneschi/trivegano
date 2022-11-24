@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 
   
   <link rel="stylesheet" href="../cadastro/style.css">
@@ -56,7 +56,10 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');session_start();
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
                     //     $cod = $_SESSION['cod_fornecedor'][0];
                     // $query=mysqli_query($con,"SELECT * FROM tb_usa WHERE id_fornecedor = $cod");
@@ -118,6 +121,7 @@
 						<i class="fa fa-user-circle-o"></i>
 					 </span>
           <input type="hidden" name='path' value="guia_detalhe.php">
+          <input type="hidden" name='cod' value="<?php echo $_POST['codx'];?>">
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "E-mail Institucional ou RA inválido">
 						<span class="label-input100">Usuário</span>
 						<input class="input100" type="text" name="usuario" placeholder="Digite seu Usuário" required>
@@ -182,7 +186,10 @@
 
     <?php
  
-    include "../cadastro/conexao.php";
+    include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
 	mysqli_query($con,"SET NAMES 'utf8'");  
 	mysqli_query($con,'SET character_set_connection=utf8');  
 	mysqli_query($con,'SET character_set_client=utf8');  
@@ -251,39 +258,7 @@
       <h3 class="ui dividing header">Comentários</h3>
       
      <div class="comment">
-        <!-- <a class="avatar">
-           <img src="/images/avatar/small/elliot.jpg"> 
-        </a>
-        <div class="content">
-           <a class="author">Elliot Fu</a> 
-          <div class="metadata">
-             <span class="date">Yesterday at 12:30AM</span> 
-          </div>
-          <div class="text">
-             <p>This has been very useful for my research. Thanks as well!</p> 
-          </div>
-          <div class="actions">
-             <a class="reply">Reply</a> 
-          </div>
-        </div> -->
-       <!--  <div class="comments">
-          <div class="comment">
-            <a class="avatar">
-              <img src="/images/avatar/small/jenny.jpg">
-            </a>
-            <div class="content">
-              <a class="author">Jenny Hess</a>
-              <div class="metadata">
-                <span class="date">Just now</span>
-              </div>
-              <div class="text">
-                Elliot you are always so right :)
-              </div>
-              <div class="actions">
-                <a class="reply">Reply</a>
-              </div>
-            </div>
-          </div>-->
+
         </div> 
 
       

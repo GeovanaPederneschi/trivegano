@@ -7,7 +7,7 @@ include('../backend/session_start.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 
@@ -41,7 +41,10 @@ include('../backend/session_start.php');
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
                     //     $cod = $_SESSION['cod_fornecedor'][0];
                     // $query=mysqli_query($con,"SELECT * FROM tb_usa WHERE id_fornecedor = $cod");
@@ -83,7 +86,10 @@ include('../backend/session_start.php');
 
             <?php
             
-            include('../cadastro/conexao.php');
+            include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
             include('carrinho.php');
 
             if(array_key_exists('compra', $_POST)) {
@@ -363,7 +369,10 @@ include('../backend/session_start.php');
         uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-4@m " uk grid uk-height-match>
         <?php
            
-           include('../cadastro/conexao.php');
+           include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
            mysqli_query($con,"SET NAMES 'utf8'");  
             mysqli_query($con,'SET character_set_connection=utf8');  
             mysqli_query($con,'SET character_set_client=utf8');  

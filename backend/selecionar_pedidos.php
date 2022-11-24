@@ -1,12 +1,18 @@
 <?php
-include('../cadastro/conexao.php');
+include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
 session_start();
 $query9=mysqli_query($con,"SELECT * FROM tb_pedido_venda WHERE (status_venda='enviada' or status_venda='acaminho') and tb_fornecedor_id_fornecedor=$_SESSION[codfornecedor];");
 while($venda=mysqli_fetch_row($query9)){
     date_default_timezone_set('Brazil/East');
-     $now=date('Y/m/d H:i:s');
-    //echo $now = str_replace("/",'-',$now);
-    $horario=date('Y/m/d H:i:s', strtotime($venda[2]));
+    $now=date('Y-m-d H:i:s');
+    //echo "<br>".$teste = date('Y-m-d H:i:s', strtotime("+ 1 seconds"));
+    // "<br>".$now = str_replace("/",'-',$now);
+    //echo "<br>".
+    $horario=date('Y-m-d H:i:s', strtotime("+1seconds", strtotime($venda[2])));
+    //$horario=date('Y-m-d H:i:s', strtotime($venda[2]));
     if($horario==$now){
         echo '<audio autoplay="autoplay" loop>
         <source src="Bell01.mp3" type="audio/mp3" />

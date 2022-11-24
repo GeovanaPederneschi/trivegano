@@ -31,7 +31,10 @@ function carrinho($cod){
                 $_SESSION['pedido']='true';
                 
 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 $query= mysqli_query($con,"SELECT `nome_produto`,tb_adm_fornecedor_tb_fornecedor_id_fornecedor FROM `tb_produto` WHERE `id_produto` = '$cod';");
                 if($nome = mysqli_fetch_row($query)){
 
@@ -71,7 +74,10 @@ function carrinho($cod){
                
 
             function fornecedor($cod){
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                  $query=mysqli_query($con,"SELECT tb_adm_fornecedor_tb_fornecedor_id_fornecedor FROM tb_produto WHERE id_produto = $cod;");
                 if($fornecedor=mysqli_fetch_array($query)){
                     $for=$_SESSION['cod_fornecedor'];
@@ -93,7 +99,10 @@ function carrinho($cod){
                             array_push($carrinho,$cod);
                             $_SESSION['idcarrinho']=$carrinho;
 
-                            include('../cadastro/conexao.php');
+                            include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                             $query= mysqli_query($con,"SELECT `nome_produto`,tb_adm_fornecedor_tb_fornecedor_id_fornecedor FROM `tb_produto` WHERE `id_produto` = '$cod';");
                             if($nome = mysqli_fetch_row($query)){
 
@@ -177,23 +186,17 @@ function mostrarCarrinho($con){
                         echo"<span>$fornecedor[0]</span>";
                         ECHO"</div><br>";
                     echo"<div class='uk-grid'>";
-                    echo"<div>$produto[4]</div>";
+                   $adicional_item=0;
                     
                    
                     if(!empty($_SESSION['adicional'][$produto[1]])){
-                         echo"<div style='margin-left: 9%;'><span>";
+                         
 
                         
                         $quant=count($_SESSION['adicional'][$produto[1]]);
                         $adicional=$_SESSION['adicional'][$produto[1]];
+
                         for($a=0;$a<$quant;$a++){
-                            
-                            $comando="SELECT * FROM `tb_produtos_adicionais` WHERE `id_adicional`= '$adicional[$a]';";
-                            $query=mysqli_query($con,$comando);
-                            while($adicionais=mysqli_fetch_array($query)){
-                                echo"<img class='ui avatar mini image' src='../trivegano/adicionais/$adicionais[8]'>";
-                            }
-                            
                             $query=mysqli_query($con,"SELECT * FROM tb_produtos_adicionais WHERE id_adicional='$adicional[$a]';");
                             if($adicionais = mysqli_fetch_array($query)){
                                 //echo $adicionais[2].'<br>';
@@ -201,9 +204,28 @@ function mostrarCarrinho($con){
                                 //echo $teste.'<br>';
                                 //echo $quantidade_cod[$name].'<br>';
                                 $_SESSION['valorcompra'] += $adicionais[2]*$quantidade_cod[$name];
+                                // echo $_SESSION['valorcompra'];
+                                $adicional_item +=$adicionais[2]*$quantidade_cod[$name];
                             }
+                        }
+                        $valor_item = $produto[4]+$adicional_item;
+                        echo"<div>".number_format($valor_item,2,",",".")."</div>";
 
-                        }echo"</div>";
+                        echo"<div style='margin-left: 9%;'><span>";
+                        for($a=0;$a<$quant;$a++){
+
+
+                            
+                            $comando="SELECT * FROM `tb_produtos_adicionais` WHERE `id_adicional`= '$adicional[$a]';";
+                            $query=mysqli_query($con,$comando);
+                            while($adicionais=mysqli_fetch_array($query)){
+                                echo"<img class='ui avatar mini image' src='../trivegano/adicionais/$adicionais[8]'>";
+                            }
+                            
+                            
+
+                        }
+                        echo"</div>";
                         echo"</span>";
                         echo"
                                                 <div class='unit uk-flex uk-flex-right' style='margin-left:3%;'>
@@ -218,9 +240,11 @@ function mostrarCarrinho($con){
                         ";
                         echo"</div></div></div>";
                         $_SESSION['valorcompra'] += $produto[4]*$quantidade_cod[$name];
+                        // echo $_SESSION['valorcompra'];
                         echo"<br><br>";
                     }
                     else{
+                        echo"<div>$produto[4]</div>";
                        
                         echo"
                                             <div class='unit uk-flex uk-flex-right' style='margin-left:33%;'>
@@ -280,6 +304,7 @@ function mostrarCarrinho($con){
             echo"<br>";
             //var_dump($_SESSION['idcarrinho']);
             //var_dump( $_SESSION);
+
     
             
     }

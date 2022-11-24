@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 
 	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<!-- font -->
@@ -57,7 +57,10 @@
                 <?php
                 //require "cadastro/doLogin.php";
                 session_start();
-                include "../cadastro/conexao.php";
+                include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 $resultado=mysqli_query($con,"select * from tb_adm_fornecedor where id_adm_fornecedor='$_SESSION[codusuario]'");
                 if($r = mysqli_fetch_array($resultado)){
                 
@@ -86,9 +89,11 @@
             </div>
             <br><br>
             <div class="uk-text-large">
-                      <button id="btn-clientes" class="btn item active">
+                      <form method="POST" action="back2.php">
+                      <button id="btn-clientes" type='submit' class="btn item active">
                             Produtos
                       </button>
+                      </form>
                       <form method="POST" action="back2Pedidos.php">
                         <button id="btn-clientes" type="submit" class="btn item">
                             Pedidos
@@ -116,8 +121,90 @@
                       </form>
                     </div>
     </div>
+            <nav class="uk-navbar" id='menu' uk-navbar>
+              <div class="uk-navbar-left">
+                  <a class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon href="#"></a>
+                  <div class="uk-navbar-dropdown">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+                          <li style='margin:4%;'><a>
+                                <form method='POST' action='back2Usuario.php'>
+                                  <button id='btn-clientes' type='submit' class='btn6'>
+                                <?php
+                              
+                              
+                                  include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
+
+                                  $resultado=mysqli_query($con,"SELECT * FROM tb_adm_fornecedor WHERE id_adm_fornecedor='$_SESSION[codusuario]';");
+                                  if($r = mysqli_fetch_array($resultado)){
+                          
+                                      
+                                      echo"
+                                      <img class='ui avatar image' src='../trivegano/usuarios/$r[6]'>
+                                      <span>".ucfirst($r[1])."</span>
+                                      ";
+
+                                  }
+                              ?>    
+                                </button>
+                                  </form>
+                          </a></li>
+                         
+                          <li style='margin:4%;'><a id="ativo">
+                          <form method="POST" action="back2.php">
+                            <button id="btn-clientes" type='submit' class="btn6">
+                                    Produtos
+                            </button>
+                            </form>
+                          </a></li>
+                          
+                          <li style='margin:4%;'><a >
+                            <form method="POST" action="back2Pedidos.php">
+                            <button class="btn6">
+                                    Pedidos
+                            </button>
+                            </form>
+                          </a></li>
+
+                          <li style='margin:4%;'><a>
+                          <form method="POST"  action="back2Vendas.php">
+                                <button type="submit" class="btn6">
+                                    Vendas
+                            </button>
+                            </form>
+                           </a></li>
+
+                           <li style='margin:4%;'><a>
+                           <form method="POST" action="back2Clientes.php">
+                                <button type="submit" class="btn6">
+                                    Clientes
+                            </button>
+                            </form>
+                           </a></li>
+
+                           <li style='margin:4%;'><a>
+                           <form method="POST" action="back2Suporte.php">
+                                <button type="submit" class="btn6">
+                                    Suporte
+                            </button>
+                            </form>
+                           </a></li>
+
+                           <li style='margin:4%;'><a>
+                           <form method="POST" action="back2Promocoes.php">
+                                <button type="submit" class="btn6">
+                                    Promoções
+                            </button>
+                            </form>
+                           </a></li>
+                      </ul>
+                  </div>
+              </div>
+            </nav>
 </div>
-<div class="uk-width-4-5@m">
+<div class="uk-width-4-5@m" id="cont">
     <div class="uk-margin-medium-top" id="conteudo">
                         
 <ul style="font-size: 60px; text-decoration-color:black;" class="uk-subnav uk-subnav-pill uk-flex-center"  uk-switcher="animation: uk-animation-fade">
@@ -167,10 +254,10 @@
 
 <script>
   $('.ui.rating')
-  .rating()
+  .rating('disable')
 ;
 </script>
-<footer class="footer">
+<footer class="footer" uk-sticky="position: bottom">
 	<div class="container">
 		<div class="row">
 

@@ -4,24 +4,46 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trivegano - Login</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="../frontend/css/style.css">
+	
 
-	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+<!--============================================================================-->	
+<!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
+
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--=============================================================================================-->
+
+<!-- UIKIT -->
+	
+<link rel="stylesheet" href="../css/uikit.min.css" />
+<script src="../js/uikit.min.js"></script>
+<script src="../js/uikit-icons.min.js"></script>
+<!---------->
+
+<script src="..\js\jquery-3.5.1.min.js"></script>
+ <script src="..\js\jquery-viacep.min.js"></script>
+
+ <!-- SEMANTIC -->
+ <link rel="stylesheet" type="text/css" href="../css/semantic/semantic.min.css">
+  <script src="../css/semantic/semantic.min.js"></script>
+  <!-----  ------->
+<link rel="stylesheet" href="../frontend/css/style.css">
+	<link rel="stylesheet" href="style.css">
+
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 </head>
-</style>
+<script  src="../frontend/js/script.js"></script>
+<!-- <script src="../bootstrap5/js/bootstrap.bundle.min.js"></script> -->
 <body>
 	<header>
 		<div class="logo">
-			 <a href="../index.php"><img src="../trivegano/logo1.png"></a>
+			 <a href="../../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
-				<li><a href="../index.php">Home</a></li>
+			<ul class="items">
+				<li><a href="../../index.php">Home</a></li>
 				<li><a href="../frontend/faq.php">FAQ</a></li>
 				<li><a href="../frontend/menu.php">Menu</a></li>
 				<li><a href="../frontend/home_receitas.php">Receitas</a></li>
@@ -37,55 +59,18 @@
 		</div>
 	</header>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="../frontend/js/script.js"></script>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-color: #dfc4a6;">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="min-width: 700px;">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-49" style="font-size: 40px;">
-						FALTA POUCO PARA VOCÊ SE JUNTAR A NÓS!
-					 </span>
-                    <br><br><br>
-					<div class="contain-login100-form-btn">
-						<div class="wrap-login100-form-btn" style="border-radius: 0;">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" type="button" style="height: 75px;" name="fornecedor" onclick="document.location='cadastroRestaurante.html'">
-                                    Fornecedor
-							</button>
-						</div>
-					</div>
-                    <br>
-                    <div class="contain-login100-form-btn">
-                        <div class="wrap-login100-form-btn" style="border-radius: 0;">
-                        <div class="login100-form-bgbtn"></div>
-                         <button class="login100-form-btn" style="height: 75px;" onclick="document.location='cadastroUsuario.html'" type="button" name="email">
-                                 Cliente
-                        </button>
-                            </div>
-                    </div>
-                    <br><br>
-					<div class="txt1 text-center p-t-54 p-b-20">
-						<span>
-							SIGA-NOS NAS REDES SOCIAIS
-						</span>
-					</div>
-
-					<div class="flex-c-m">
-						<a href="#" class="login100-social-item bg1">
-							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="login100-social-item bg2">
-							<i class="fa fa-twitter"></i>
-						</a>
-
-						<a href="#" class="login100-social-item bg3">
-							<i class="fa fa-google"></i>
-						</a>
-					</div>
-
-				</form>
+		<div class="container-login100" style="background-color: #dfc4a6; padding-top: 5px; /* justify-content: right; padding-right: 20px; */">
+			<div class="wrap-login100 p-l-70 p-r-55 p-t-65 p-b-54" style="min-height: 700px; min-width: 700px; align-items: center;
+    justify-content: center;">
+            <h1 class="ui icon header">
+                <i class="settings icon"></i>
+                <div class="content">Aguarde Contato<div class="sub header" style='font-size:15px;'>Em breve enviaremos uma mensagem no seu email para continuar seu cadastro.</div>
+                
+                </div><p style='margin-top:15%; color:black; font-size:20px;'>Para garantir confiabilidade nós avaliaremos seus dados e entraremos em contato com você para acordamos os termos do contrato, isso pode levar até 30 dias úteis fique de olho na sua caixa de entrada!</p>
+                <p style='margin-top:7%;'> Se você tiver qualquer dúvida leia <a style='color:blue;' href='../frontend/faq.php'>perguntas frequentes</a> ou entre em contato conosco através do nossos canais oficiais.</p>
+                </h1>
 			</div>
 		</div>
 	</div>

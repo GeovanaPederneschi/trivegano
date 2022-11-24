@@ -4,7 +4,11 @@
     }
 </style>
 
-<div class="pedidos"></div>
+<div class="pedidos" style='height:600px;'>
+    <div class="ui segment" style='border:none;background-color:transparent;height:600px;'>
+  <div class="ui active massive loader"></div>
+ </div>
+</div>
 
 
 <div id="modal-center1" class="uk-flex-top" uk-modal>
@@ -20,7 +24,7 @@
 <script>
     var cont = setInterval(function(){
         $('#conteudo ul li .pedidos').load('selecionar_pedidos.php');
-    },500);
+    },1500);
     
 
     // $('#conteudo ul li .pedidos .ui.segment .ui.cards .card .content').click(function(){

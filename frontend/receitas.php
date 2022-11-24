@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	
 	
 	<!-- UIKIT -->
@@ -34,7 +34,10 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
 
@@ -153,7 +156,10 @@
                 <?php
 
 
-                include "../cadastro/conexao.php";
+                include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 mysqli_query($con,"SET NAMES 'utf8'");  
                 mysqli_query($con,'SET character_set_connection=utf8');  
                 mysqli_query($con,'SET character_set_client=utf8');  

@@ -3,9 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano - Login</title>
-	<link rel="stylesheet" href="style.css">
+	<title>Trivegano - Login</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	<link rel="stylesheet" href="../frontend/css/style.css">
+	<link rel="stylesheet" href="style.css">
+
 <!--============================================================================-->	
 <!-- 	 <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
 
@@ -38,7 +39,7 @@
 			 <a href="../../index.php"><img src="../trivegano/logo1.png"></a>
 		</div>
 		<div class="catalogo">
-			<ul>
+			<ul class="items">
 				<li><a href="../index.php">Home</a></li>
 				<li><a href="../frontend/faq.php">FAQ</a></li>
 				<li><a href="../frontend/menu.php">Menu</a></li>
@@ -118,31 +119,30 @@
 					<div style="margin-left: 0;" uk-grid>
 						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
 							<span class="label-input100">Logradouro</span>
-							<input class="input100" type="text" name="rua" placeholder="Digite o logradouro" data-viacep-endereco required>
-							<span class="focus-input100" data-symbol="&#xf206;"></span>
+							<input class="input100" type="text" name="rua" style="padding-left: 2px;" placeholder="Digite a rua" data-viacep-endereco required>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 	
 
-						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class="label-input100">Bairro</span>
-							<input class="input100" type="text" name="bairro" placeholder="Digite o logradouro" data-viacep-bairro required>
-							<span class="focus-input100" data-symbol="&#xf206;"></span>
+							<input class="input100" type="text" name="bairro" placeholder="Digite o bairro" data-viacep-bairro required>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 						
 					</div>
-					<hr style="margin-top: 0; margin-bottom: 23px;" >
 
 					<div style="margin-left: 0;" uk-grid>
 						<div class="wrap-input100-grid validate-input" data-validate = "Cidade inválida">
 							<span class="label-input100">Cidade</span>
 							<input class="input100" type="text" name="cidade" placeholder="Digite a cidade" data-viacep-cidade required>
-							<span class="focus-input100" data-symbol="&#xf206;"></span>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 
-						<div style='margin-left: 0;' class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class='label-input100' for="estado">Estado</span>
 							<select id="estado" name="estado" class="input100" data-viacep-estado style='border:none; padding: 0 7px 0 15px;' aria-placeholder="Selecione" data-viacep-estado>
-								
+								<option value="">Selecione</option>
 								<option value="AC">Acre</option>
 								<option value="AL">Alagoas</option>
 								<option value="AP">Amapá</option>
@@ -171,30 +171,28 @@
 								<option value="SE">Sergipe</option>
 								<option value="TO">Tocantins</option>
 							</select>
-							<span class="focus-input100" data-symbol="&#xf206;"></span>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 						
 					</div>
-					<hr style="margin-top: 0; margin-bottom: 23px;" >
 					
 					<div style="margin-left: 0;" uk-grid>
 						<div style='margin-left: 2%;' class="wrap-input100-grid validate-input" data-validate = "Numero inválido">
 							<span class="label-input100">Numero</span>
 							<input class="input100" type="text" name="numero" placeholder="Digite o numero"  required>
-							<span class="focus-input100" data-symbol="&#xf206;"></span>
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
-						<div class="wrap-input100-grid validate-input" data-validate = "Logradouro inválido">
+						<div class="wrap-input100-grid validate-input" style="margin-left:18%;" data-validate = "Logradouro inválido">
 							<span class="label-input100">Completo</span>
-							<input class="input100" type="text" name="complemento" placeholder="Digite o logradouro" >
-							<span class="focus-input100" data-symbol="&#xf206;"></span>
+							<input class="input100" type="text" name="complemento" style='font-size: 15px; padding-left: 1px; color: #ccc;' placeholder="Digite o complemento" >
+							<span class="focus-input100" data-symbol="&#x2631;"></span>
 						</div>
 						
 					</div>
-					<hr style="margin-top: 0; margin-bottom: 23px;" >
 
 					
 
-					<div class="contain-login100-form-btn">
+					<div style='margin-top: 5%;' class="contain-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn" type="submit" name="submit">

@@ -81,5 +81,47 @@
       background-color: transparent;
       cursor: pointer;
     }
+    .btn6{
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-family: '';
+    }
+    #ativo{
+      border-right-style:solid ;
+      border-right: block;
+    }
+    #menu{
+      display:block;
+      padding-right: 10%;
+      font-size:25px;
+    }
 
-  
+@media(max-width:768px){
+  #grid{
+    display: none;
+  }
+  #menu{
+    display:block;
+  }
+  #cont{
+    margin-top: 0;
+  }
+  #conteudo{
+    margin-top: 0!important;
+  }
+}
+@media(min-width:1015px){
+  #grid{
+    display: block;
+  }
+  #menu{
+    display:none;
+  }
+  #cont{
+    margin-top: 30px;
+  }
+  #conteudo{
+    margin-top: 40px!important;
+  }
+}

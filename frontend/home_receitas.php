@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Trivegano</title>
+	<title>Trivegano</title>    <link rel="icon" type="image/png" href="http://localhost/trivegano-main/trivegano/logo3.png"/>
 	
    
 
@@ -35,7 +35,10 @@
 				<li><a href="home_guia.php">Guia</a></li>
 				<li><a href="sobrenos.php">Sobre nós</a></li>
 				<?php 
-                include('../cadastro/conexao.php');
+                include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 session_start();
                     if(isset($_SESSION['codusuario']) && $_SESSION['usuario']='cliente'){
 
@@ -140,7 +143,10 @@
     <h1 class="uk-heading-line uk-text-center"><span>Adiconados Recentemente</span></h1>
     <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@m uk-child-width-1-3@m uk-grid">
             <?php
-                include "../cadastro/conexao.php";
+                include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 mysqli_query($con,"SET NAMES 'utf8'");  
                 mysqli_query($con,'SET character_set_connection=utf8');  
                 mysqli_query($con,'SET character_set_client=utf8');  
@@ -188,20 +194,6 @@
                         
                         }
                         
-                    
-                    
-                        /* echo "<form name=fox action=comprar.php  method=POST>"; 
-                        echo "<img src=./img_produtos/$registro[4] width=200 heigth=200> <br>" ;
-
-                        echo "<input name=codx id=codx  type=hidden value=$registro[0]>  <br>";
-                        // imprime na tela o nome do produto
-                        echo " $registro[1] <br>  " ;
-                        // cria um botão submit
-                        echo "<input type=submit name=bot2  value='comprar'>"; 
-                        //fecha o form,
-                        echo "</form>";
-                        //fecha a tag td de coluna
-                        echo "</td>"; */
                 } 
                 $close = mysqli_close($con);
             ?>
@@ -216,8 +208,8 @@
 
 <div class="uk-height-large uk-background-cover uk-overflow-hidden uk-light uk-flex" style="background-image: url('../trivegano/flowers-6199691_1920.png'); margin-bottom:4%;">
     <div class="uk-width-1-2@m uk-text-center uk-margin-auto uk-margin-auto-vertical">
-        <h1 uk-parallax="opacity: 0,1; y: -100,0; scale: 2,1; end: 50vh + 50%;">Headline</h1>
-        <p uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h1 uk-parallax="opacity: 0,1; y: -100,0; scale: 2,1; end: 50vh + 50%;">Receitas</h1>
+        <p uk-parallax="opacity: 0,1; y: 100,0; scale: 0.5,1; end: 50vh + 50%;">Passo a passo de pratos saúdaveis e livres de crueldade para você se divertir e saborear cada alimento.</p>
     </div>
 </div> 
 
@@ -300,9 +292,12 @@
     <h1 class="uk-heading-line uk-text-center"><span>Guias Mais Vistos</span></h1>
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
 
-    <ul class="uk-slider-items uk-child-width-1-2@s uk-grid">
+    <ul class="uk-slider-items uk-child-width-1-1@m uk-child-width-1-2@m uk-grid">
             <?php
-                include "../cadastro/conexao.php";
+                include "../cadastro/conexao.php";mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
                 mysqli_query($con,"SET NAMES 'utf8'");  
                 mysqli_query($con,'SET character_set_connection=utf8');  
                 mysqli_query($con,'SET character_set_client=utf8');  
@@ -382,7 +377,10 @@
         <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-height-small uk-grid-small">
             <?php
 
-            include('../cadastro/conexao.php');
+            include('../cadastro/conexao.php');mysqli_query($con,"SET NAMES 'utf8'");  
+                                  mysqli_query($con,'SET character_set_connection=utf8');  
+                                  mysqli_query($con,'SET character_set_client=utf8');  
+                                  mysqli_query($con,'SET character_set_results=utf8');
             mysqli_query($con,"SET NAMES 'utf8'");  
             mysqli_query($con,'SET character_set_connection=utf8');  
             mysqli_query($con,'SET character_set_client=utf8');  
