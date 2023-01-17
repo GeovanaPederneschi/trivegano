@@ -17,3 +17,18 @@ Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um c
 
   Software web que possui um eccomerce e uma plataforma de conteudos que atendem em especifico o mercado vegano. Marktplace de revendas de pratos e produtos veganos de pequenas e grandes empresas.
 
+## Possui
+
+- Plataforma de Conteudo Vegano;
+- Eccomerce de Venda - Carrinho, Vitrine, Pagamento, etc;
+- Plataforma de Suporte;
+- Plataforma de Gestão dos Clientes do Marktplace (Restaurantes Parceiros) - Acompanhamento dos Pedidos, Gerenciamento dos Produtos, Gerenciamento dos Funcionarios e Clientes;
+- Plataforma de Gerencimando de Administração do Site - Inserção de Conteudo, Funcionalidads de Desempenho E Gerenciamento de Clientes;
+- Funcionalidades de Criação e Gerenciamento de Promoções;
+- Funcionalidades de Geolocalizaçao.
+
+## Tecnologias Utilizadas
+- PHP/Javascript
+- Jquery/SemanticUI/Ulkit
+- MySQL/PhpMyadmin
+- APIGeolocation/APIGeocodition
