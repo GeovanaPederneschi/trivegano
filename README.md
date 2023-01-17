@@ -23,7 +23,7 @@ Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um c
 - Eccomerce de Venda - Carrinho, Vitrine, Pagamento, etc;
 - Plataforma de Suporte;
 - Plataforma de Gestão dos Clientes do Marktplace (Restaurantes Parceiros) - Acompanhamento dos Pedidos, Gerenciamento dos Produtos, Gerenciamento dos Funcionarios e Clientes;
-- Plataforma de Gerencimando de Administração do Site - Inserção de Conteudo, Funcionalidads de Desempenho E Gerenciamento de Clientes;
+- Plataforma de Gerencimando de Administração do Site - Inserção de Conteudo, Funcionalidads de Desempenho e Gerenciamento de Clientes;
 - Funcionalidades de Criação e Gerenciamento de Promoções;
 - Funcionalidades de Geolocalizaçao.
 
@@ -31,4 +31,4 @@ Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um c
 - PHP/Javascript
 - Jquery/SemanticUI/Ulkit
 - MySQL/PhpMyadmin
-- APIGeolocation/APIGeocodition
+- APIGeolocation/APIGeocodition/APIDistanceMatrix
