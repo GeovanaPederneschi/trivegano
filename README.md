@@ -33,7 +33,3 @@ Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um c
 - MySQL/PhpMyadmin
 - APIGeolocation/APIGeocodition/APIDistanceMatrix
 - APIGoogleCharts/APIAxios/APIViacep
-
-## Documentação
-  
-### Requisitos Funcionais 
