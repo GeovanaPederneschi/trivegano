@@ -17,7 +17,7 @@ Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um c
 
   Software web que possui um eccomerce e uma plataforma de conteudos que atendem em especifico o mercado vegano. Marktplace de revendas de pratos e produtos veganos de pequenas e grandes empresas.
 
-## Possui
+## Funcionalidades
 
 - Plataforma de Conteudo Vegano;
 - Eccomerce de Venda - Carrinho, Vitrine, Pagamento, etc;
@@ -33,3 +33,7 @@ Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um c
 - MySQL/PhpMyadmin
 - APIGeolocation/APIGeocodition/APIDistanceMatrix
 - APIGoogleCharts/APIAxios/APIViacep
+
+## Documentação
+  
+### Requisitos Funcionais 
