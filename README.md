@@ -11,7 +11,7 @@
 <h> <h>
 
 Trabalho de Conclusão de Curso.
-Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um curso tecnico de informatica. Ver mais em [site trivegano](https://trivegano.rf.gd).
+Desenvolvido com o objetivo de possuir todos os conhecimentos adquiridos em um curso tecnico de informatica. Ver mais em [site trivegano](https://trivegano.rf.gd) ou [Detalhes detalhados do projeto](https://drive.google.com/file/d/1JNAOHTs2U__Ex6btt2pcNiTH7cclL10B/view?usp=sharing).
 
 ## Definição
 
